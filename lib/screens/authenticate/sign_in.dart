@@ -24,13 +24,12 @@ class _SignInState extends State<SignIn> {
         child: ElevatedButton(
           child: Text("Sign in anon"),
           onPressed: () async {
-            await Firebase.initializeApp();
             dynamic result = await _auth.signInAnon();
             if (result == null) {
               print('error signing in');
             } else {
               print('signed in');
-              print(result);
+              print(result.uid);
             }
           },
         ),
