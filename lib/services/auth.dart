@@ -9,9 +9,7 @@ class AuthService {
   }
 
   Stream<UserModel> get user {
-    return _auth
-        .authStateChanges()
-        .map((User user) => _userFromUserCredential(user));
+    return _auth.authStateChanges().map(_userFromUserCredential);
   }
 
   Future signInAnon() async {
@@ -23,6 +21,14 @@ class AuthService {
       } else {
         return user;
       }
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future signOut() async {
+    try {
+      return await _auth.signOut();
     } catch (e) {
       print(e.toString());
       return null;
