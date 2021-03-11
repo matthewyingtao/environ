@@ -81,13 +81,18 @@ class _SettingsFormState extends State<SettingsForm> {
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () async {
-                        print(_currentName);
-                        print(_currentSugars);
-                        print(_currentStrength);
+                        if (_formKey.currentState.validate()) {
+                          await DatabaseService(uid: user.uid).updateUserData(
+                              _currentSugars ?? userdata.sugars,
+                              _currentName ?? userdata.name,
+                              _currentStrength ?? userdata.strength);
+                        }
+
+                        Navigator.pop(context);
                       }),
                 ]));
           } else {
-            Loading();
+            return Loading();
           }
         });
   }
