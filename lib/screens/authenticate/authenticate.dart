@@ -9,23 +9,26 @@ class Authenticate extends StatefulWidget {
 
 class _AuthenticateState extends State<Authenticate> {
   bool showSignIn = true;
+  Widget screenWidget;
 
   void toggleView() {
     setState(() {
-      showSignIn = !showSignIn;
+      if (screenWidget is SignIn) {
+        screenWidget = Register(toggleView: toggleView);
+      } else {
+        screenWidget = SignIn(toggleView: toggleView);
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (showSignIn) {
-      return Container(
-        child: SignIn(toggleView: toggleView),
-      );
-    } else {
-      return Container(
-        child: Register(toggleView: toggleView),
-      );
+    if (screenWidget == null) {
+      screenWidget = SignIn(toggleView: toggleView);
     }
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 200),
+      child: screenWidget,
+    );
   }
 }

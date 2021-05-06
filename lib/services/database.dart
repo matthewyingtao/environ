@@ -20,18 +20,18 @@ class DatabaseService {
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
     return UserData(
       uid: uid,
-      name: snapshot.data()["name"],
-      sugars: snapshot.data()["sugars"],
-      strength: snapshot.data()["strength"],
+      name: snapshot["name"],
+      sugars: snapshot["sugars"],
+      strength: snapshot["strength"],
     );
   }
 
   List<Brew> _brewListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return Brew(
-          name: doc.data()["name"] ?? "",
-          sugars: doc.data()["sugars"] ?? "",
-          strength: doc.data()["strength"] ?? 0);
+          name: doc["name"] ?? "",
+          sugars: doc["sugars"] ?? "",
+          strength: doc["strength"] ?? 0);
     }).toList();
   }
 
