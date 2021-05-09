@@ -48,37 +48,31 @@ double getElevation(Set<MaterialState> states) {
   return 8;
 }
 
-TextStyle getButtonTextStyle(Set<MaterialState> states) {
-  const Set<MaterialState> interactiveStates = <MaterialState>{
-    MaterialState.pressed,
-    MaterialState.hovered,
-    MaterialState.focused,
-  };
-  if (states.any(interactiveStates.contains)) {
-    return TextStyle(
+ButtonStyle roundedButtonWhite = ButtonStyle(
+  backgroundColor: MaterialStateProperty.all(Colors.black54),
+  textStyle: MaterialStateProperty.all(
+    TextStyle(
+      fontFamily: "Montserrat",
       color: Colors.white,
       fontSize: 24,
       fontWeight: FontWeight.w900,
-    );
-  }
-  return TextStyle(
-    color: Colors.white,
-    fontSize: 24,
-    fontWeight: FontWeight.w900,
-  );
-}
+    ),
+  ),
+  shape: MaterialStateProperty.all(
+    StadiumBorder(
+      side: BorderSide(
+        color: Colors.white,
+        width: 4.0,
+      ),
+    ),
+  ),
+);
 
 ThemeData appTheme = ThemeData(
     primaryColor: themeGreen[1000],
     accentColor: Colors.green,
     backgroundColor: themeGreen[100],
     fontFamily: "Montserrat",
-    outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-      backgroundColor: Colors.black54,
-      shape: StadiumBorder(side: BorderSide(color: Colors.red)),
-      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-    )),
     textTheme: TextTheme(
       headline1: TextStyle(
         color: black,
