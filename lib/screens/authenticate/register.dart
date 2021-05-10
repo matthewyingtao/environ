@@ -63,8 +63,10 @@ class _RegisterState extends State<Register> {
                         height: 48.0,
                       ),
                       TextFormField(
-                        decoration:
-                            textInputDecoration.copyWith(hintText: "Email"),
+                        decoration: textInputDecoration.copyWith(
+                          icon: Icon(Icons.email),
+                          labelText: 'Email',
+                        ),
                         validator: (val) =>
                             val.isEmpty ? "Enter an email" : null,
                         onChanged: (val) {
@@ -75,8 +77,10 @@ class _RegisterState extends State<Register> {
                         height: 48.0,
                       ),
                       TextFormField(
-                        decoration:
-                            textInputDecoration.copyWith(hintText: "Password"),
+                        decoration: textInputDecoration.copyWith(
+                          icon: Icon(Icons.vpn_key_rounded),
+                          labelText: 'Password',
+                        ),
                         obscureText: true,
                         validator: (val) => val.length < 6
                             ? "Enter a password 6+ chars long"
