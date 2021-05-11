@@ -1,9 +1,8 @@
-import 'package:brewcrew/components/wide_stadium_button.dart';
+import 'package:brewcrew/shared/components/wide_stadium_button.dart';
 import 'package:brewcrew/services/auth.dart';
 import 'package:brewcrew/shared/constants.dart';
 import 'package:brewcrew/shared/loading.dart';
 import 'package:flutter/material.dart';
-
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -103,7 +102,7 @@ class _SignInState extends State<SignIn> {
                       TextButton(
                         child: Text(
                           "New user? Register.",
-                          style: textButtonStyle,
+                          style: linkButtonStyle,
                         ),
                         onPressed: () {
                           widget.toggleView();

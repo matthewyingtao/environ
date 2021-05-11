@@ -1,6 +1,5 @@
 import 'package:brewcrew/screens/authenticate/sign_in.dart';
 import 'package:brewcrew/screens/authenticate/register.dart';
-import 'package:brewcrew/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math';
@@ -43,13 +42,14 @@ class _AuthenticateState extends State<Authenticate> {
             curve: Curves.easeInOut,
             builder: (BuildContext context, double size, Widget widget) {
               return Transform.scale(
+                origin: Offset(0, 300),
                 alignment: Alignment.topLeft,
                 scale: size,
-                child: Opacity(
-                  opacity: 0.05,
-                  child: Transform(
-                    transform: Matrix4.rotationZ(pi / 12.0),
-                    child: SvgPicture.asset("assets/leavesbg.svg"),
+                child: Transform(
+                  transform: Matrix4.rotationZ(pi / 12.0),
+                  child: SvgPicture.asset(
+                    "assets/leavesbg.svg",
+                    color: Color.fromRGBO(0, 0, 0, 0.05),
                   ),
                 ),
               );

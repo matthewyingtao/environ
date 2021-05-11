@@ -1,10 +1,7 @@
-import 'dart:math';
-
-import 'package:brewcrew/components/wide_stadium_button.dart';
+import 'package:brewcrew/shared/components/wide_stadium_button.dart';
 import 'package:brewcrew/shared/constants.dart';
 import 'package:brewcrew/shared/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../services/auth.dart';
 
@@ -106,7 +103,7 @@ class _RegisterState extends State<Register> {
                       TextButton(
                         child: Text(
                           "Already have an account? Sign in.",
-                          style: textButtonStyle,
+                          style: linkButtonStyle,
                         ),
                         onPressed: () {
                           widget.toggleView();

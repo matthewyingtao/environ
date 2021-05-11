@@ -1,18 +1,6 @@
 import 'package:flutter/material.dart';
 
-const Map<int, Color> themeGreen = {
-  50: Color.fromRGBO(102, 191, 141, 0.05),
-  100: Color.fromRGBO(102, 191, 141, 0.1),
-  200: Color.fromRGBO(102, 191, 141, 0.2),
-  300: Color.fromRGBO(102, 191, 141, 0.3),
-  400: Color.fromRGBO(102, 191, 141, 0.4),
-  500: Color.fromRGBO(102, 191, 141, 0.5),
-  600: Color.fromRGBO(102, 191, 141, 0.6),
-  700: Color.fromRGBO(102, 191, 141, 0.7),
-  800: Color.fromRGBO(102, 191, 141, 0.8),
-  900: Color.fromRGBO(102, 191, 141, 0.9),
-  1000: Color(0xff7ebc91),
-};
+const themeGreen = Color(0xff7EBC91);
 const themeDarkGreen = Color(0xff5A956D);
 const themeBlue = Color(0xff3f90ea);
 const themeRed = Color(0xffe46855);
@@ -31,9 +19,10 @@ const textInputDecoration = InputDecoration(
       borderSide: BorderSide(color: themeBlue, width: 2.0)),
 );
 
-const textButtonStyle = TextStyle(
-  color: themeBlue,
+const linkButtonStyle = const TextStyle(
+  color: themeDarkGreen,
   fontSize: 16,
+  decoration: TextDecoration.underline,
 );
 
 double getElevation(Set<MaterialState> states) {
@@ -69,9 +58,9 @@ ButtonStyle roundedButtonWhite = ButtonStyle(
 );
 
 ThemeData appTheme = ThemeData(
-    primaryColor: themeGreen[1000],
+    primaryColor: themeGreen,
     accentColor: Colors.green,
-    backgroundColor: themeGreen[100],
+    backgroundColor: themeGreen,
     fontFamily: "Montserrat",
     textTheme: TextTheme(
       headline1: TextStyle(
