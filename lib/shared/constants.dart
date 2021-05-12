@@ -21,7 +21,7 @@ const textInputDecoration = InputDecoration(
 
 const linkButtonStyle = const TextStyle(
   color: themeDarkGreen,
-  fontSize: 16,
+  fontSize: 18,
   decoration: TextDecoration.underline,
 );
 
@@ -78,6 +78,3 @@ ThemeData appTheme = ThemeData(
       bodyText2: TextStyle(),
     ));
 
-const titleTextStyle = TextStyle(
-  fontWeight: FontWeight.bold,
-);

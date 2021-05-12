@@ -14,17 +14,13 @@ class Wrapper extends StatefulWidget {
 
 class _WrapperState extends State<Wrapper> {
   Future<bool> isFirstTime() async {
-    return true;
-    // await new Future.delayed(const Duration(milliseconds: 500));
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // await prefs.clear();
-    // var isFirstTime = prefs.getBool('first_time');
-    // if (isFirstTime == null || true) {
-    //   prefs.setBool('first_time', false);
-    //   return true;
-    // } else {
-    //   return false;
-    // }
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var isFirstTime = prefs.getBool('first_time');
+    if (isFirstTime == null) {
+      prefs.setBool('first_time', false);
+      return true;
+    }
+    return false;
   }
 
   @override
