@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const themeGreen = Color(0xff7EBC91);
-const themeDarkGreen = Color(0xff5A956D);
+const themeGreen = Color(0xff47A060);
+const themeDarkGreen = Color(0xff30A350);
 const themeBlue = Color(0xff3f90ea);
 const themeRed = Color(0xffe46855);
 const black = Color(0xff1e1e1e);
@@ -58,23 +58,42 @@ ButtonStyle roundedButtonWhite = ButtonStyle(
 );
 
 ThemeData appTheme = ThemeData(
-    primaryColor: themeGreen,
-    accentColor: Colors.green,
-    backgroundColor: themeGreen,
-    fontFamily: "Montserrat",
-    textTheme: TextTheme(
-      headline1: TextStyle(
-        color: black,
-        fontWeight: FontWeight.w900,
-        fontSize: 48,
-        shadows: <Shadow>[
-          Shadow(
-            offset: Offset(4.0, 4.0),
-            blurRadius: 4.0,
-            color: Color.fromRGBO(0, 0, 0, 0.25),
+  primaryColor: themeGreen,
+  accentColor: Colors.green,
+  backgroundColor: themeGreen,
+  fontFamily: "Montserrat",
+  textTheme: TextTheme(
+    headline1: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w900,
+      fontSize: 72,
+      shadows: <Shadow>[
+        Shadow(
+          offset: Offset(12.0, 12.0),
+          color: Color.fromRGBO(
+            0,
+            0,
+            0,
+            0.20,
           ),
-        ],
-      ),
-      bodyText2: TextStyle(),
-    ));
-
+        ),
+      ],
+    ),
+    headline3: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w900,
+      fontSize: 48,
+      shadows: <Shadow>[
+        Shadow(
+          offset: Offset(4, 4.0),
+          blurRadius: 4.0,
+          color: Color.fromRGBO(0, 0, 0, 0.25),
+        ),
+      ],
+    ),
+    bodyText2: TextStyle(
+      color: Colors.white,
+      fontSize: 18,
+    ),
+  ),
+);

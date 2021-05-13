@@ -41,16 +41,12 @@ class _AuthenticateState extends State<Authenticate> {
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,
             builder: (BuildContext context, double size, Widget widget) {
-              return Transform.scale(
-                origin: Offset(0, 300),
-                alignment: Alignment.topLeft,
-                scale: size,
-                child: Transform(
-                  transform: Matrix4.rotationZ(pi / 12.0),
-                  child: SvgPicture.asset(
-                    "assets/leavesbg.svg",
-                    color: Color.fromRGBO(0, 0, 0, 0.05),
-                  ),
+              return Transform(
+                transform: Matrix4.rotationZ(pi / 12.0)..scale(size),
+                alignment: Alignment.center,
+                child: SvgPicture.asset(
+                  "assets/leavesbg.svg",
+                  color: Color.fromRGBO(0, 0, 0, 0.05),
                 ),
               );
             },

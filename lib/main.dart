@@ -8,21 +8,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'models/user_model.dart';
 import 'services/auth.dart';
 
+void clear() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.clear();
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
 }
 
-void clear() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.clear();
-}
-
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    clear();
     return StreamProvider<UserModel>.value(
       value: AuthService().user,
       child: MaterialApp(

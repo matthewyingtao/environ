@@ -53,7 +53,7 @@ class _RegisterState extends State<Register> {
                     children: <Widget>[
                       Text(
                         "Register",
-                        style: Theme.of(context).textTheme.headline1,
+                        style: Theme.of(context).textTheme.headline3.copyWith(color: black),
                         textAlign: TextAlign.left,
                       ),
                       SizedBox(

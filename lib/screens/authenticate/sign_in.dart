@@ -3,6 +3,7 @@ import 'package:brewcrew/services/auth.dart';
 import 'package:brewcrew/shared/constants.dart';
 import 'package:brewcrew/shared/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -11,6 +12,11 @@ class SignIn extends StatefulWidget {
 
   @override
   _SignInState createState() => _SignInState();
+}
+
+void clear() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.clear();
 }
 
 class _SignInState extends State<SignIn> {
@@ -52,7 +58,10 @@ class _SignInState extends State<SignIn> {
                     children: <Widget>[
                       Text(
                         "Sign In",
-                        style: Theme.of(context).textTheme.headline1,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline3
+                            .copyWith(color: black),
                         textAlign: TextAlign.left,
                       ),
                       SizedBox(
@@ -107,7 +116,16 @@ class _SignInState extends State<SignIn> {
                         onPressed: () {
                           widget.toggleView();
                         },
-                      )
+                      ),
+                      TextButton(
+                        child: Text(
+                          "Onboarding",
+                          style: linkButtonStyle,
+                        ),
+                        onPressed: () {
+                          clear();
+                        },
+                      ),
                     ],
                   ),
                 )),

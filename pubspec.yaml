@@ -36,6 +36,7 @@ dependencies:
   matrix4_transform: ^2.0.0
   shared_preferences: ^2.0.5
   smooth_page_indicator: ^0.2.3
+  google_nav_bar: ^5.0.5
 
 dev_dependencies:
   flutter_test:
@@ -60,7 +61,13 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
+    - assets/coffee_bg.png
+    - assets/coffee_icon.png
+    - assets/fonts/Montserrat-Black.ttf
+    - assets/fonts/Montserrat-Italic.ttf
+    - assets/fonts/Montserrat-Regular.ttf
+    - assets/leavesbg.svg
+    - assets/recyclingsymbol.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

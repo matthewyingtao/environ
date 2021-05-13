@@ -17,8 +17,8 @@ class _WideStadiumButtonState extends State<WideStadiumButton> {
     return FractionallySizedBox(
       widthFactor: 0.7,
       child: ElevatedButton(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
+        child: Container(
+          margin: EdgeInsets.symmetric(
             vertical: 8.0,
             horizontal: 24.0,
           ),
