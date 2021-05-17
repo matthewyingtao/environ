@@ -45,49 +45,69 @@ class Home extends StatelessWidget {
             ),
           ],
         ),
-        body: Container(
-          child: Column(
-            children: [
-              Spacer(),
-              Container(
-                color: themeDarkGreen,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 8,
-                ),
-                child: GNav(
-                  rippleColor: Colors.white,
-                  hoverColor: Colors.white,
-                  tabBorderRadius: 50,
-                  gap: 4,
-                  duration: Duration(milliseconds: 500),
-                  color: Colors.white60,
-                  activeColor: Colors.white,
-                  iconSize: 24,
-                  tabBackgroundColor: Colors.white24,
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                  tabs: [
-                    GButton(
-                      icon: Icons.home_rounded,
-                      text: 'Home',
-                    ),
-                    GButton(
-                      icon: Icons.directions_bus_rounded,
-                      text: 'Travel',
-                    ),
-                    GButton(
-                      icon: Icons.school_rounded,
-                      text: 'School',
-                    ),
-                    GButton(
-                      icon: Icons.insights_rounded,
-                      text: 'Statistics',
-                    )
-                  ],
-                ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Dashboard",
+                    style: Theme.of(context).textTheme.headline3.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
+                  SizedBox(height: 24.0),
+                  Text(
+                    "Daily Challenges",
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).textTheme.headline5.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Spacer(),
+            Container(
+              color: themeDarkGreen,
+              padding: EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 8,
+              ),
+              child: GNav(
+                rippleColor: Colors.white24,
+                tabBorderRadius: 50,
+                gap: 4,
+                duration: Duration(milliseconds: 500),
+                color: Colors.white60,
+                activeColor: Colors.white,
+                iconSize: 24,
+                tabBackgroundColor: Colors.white24,
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                tabs: [
+                  GButton(
+                    icon: Icons.home_rounded,
+                    text: 'Home',
+                  ),
+                  GButton(
+                    icon: Icons.directions_bus_rounded,
+                    text: 'Travel',
+                  ),
+                  GButton(
+                    icon: Icons.school_rounded,
+                    text: 'School',
+                  ),
+                  GButton(
+                    icon: Icons.insights_rounded,
+                    text: 'Statistics',
+                  )
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

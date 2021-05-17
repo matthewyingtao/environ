@@ -70,12 +70,7 @@ ThemeData appTheme = ThemeData(
       shadows: <Shadow>[
         Shadow(
           offset: Offset(12.0, 12.0),
-          color: Color.fromRGBO(
-            0,
-            0,
-            0,
-            0.20,
-          ),
+          color: Color.fromRGBO(0, 0, 0, 0.20),
         ),
       ],
     ),
@@ -90,6 +85,10 @@ ThemeData appTheme = ThemeData(
           color: Color.fromRGBO(0, 0, 0, 0.25),
         ),
       ],
+    ),
+    headline5: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w700,
     ),
     bodyText2: TextStyle(
       color: Colors.white,
