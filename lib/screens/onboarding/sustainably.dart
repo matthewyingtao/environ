@@ -17,7 +17,7 @@ class Sustainably extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Placeholder(
-                  fallbackHeight: 200,
+                  fallbackHeight: 120,
                 ),
                 SizedBox(
                   height: 32.0,
@@ -61,8 +61,8 @@ class Sustainably extends StatelessWidget {
         ),
         RotatedBox(
           quarterTurns: 1,
-          child: Transform.translate(
-            offset: Offset(0.0, -10.0),
+          child: FittedBox(
+            fit: BoxFit.contain,
             child: Text(
               "SUSTAINABLY",
               style: Theme.of(context).textTheme.headline1.copyWith(

@@ -27,9 +27,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
-  firebase_core: ^1.1.1
-  firebase_auth: ^1.1.4
-  cloud_firestore: ^2.1.0
+  firebase_core: ^1.2.0
+  firebase_auth: ^1.2.0
+  cloud_firestore: ^2.2.0
   provider: ^5.0.0
   flutter_spinkit: ^5.0.0
   flutter_svg: ^0.22.0
@@ -37,6 +37,7 @@ dependencies:
   shared_preferences: ^2.0.5
   smooth_page_indicator: ^0.2.3
   google_nav_bar: ^5.0.5
+  camera: ^0.8.1
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,9 @@ flutter:
           style: italic
         - asset: assets/fonts/Montserrat-Black.ttf
           weight: 900
+        - asset: assets/fonts/Montserrat-BlackItalic.ttf
+          weight: 900
+          style: italic
         - asset: assets/fonts/Montserrat-Bold.ttf
           weight: 700
   uses-material-design: true
@@ -69,6 +73,7 @@ flutter:
     - assets/fonts/Montserrat-Italic.ttf
     - assets/fonts/Montserrat-Bold.ttf
     - assets/fonts/Montserrat-Regular.ttf
+    - assets/fonts/Montserrat-BlackItalic.ttf
     - assets/leavesbg.svg
     - assets/recyclingsymbol.svg
   # An image asset can refer to one or more resolution-specific "variants", see

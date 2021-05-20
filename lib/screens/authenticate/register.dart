@@ -30,9 +30,9 @@ class _RegisterState extends State<Register> {
       });
       dynamic result =
           await _auth.registerWithEmailAndPassword(email, password);
-      if (result == null) {
+      if (result is String) {
         setState(() {
-          error = "Something went wrong.";
+          error = result;
           loading = false;
         });
       }
@@ -100,14 +100,17 @@ class _RegisterState extends State<Register> {
                         error,
                         style: TextStyle(color: Colors.red, fontSize: 16),
                       ),
-                      TextButton(
-                        child: Text(
-                          "Already have an account? Sign in.",
-                          style: linkButtonStyle,
+                      FractionallySizedBox(
+                        widthFactor: 0.8,
+                        child: TextButton(
+                          child: Text(
+                            "Already have an account? Sign in.",
+                            style: linkButtonStyle,
+                          ),
+                          onPressed: () {
+                            widget.toggleView();
+                          },
                         ),
-                        onPressed: () {
-                          widget.toggleView();
-                        },
                       )
                     ],
                   ),

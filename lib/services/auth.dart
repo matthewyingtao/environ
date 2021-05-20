@@ -13,20 +13,6 @@ class AuthService {
     return _auth.authStateChanges().map(_userFromUserCredential);
   }
 
-  Future signInAnon() async {
-    try {
-      UserCredential result = await _auth.signInAnonymously();
-      User user = result.user;
-      if (user != null) {
-        return _userFromUserCredential(user);
-      } else {
-        return user;
-      }
-    } catch (e) {
-      return null;
-    }
-  }
-
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(
@@ -34,8 +20,7 @@ class AuthService {
       User user = result.user;
       return _userFromUserCredential(user);
     } catch (e) {
-      print(e.toString());
-      return null;
+      return e.message;
     }
   }
 
@@ -48,8 +33,7 @@ class AuthService {
           .updateUserData("0", "new crew member", 100);
       return _userFromUserCredential(user);
     } catch (e) {
-      print(e.toString());
-      return null;
+      return e.message;
     }
   }
 
@@ -57,8 +41,7 @@ class AuthService {
     try {
       return await _auth.signOut();
     } catch (e) {
-      print(e.toString());
-      return null;
+      return e.message;
     }
   }
 }

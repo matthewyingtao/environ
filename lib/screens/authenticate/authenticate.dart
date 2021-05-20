@@ -10,7 +10,6 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
-  bool showSignIn = true;
   Widget screenWidget;
   double leafSize = 2;
 
@@ -34,7 +33,7 @@ class _AuthenticateState extends State<Authenticate> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      body: Stack(
+      body:  Stack(
         children: [
           TweenAnimationBuilder<double>(
             tween: Tween<double>(begin: 0, end: leafSize),

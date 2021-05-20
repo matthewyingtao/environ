@@ -35,9 +35,9 @@ class _SignInState extends State<SignIn> {
         loading = true;
       });
       dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-      if (result == null) {
+      if (result is String) {
         setState(() {
-          error = "Something went wrong.";
+          error = result;
           loading = false;
         });
       }

@@ -4,6 +4,7 @@ const themeGreen = Color(0xff47A060);
 const themeDarkGreen = Color(0xff30A350);
 const themeBlue = Color(0xff3f90ea);
 const themeRed = Color(0xffe46855);
+const themeYellow = Color(0xffE3BC57);
 const black = Color(0xff1e1e1e);
 const black50 = Color(0x80000000);
 
@@ -66,7 +67,6 @@ ThemeData appTheme = ThemeData(
     headline1: TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.w900,
-      fontSize: 72,
       shadows: <Shadow>[
         Shadow(
           offset: Offset(12.0, 12.0),
@@ -77,7 +77,6 @@ ThemeData appTheme = ThemeData(
     headline3: TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.w900,
-      fontSize: 48,
       shadows: <Shadow>[
         Shadow(
           offset: Offset(4, 4.0),
@@ -92,7 +91,6 @@ ThemeData appTheme = ThemeData(
     ),
     bodyText2: TextStyle(
       color: Colors.white,
-      fontSize: 18,
     ),
   ),
 );

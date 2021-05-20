@@ -75,16 +75,9 @@ class _OnboardingState extends State<Onboarding> {
                         });
                       },
                       children: <Widget>[
-                        // Sustainably(),
-                        Center(
-                          child: Sustainably(),
-                        ),
-                        Center(
-                          child: Progress(),
-                        ),
-                        Center(
-                          child: Knowledge(),
-                        )
+                        Sustainably(),
+                        Progress(),
+                        Knowledge(),
                       ],
                     ),
                   ),

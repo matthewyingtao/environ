@@ -1,0 +1,74 @@
+import 'dart:ui';
+
+import 'package:brewcrew/shared/constants.dart';
+import 'package:flutter/material.dart';
+
+class ChallengeProgressIndicator extends StatelessWidget {
+  final int challengeProgress;
+  final int challengeMax;
+  final String challengeTitle;
+
+  const ChallengeProgressIndicator(
+      {this.challengeProgress, this.challengeMax, this.challengeTitle});
+
+  Color getProgressColor() {
+    double percentageDone = this.challengeProgress / this.challengeMax;
+    if (percentageDone < 0.2) {
+      return themeRed;
+    } else if (percentageDone < 0.8) {
+      return themeBlue;
+    } else {
+      return themeYellow;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final double percentageDone = this.challengeProgress / this.challengeMax;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(this.challengeTitle),
+            Spacer(),
+            Text(
+              this.challengeProgress.toString() +
+                  " / " +
+                  this.challengeMax.toString(),
+              style: percentageDone == 1
+                  ? Theme.of(context).textTheme.bodyText2.copyWith(
+                      fontWeight: FontWeight.w900, fontStyle: FontStyle.italic)
+                  : Theme.of(context).textTheme.bodyText2.copyWith(
+                        fontStyle: FontStyle.italic,
+                      ),
+            ),
+          ],
+        ),
+        SizedBox(height: 8),
+        Container(
+          alignment: Alignment.topLeft,
+          height: 24,
+          decoration: BoxDecoration(
+            color: Colors.white54,
+            borderRadius: BorderRadius.circular(50.0),
+            border: Border.all(
+              color: Colors.white,
+              width: 2.0,
+            ),
+          ),
+          child: FractionallySizedBox(
+            widthFactor: percentageDone,
+            child: Container(
+              decoration: BoxDecoration(
+                color: getProgressColor(),
+                borderRadius: BorderRadius.circular(50.0),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
