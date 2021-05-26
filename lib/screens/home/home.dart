@@ -39,7 +39,6 @@ class _HomeState extends State<Home> {
         title: Icon(Icons.emoji_food_beverage),
         backgroundColor: themeDarkGreen,
         elevation: 8.0,
-        toolbarHeight: 64,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.settings),
@@ -78,12 +77,16 @@ class _HomeState extends State<Home> {
                     }
                   },
                 ),
-
               ],
             ),
           ),
           Container(
-            color: themeDarkGreen,
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(width: 2.0, color: Colors.white),
+              ),
+              color: themeDarkGreen,
+            ),
             padding: EdgeInsets.symmetric(
               horizontal: 24,
               vertical: 8,

@@ -41,47 +41,49 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       child: OverflowBox(
         maxWidth: double.infinity,
         alignment: Alignment.center,
-        child: Stack(children: [
-          FutureBuilder<void>(
-            future: _initializeControllerFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return CameraPreview(_controller);
-              } else {
-                return Center(child: Loading());
-              }
-            },
-          ),
-          Positioned(
-            bottom: 16,
-            right: 24,
-            child: RawMaterialButton(
-              elevation: 4.0,
-              fillColor: Colors.white,
-              child: Icon(
-                Icons.camera,
-                size: 36.0,
-              ),
-              padding: EdgeInsets.all(16.0),
-              shape: CircleBorder(),
-              onPressed: () async {
-                try {
-                  await _initializeControllerFuture;
-                  final image = await _controller.takePicture();
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => DisplayPictureScreen(
-                        imagePath: image.path,
-                      ),
-                    ),
-                  );
-                } catch (e) {
-                  print(e);
+        child: Stack(
+          children: [
+            FutureBuilder<void>(
+              future: _initializeControllerFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return CameraPreview(_controller);
+                } else {
+                  return Center(child: Loading());
                 }
               },
             ),
-          ),
-        ]),
+            Positioned(
+              bottom: 16,
+              right: 24,
+              child: RawMaterialButton(
+                elevation: 4.0,
+                fillColor: Colors.white,
+                child: Icon(
+                  Icons.camera,
+                  size: 36.0,
+                ),
+                padding: EdgeInsets.all(16.0),
+                shape: CircleBorder(),
+                onPressed: () async {
+                  try {
+                    await _initializeControllerFuture;
+                    final image = await _controller.takePicture();
+                    await Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => DisplayPictureScreen(
+                          imagePath: image.path,
+                        ),
+                      ),
+                    );
+                  } catch (e) {
+                    print(e);
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -96,8 +98,6 @@ class DisplayPictureScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Photo Taken')),
-      // The image is stored as a file on the device. Use the `Image.file`
-      // constructor with the given path to display the image.
       body: Image.file(
         File(imagePath),
         fit: BoxFit.cover,
