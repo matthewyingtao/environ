@@ -1,4 +1,5 @@
 import 'package:brewcrew/screens/camera/camera.dart';
+import 'package:brewcrew/screens/home/courses.dart';
 import 'package:brewcrew/screens/home/dashboard.dart';
 import 'package:brewcrew/screens/home/settings_form.dart';
 import 'package:brewcrew/shared/constants.dart';
@@ -57,6 +58,7 @@ class _HomeState extends State<Home> {
         children: [
           Expanded(
             child: PageView(
+
               onPageChanged: (index) {
                 setState(() {
                   _currentPage = index;
@@ -77,6 +79,7 @@ class _HomeState extends State<Home> {
                     }
                   },
                 ),
+                Courses(),
               ],
             ),
           ),
@@ -107,7 +110,7 @@ class _HomeState extends State<Home> {
                   _controller.animateToPage(
                     tab,
                     duration: Duration(milliseconds: 200),
-                    curve: Curves.easeOutExpo,
+                    curve: Curves.easeOut,
                   );
                 });
               },
