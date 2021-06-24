@@ -42,7 +42,7 @@ class CourseCard extends StatelessWidget {
                   children: [
                     Text(
                       this.heading,
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     SizedBox(height: 8),
                     Text(

@@ -20,6 +20,17 @@ class _HomeState extends State<Home> {
   final PageController _controller = PageController(initialPage: 0);
   int _currentPage = 0;
 
+  void changePage(int index) {
+    setState(() {
+      _currentPage = index;
+      _controller.animateToPage(
+        index,
+        duration: Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     void _showSettingsPanel() {
@@ -39,6 +50,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Icon(Icons.emoji_food_beverage),
         backgroundColor: themeDarkGreen,
+        brightness: Brightness.dark,
         elevation: 8.0,
         actions: <Widget>[
           IconButton(
@@ -58,7 +70,6 @@ class _HomeState extends State<Home> {
         children: [
           Expanded(
             child: PageView(
-
               onPageChanged: (index) {
                 setState(() {
                   _currentPage = index;
@@ -66,7 +77,7 @@ class _HomeState extends State<Home> {
               },
               controller: _controller,
               children: <Widget>[
-                Dashboard(),
+                Dashboard(changePage: changePage),
                 FutureBuilder(
                   future: cameras,
                   builder: (context, snapshot) {
