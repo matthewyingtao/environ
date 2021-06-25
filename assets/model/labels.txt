@@ -1,2 +1,6 @@
-none
-thumbs up
+cardboard
+glass
+metal
+paper
+plastic
+trash

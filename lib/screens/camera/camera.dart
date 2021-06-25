@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:convert';
 import 'package:brewcrew/shared/constants.dart';
 import 'package:brewcrew/shared/loading.dart';
 import 'package:camera/camera.dart';
@@ -22,6 +21,9 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
+  bool _isModelRunning = false;
+  String _result;
+
   @override
   void initState() {
     super.initState();
@@ -37,6 +39,24 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  Future<List> _runModel(String path) async {
+    await Tflite.loadModel(
+      model: "assets/model/saved_model.tflite",
+      labels: "assets/model/labels.txt",
+    );
+
+    var result = await Tflite.runModelOnImage(
+      path: path,
+      imageMean: 125.0,
+      imageStd: 125.0,
+      numResults: 2,
+      threshold: 0.7,
+      asynch: true,
+    );
+
+    return result;
   }
 
   @override
@@ -68,90 +88,57 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                 color: Colors.black45,
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: RawMaterialButton(
-                  elevation: 4.0,
-                  fillColor: Colors.white,
-                  child: Icon(
-                    Icons.camera_alt_rounded,
-                    color: themeGreen,
-                    size: 32.0,
-                  ),
-                  padding: EdgeInsets.all(12.0),
-                  shape: CircleBorder(
-                    side: BorderSide(
-                      color: themeGreen,
-                      width: 4,
-                    ),
-                  ),
-                  onPressed: () async {
-                    try {
-                      await _initializeControllerFuture;
-
-                      final image = await _controller.takePicture();
-
-                      String res = await Tflite.loadModel(
-                          model: "assets/model/hands_model.tflite",
-                          labels: "assets/model/labels.txt",
-                      );
-
-                      print(res);
-
-                      var result = await Tflite.runModelOnImage(
-                          path: image.path,
-                          imageMean: 125.0,
-                          imageStd: 125.0,
-                          numResults: 2,
-                          threshold: 0.7,
-                          asynch: true
-                      );
-
-                      print("That photo contained: $result");
-
-
-                      await Tflite.close();
-
-                      Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.rightToLeft,
-                          duration: Duration(milliseconds: 150),
-                          child: DisplayPictureScreen(
-                            imagePath: image.path,
-                          ),
+                child: Column(
+                  children: [
+                    if (_result != null) Text(_result),
+                    RawMaterialButton(
+                      elevation: 4.0,
+                      fillColor: Colors.white,
+                      child: Icon(
+                        Icons.camera_alt_rounded,
+                        color: themeGreen,
+                        size: 32.0,
+                      ),
+                      padding: EdgeInsets.all(12.0),
+                      shape: CircleBorder(
+                        side: BorderSide(
+                          color: themeGreen,
+                          width: 4,
                         ),
-                      );
-                    } catch (e) {
-                      print(e);
-                    }
-                  },
+                      ),
+                      onPressed: () async {
+                        try {
+                          setState(() {
+                            _isModelRunning = true;
+                          });
+
+                          final image = await _controller.takePicture();
+
+                          List result = await _runModel(image.path);
+
+                          setState(() {
+                            _isModelRunning = false;
+                            _result = result[0]['label'];
+                          });
+                        } catch (e) {
+                          print(e);
+                          setState(() {
+                            _isModelRunning = false;
+                          });
+                        }
+                      },
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
         ),
+        if (_isModelRunning)
+          Center(
+            child: Loading(),
+          ),
       ],
-    );
-  }
-}
-
-class DisplayPictureScreen extends StatelessWidget {
-  final String imagePath;
-
-  const DisplayPictureScreen({this.imagePath});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Photo Taken'),
-        backgroundColor: themeDarkGreen,
-      ),
-      body: Image.file(
-        File(imagePath),
-        fit: BoxFit.cover,
-        height: double.infinity,
-        width: double.infinity,
-      ),
     );
   }
 }
