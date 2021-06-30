@@ -1,6 +1,7 @@
-cardboard
-glass
+clear-glass
+clothing
+colored-glass
 metal
-paper
+paper-cardboard
 plastic
 trash
