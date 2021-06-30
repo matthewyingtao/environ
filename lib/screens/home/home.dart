@@ -38,8 +38,9 @@ class _HomeState extends State<Home> {
           context: context,
           builder: (context) {
             return Container(
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
-                child: SettingsForm());
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
+              child: SettingsForm(),
+            );
           });
     }
 

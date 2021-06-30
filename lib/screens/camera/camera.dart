@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:brewcrew/shared/constants.dart';
 import 'package:brewcrew/shared/loading.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:tflite/tflite.dart';
 
 class TakePictureScreen extends StatefulWidget {
@@ -56,6 +54,8 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       asynch: true,
     );
 
+    print(result);
+
     return result;
   }
 
@@ -90,7 +90,16 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: Column(
                   children: [
-                    if (_result != null) Text(_result),
+                    if (_result != null)
+                      Column(
+                        children: [
+                          Text(
+                            _result,
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                          SizedBox(height: 8),
+                        ],
+                      ),
                     RawMaterialButton(
                       elevation: 4.0,
                       fillColor: Colors.white,

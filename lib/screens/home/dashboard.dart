@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
   final Function changePage;
+
   Dashboard({this.changePage});
 
   @override
