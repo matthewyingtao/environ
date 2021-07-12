@@ -27,7 +27,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     super.initState();
     _controller = CameraController(
       widget.camera,
-      ResolutionPreset.low,
+      ResolutionPreset.medium,
       imageFormatGroup: ImageFormatGroup.jpeg,
     );
     _initializeControllerFuture = _controller.initialize();
@@ -54,8 +54,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       asynch: true,
     );
 
-    print(result);
-
     return result;
   }
 
@@ -63,6 +61,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        //prevents the camera screen from overflowing
         ClipRect(
           child: OverflowBox(
             maxWidth: double.infinity,
@@ -73,7 +72,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                 if (snapshot.connectionState == ConnectionState.done) {
                   return CameraPreview(_controller);
                 } else {
-                  return Center(child: Loading());
+                  return Loading();
                 }
               },
             ),
@@ -102,12 +101,12 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                       ),
                     RawMaterialButton(
                       elevation: 4.0,
-                      fillColor: Colors.white,
                       child: Icon(
-                        Icons.camera_alt_rounded,
+                        Icons.camera_alt,
                         color: themeGreen,
                         size: 32.0,
                       ),
+                      fillColor: Colors.white,
                       padding: EdgeInsets.all(12.0),
                       shape: CircleBorder(
                         side: BorderSide(
@@ -115,6 +114,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                           width: 4,
                         ),
                       ),
+                      // runs the model and sets the variable to the result
                       onPressed: () async {
                         try {
                           setState(() {
