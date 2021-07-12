@@ -1,9 +1,9 @@
 import 'package:brewcrew/screens/camera/camera.dart';
 import 'package:brewcrew/screens/home/courses.dart';
 import 'package:brewcrew/screens/home/dashboard.dart';
-import 'package:brewcrew/screens/home/settings_form.dart';
 import 'package:brewcrew/shared/constants.dart';
 import 'package:brewcrew/shared/loading.dart';
+import 'package:brewcrew/screens/home/trash_modal.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 import '../../services/auth.dart';
@@ -16,6 +16,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
+
+  List trashData;
 
   final PageController _controller = PageController(initialPage: 0);
   int _currentPage = 0;
@@ -39,12 +41,12 @@ class _HomeState extends State<Home> {
           builder: (context) {
             return Container(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
-              child: SettingsForm(),
+              child: TrashModal(),
             );
           });
     }
 
-    final cameras = availableCameras();
+    final Future<List<CameraDescription>> cameras = availableCameras();
 
     return Scaffold(
       backgroundColor: themeGreen,
@@ -142,7 +144,7 @@ class _HomeState extends State<Home> {
                 GButton(
                   icon: Icons.insights_rounded,
                   text: 'Stats',
-                )
+                ),
               ],
             ),
           ),
