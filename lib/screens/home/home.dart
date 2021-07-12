@@ -19,6 +19,12 @@ class _HomeState extends State<Home> {
 
   List trashData;
 
+  void updateTrashdata(List data) {
+    setState(() {
+      trashData = data;
+    });
+  }
+
   final PageController _controller = PageController(initialPage: 0);
   int _currentPage = 0;
 
@@ -41,7 +47,9 @@ class _HomeState extends State<Home> {
           builder: (context) {
             return Container(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
-              child: TrashModal(),
+              child: TrashModal(
+                data: trashData,
+              ),
             );
           });
     }
@@ -86,6 +94,7 @@ class _HomeState extends State<Home> {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return TakePictureScreen(
+                        changeData: updateTrashdata,
                         camera: snapshot.data.first,
                       );
                     } else {

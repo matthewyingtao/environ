@@ -8,8 +8,9 @@ import 'package:tflite/tflite.dart';
 
 class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
+  final Function changeData;
 
-  const TakePictureScreen({this.camera});
+  const TakePictureScreen({this.changeData, this.camera});
 
   @override
   TakePictureScreenState createState() => TakePictureScreenState();
@@ -124,6 +125,8 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                           final image = await _controller.takePicture();
 
                           List result = await _runModel(image.path);
+
+                          widget.changeData(result);
 
                           setState(() {
                             _isModelRunning = false;
