@@ -1,8 +1,8 @@
-import 'package:brewcrew/screens/wrapper.dart';
+import 'package:environ/screens/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'package:brewcrew/shared/constants.dart';
+import 'package:environ/shared/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
 
@@ -16,7 +16,7 @@ void clear() async {
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.black26,
+    statusBarColor: Colors.black26,
   ));
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

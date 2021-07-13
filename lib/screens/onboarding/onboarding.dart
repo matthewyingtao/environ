@@ -1,12 +1,12 @@
 import 'dart:math';
-import 'package:brewcrew/screens/wrapper.dart';
-import 'package:brewcrew/shared/constants.dart';
+import 'package:environ/screens/wrapper.dart';
+import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:brewcrew/screens/onboarding/sustainably.dart';
-import 'package:brewcrew/screens/onboarding/progress.dart';
-import 'package:brewcrew/screens/onboarding/knowledge.dart';
+import 'package:environ/screens/onboarding/sustainably.dart';
+import 'package:environ/screens/onboarding/progress.dart';
+import 'package:environ/screens/onboarding/knowledge.dart';
 
 class Onboarding extends StatefulWidget {
   @override

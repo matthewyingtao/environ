@@ -1,5 +1,5 @@
-import 'package:brewcrew/models/brew.dart';
-import 'package:brewcrew/models/user_model.dart';
+import 'package:environ/models/brew.dart';
+import 'package:environ/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseService {

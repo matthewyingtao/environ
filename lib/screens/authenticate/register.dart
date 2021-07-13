@@ -1,6 +1,6 @@
-import 'package:brewcrew/shared/components/wide_stadium_button.dart';
-import 'package:brewcrew/shared/constants.dart';
-import 'package:brewcrew/shared/loading.dart';
+import 'package:environ/shared/components/wide_stadium_button.dart';
+import 'package:environ/shared/constants.dart';
+import 'package:environ/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 import '../../services/auth.dart';
@@ -53,7 +53,10 @@ class _RegisterState extends State<Register> {
                     children: <Widget>[
                       Text(
                         "Register",
-                        style: Theme.of(context).textTheme.headline3.copyWith(color: black),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline3
+                            .copyWith(color: black),
                         textAlign: TextAlign.left,
                       ),
                       SizedBox(

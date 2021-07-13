@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:brewcrew/shared/constants.dart';
+import 'package:environ/shared/constants.dart';
 
 class WideStadiumButton extends StatefulWidget {
   @override

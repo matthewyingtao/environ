@@ -1,7 +1,7 @@
-import 'package:brewcrew/shared/components/wide_stadium_button.dart';
-import 'package:brewcrew/services/auth.dart';
-import 'package:brewcrew/shared/constants.dart';
-import 'package:brewcrew/shared/loading.dart';
+import 'package:environ/shared/components/wide_stadium_button.dart';
+import 'package:environ/services/auth.dart';
+import 'package:environ/shared/constants.dart';
+import 'package:environ/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

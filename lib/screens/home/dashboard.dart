@@ -1,7 +1,7 @@
 import 'dart:math';
-import 'package:brewcrew/shared/components/wide_stadium_button.dart';
+import 'package:environ/shared/components/wide_stadium_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:brewcrew/shared/components/achievement_progress_indicator.dart';
+import 'package:environ/shared/components/achievement_progress_indicator.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {

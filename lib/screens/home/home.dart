@@ -1,9 +1,9 @@
-import 'package:brewcrew/screens/camera/camera.dart';
-import 'package:brewcrew/screens/home/courses.dart';
-import 'package:brewcrew/screens/home/dashboard.dart';
-import 'package:brewcrew/shared/constants.dart';
-import 'package:brewcrew/shared/loading.dart';
-import 'package:brewcrew/screens/home/trash_modal.dart';
+import 'package:environ/screens/camera/camera.dart';
+import 'package:environ/screens/home/courses.dart';
+import 'package:environ/screens/home/dashboard.dart';
+import 'package:environ/shared/constants.dart';
+import 'package:environ/shared/loading.dart';
+import 'package:environ/screens/home/trash_modal.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 import '../../services/auth.dart';
@@ -39,6 +39,13 @@ class _HomeState extends State<Home> {
     });
   }
 
+  Future<CameraDescription> getMainCamera() async {
+    // Obtain a list of the available cameras on the device.
+    final List<CameraDescription> cameras = await availableCameras();
+    final CameraDescription firstCamera = cameras.first;
+    return firstCamera;
+  }
+
   @override
   Widget build(BuildContext context) {
     void _showSettingsPanel() {
@@ -53,8 +60,6 @@ class _HomeState extends State<Home> {
             );
           });
     }
-
-    final Future<List<CameraDescription>> cameras = availableCameras();
 
     return Scaffold(
       backgroundColor: themeGreen,
@@ -90,12 +95,12 @@ class _HomeState extends State<Home> {
               children: <Widget>[
                 Dashboard(changePage: changePage),
                 FutureBuilder(
-                  future: cameras,
+                  future: getMainCamera(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return TakePictureScreen(
                         changeData: updateTrashdata,
-                        camera: snapshot.data.first,
+                        camera: snapshot.data,
                       );
                     } else {
                       return Loading();

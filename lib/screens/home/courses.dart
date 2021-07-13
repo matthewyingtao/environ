@@ -1,4 +1,4 @@
-import 'package:brewcrew/shared/components/course_card.dart';
+import 'package:environ/shared/components/course_card.dart';
 import 'package:flutter/material.dart';
 
 class Courses extends StatelessWidget {

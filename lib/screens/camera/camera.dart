@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:brewcrew/shared/constants.dart';
-import 'package:brewcrew/shared/loading.dart';
+import 'package:environ/shared/constants.dart';
+import 'package:environ/shared/loading.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
-import 'package:brewcrew/screens/authenticate/sign_in.dart';
-import 'package:brewcrew/screens/authenticate/register.dart';
+import 'package:environ/screens/authenticate/sign_in.dart';
+import 'package:environ/screens/authenticate/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math';
@@ -33,7 +33,7 @@ class _AuthenticateState extends State<Authenticate> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      body:  Stack(
+      body: Stack(
         children: [
           TweenAnimationBuilder<double>(
             tween: Tween<double>(begin: 0, end: leafSize),

@@ -1,7 +1,7 @@
-import 'package:brewcrew/screens/authenticate/authenticate.dart';
-import 'package:brewcrew/screens/home/home.dart';
-import 'package:brewcrew/screens/onboarding/onboarding.dart';
-import 'package:brewcrew/shared/loading.dart';
+import 'package:environ/screens/authenticate/authenticate.dart';
+import 'package:environ/screens/home/home.dart';
+import 'package:environ/screens/onboarding/onboarding.dart';
+import 'package:environ/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/user_model.dart';

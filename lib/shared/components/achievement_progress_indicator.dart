@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:brewcrew/shared/constants.dart';
+import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class AchievementProgressIndicator extends StatelessWidget {
