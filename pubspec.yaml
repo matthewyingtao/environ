@@ -1,5 +1,5 @@
-name: brewcrew
-description: A new Flutter project.
+name: environ
+description: A trash classifying app that uses machine learning.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -23,10 +23,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.3
   firebase_core: ^1.3.0
   firebase_auth: ^1.4.1
   cloud_firestore: ^2.2.2
@@ -46,14 +42,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   fonts:
     - family: Montserrat
       fonts:
@@ -67,8 +56,9 @@ flutter:
           style: italic
         - asset: assets/fonts/Montserrat-Bold.ttf
           weight: 700
+  
   uses-material-design: true
-  # To add assets to your application, add an assets section, like this:
+  
   assets:
     - assets/coffee_bg.png
     - assets/coffee_icon.png
@@ -80,26 +70,3 @@ flutter:
     - assets/leavesbg.svg
     - assets/recyclingsymbol.svg
     - assets/model/
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
