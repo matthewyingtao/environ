@@ -26,11 +26,13 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = CameraController(
+    final CameraController _controller = CameraController(
       widget.camera,
       ResolutionPreset.medium,
       imageFormatGroup: ImageFormatGroup.jpeg,
+      enableAudio: false,
     );
+    _controller.setFlashMode(FlashMode.off);
     _initializeControllerFuture = _controller.initialize();
   }
 
