@@ -60,7 +60,6 @@ ButtonStyle roundedButtonWhite = ButtonStyle(
 
 ThemeData appTheme = ThemeData(
   primaryColor: themeGreen,
-  accentColor: themeDarkGreen,
   backgroundColor: themeGreen,
   fontFamily: "Montserrat",
   textTheme: TextTheme(
