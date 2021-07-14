@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
     setState(() {
       trashData = data;
     });
+    _showSettingsPanel();
   }
 
   final PageController _controller = PageController(initialPage: 0);
@@ -37,21 +38,22 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void _showSettingsPanel() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
+          child: TrashModal(
+            data: trashData,
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    void _showSettingsPanel() {
-      showModalBottomSheet(
-          context: context,
-          builder: (context) {
-            return Container(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
-              child: TrashModal(
-                data: trashData,
-              ),
-            );
-          });
-    }
-
     return Scaffold(
       backgroundColor: themeGreen,
       appBar: AppBar(

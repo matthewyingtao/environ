@@ -22,7 +22,6 @@ class TakePictureScreenState extends State<TakePictureScreen>
   int _selected = 0;
 
   bool _isModelRunning = false;
-  String _result;
 
   @override
   void initState() {
@@ -110,23 +109,15 @@ class TakePictureScreenState extends State<TakePictureScreen>
           width: double.infinity,
           child: Column(
             children: [
+              // makes sure that the shutter button bar is pushed to the bottom
               Spacer(),
+              // shutter button bar
               Container(
                 color: Colors.black45,
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: Column(
                   children: [
-                    if (_result != null)
-                      Column(
-                        children: [
-                          Text(
-                            _result,
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                          SizedBox(height: 8),
-                        ],
-                      ),
                     RawMaterialButton(
                       elevation: 4.0,
                       child: Icon(
@@ -160,7 +151,6 @@ class TakePictureScreenState extends State<TakePictureScreen>
 
                           setState(() {
                             _isModelRunning = false;
-                            _result = result[0]['label'];
                           });
                         } catch (e) {
                           print(e);
