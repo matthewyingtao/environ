@@ -1,10 +1,10 @@
 import 'dart:async';
+import 'package:environ/screens/camera/model.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:environ/shared/loading.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tflite/tflite.dart';
 
 class TakePictureScreen extends StatefulWidget {
   final Function changeData;
@@ -66,24 +66,6 @@ class TakePictureScreenState extends State<TakePictureScreen>
     return controller;
   }
 
-  Future<List> _runModel(String path) async {
-    await Tflite.loadModel(
-      model: "assets/model/saved_model.tflite",
-      labels: "assets/model/labels.txt",
-    );
-
-    var result = await Tflite.runModelOnImage(
-      path: path,
-      imageMean: 125.0,
-      imageStd: 125.0,
-      numResults: 2,
-      threshold: 0.7,
-      asynch: true,
-    );
-
-    return result;
-  }
-
   Future<CameraDescription> getMainCamera() async {
     // Obtain a list of the available cameras on the device.
     final List<CameraDescription> cameras = await availableCameras();
@@ -100,6 +82,7 @@ class TakePictureScreenState extends State<TakePictureScreen>
           child: OverflowBox(
             maxWidth: double.infinity,
             alignment: Alignment.center,
+            // conditionally displays the camera or the loading widget
             child: _controller == null || _isModelRunning
                 ? Loading()
                 : CameraPreview(_controller),
@@ -136,28 +119,26 @@ class TakePictureScreenState extends State<TakePictureScreen>
 
                       // runs the model and sets the result as a variable
                       onPressed: () async {
+                        // ensure that the photo taken won't use flash
+                        _controller.setFlashMode(FlashMode.off);
+                        final image = await _controller.takePicture();
+
+                        Model _model = Model(path: image.path);
+
+                        setState(() {
+                          _isModelRunning = true;
+                        });
+
                         try {
-                          setState(() {
-                            _isModelRunning = true;
-                          });
-
-                          _controller.setFlashMode(FlashMode.off);
-
-                          final image = await _controller.takePicture();
-
-                          List result = await _runModel(image.path);
-
+                          List result = await _model.useModel();
                           widget.changeData(result);
-
-                          setState(() {
-                            _isModelRunning = false;
-                          });
                         } catch (e) {
                           print(e);
-                          setState(() {
-                            _isModelRunning = false;
-                          });
                         }
+                        setState(() {
+                          _isModelRunning = false;
+                        });
+                        await _model.closeModel();
                       },
                     ),
                   ],
