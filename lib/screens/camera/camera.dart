@@ -101,7 +101,9 @@ class TakePictureScreenState extends State<TakePictureScreen>
           child: OverflowBox(
             maxWidth: double.infinity,
             alignment: Alignment.center,
-            child: _controller == null ? Loading() : CameraPreview(_controller),
+            child: _controller == null || _isModelRunning
+                ? Loading()
+                : CameraPreview(_controller),
           ),
         ),
         Container(
@@ -140,7 +142,8 @@ class TakePictureScreenState extends State<TakePictureScreen>
                           width: 4,
                         ),
                       ),
-                      // runs the model and sets the variable to the result
+
+                      // runs the model and sets the result as a variable
                       onPressed: () async {
                         try {
                           setState(() {
@@ -173,10 +176,6 @@ class TakePictureScreenState extends State<TakePictureScreen>
             ],
           ),
         ),
-        if (_isModelRunning)
-          Center(
-            child: Loading(),
-          ),
       ],
     );
   }
