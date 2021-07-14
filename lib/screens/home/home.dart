@@ -2,12 +2,10 @@ import 'package:environ/screens/camera/camera.dart';
 import 'package:environ/screens/home/courses.dart';
 import 'package:environ/screens/home/dashboard.dart';
 import 'package:environ/shared/constants.dart';
-import 'package:environ/shared/loading.dart';
 import 'package:environ/screens/home/trash_modal.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 import '../../services/auth.dart';
-import 'package:camera/camera.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -37,13 +35,6 @@ class _HomeState extends State<Home> {
         curve: Curves.easeOut,
       );
     });
-  }
-
-  Future<CameraDescription> getMainCamera() async {
-    // Obtain a list of the available cameras on the device.
-    final List<CameraDescription> cameras = await availableCameras();
-    final CameraDescription firstCamera = cameras.first;
-    return firstCamera;
   }
 
   @override
@@ -94,18 +85,8 @@ class _HomeState extends State<Home> {
               controller: _controller,
               children: <Widget>[
                 Dashboard(changePage: changePage),
-                FutureBuilder(
-                  future: getMainCamera(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return TakePictureScreen(
-                        changeData: updateTrashdata,
-                        camera: snapshot.data,
-                      );
-                    } else {
-                      return Loading();
-                    }
-                  },
+                TakePictureScreen(
+                  changeData: updateTrashdata,
                 ),
                 Courses(),
               ],

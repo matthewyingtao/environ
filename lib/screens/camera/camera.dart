@@ -7,18 +7,19 @@ import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
 
 class TakePictureScreen extends StatefulWidget {
-  final CameraDescription camera;
   final Function changeData;
 
-  const TakePictureScreen({this.changeData, this.camera});
+  const TakePictureScreen({this.changeData});
 
   @override
   TakePictureScreenState createState() => TakePictureScreenState();
 }
 
-class TakePictureScreenState extends State<TakePictureScreen> {
+class TakePictureScreenState extends State<TakePictureScreen>
+    with WidgetsBindingObserver {
+  List<CameraDescription> _cameras;
   CameraController _controller;
-  Future<void> _initializeControllerFuture;
+  int _selected = 0;
 
   bool _isModelRunning = false;
   String _result;
@@ -26,20 +27,44 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   void initState() {
     super.initState();
-    final CameraController _controller = CameraController(
-      widget.camera,
-      ResolutionPreset.medium,
-      imageFormatGroup: ImageFormatGroup.jpeg,
-      enableAudio: false,
-    );
-    _controller.setFlashMode(FlashMode.off);
-    _initializeControllerFuture = _controller.initialize();
+    setupCamera();
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (_controller == null || !_controller.value.isInitialized) {
+      return;
+    }
+
+    if (state == AppLifecycleState.inactive) {
+      _controller.dispose();
+    } else if (state == AppLifecycleState.resumed) {
+      setupCamera();
+    }
+  }
+
+  Future<void> setupCamera() async {
+    _cameras = await availableCameras();
+    var controller = await selectCamera();
+    setState(() => _controller = controller);
+  }
+
+  selectCamera() async {
+    var controller = CameraController(
+      _cameras[_selected],
+      ResolutionPreset.medium,
+      imageFormatGroup: ImageFormatGroup.jpeg,
+    );
+    await controller.initialize();
+    return controller;
   }
 
   Future<List> _runModel(String path) async {
@@ -60,6 +85,13 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     return result;
   }
 
+  Future<CameraDescription> getMainCamera() async {
+    // Obtain a list of the available cameras on the device.
+    final List<CameraDescription> cameras = await availableCameras();
+    final CameraDescription firstCamera = cameras.first;
+    return firstCamera;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -69,16 +101,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           child: OverflowBox(
             maxWidth: double.infinity,
             alignment: Alignment.center,
-            child: FutureBuilder<void>(
-              future: _initializeControllerFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return CameraPreview(_controller);
-                } else {
-                  return Loading();
-                }
-              },
-            ),
+            child: _controller == null ? Loading() : CameraPreview(_controller),
           ),
         ),
         Container(
@@ -123,6 +146,8 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                           setState(() {
                             _isModelRunning = true;
                           });
+
+                          _controller.setFlashMode(FlashMode.off);
 
                           final image = await _controller.takePicture();
 
