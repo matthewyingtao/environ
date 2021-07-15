@@ -42,11 +42,8 @@ class _HomeState extends State<Home> {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return Container(
-          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
-          child: TrashModal(
-            data: trashData,
-          ),
+        return TrashModal(
+          data: trashData,
         );
       },
     );

@@ -1,3 +1,4 @@
+import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class TrashModal extends StatelessWidget {
@@ -7,6 +8,7 @@ class TrashModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: themeBlue,
       child: Text(
         this.data == null ? "you haven't got data" : data[0]['label'],
         style: TextStyle(color: Colors.black),
