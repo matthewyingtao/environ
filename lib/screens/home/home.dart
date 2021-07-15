@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
     setState(() {
       trashData = data;
     });
-    _showSettingsPanel();
+    _showTrashModal();
   }
 
   final PageController _controller = PageController(initialPage: 0);
@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  void _showSettingsPanel() {
+  void _showTrashModal() {
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.settings),
-            onPressed: () => _showSettingsPanel(),
+            onPressed: () => _showTrashModal(),
           ),
           IconButton(
             icon: Icon(Icons.logout),
