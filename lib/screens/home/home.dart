@@ -55,13 +55,13 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: themeGreen,
       appBar: AppBar(
-        title: Icon(Icons.emoji_food_beverage),
+        title: Text("Environ", style: Theme.of(context).textTheme.headline5),
         backgroundColor: themeDarkGreen,
         brightness: Brightness.dark,
         elevation: 8.0,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.info_outline_rounded),
             onPressed: () => _showTrashModal(),
           ),
           IconButton(
