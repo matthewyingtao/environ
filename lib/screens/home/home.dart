@@ -41,6 +41,7 @@ class _HomeState extends State<Home> {
   void _showTrashModal() {
     showModalBottomSheet(
       context: context,
+      backgroundColor: Colors.transparent,
       builder: (context) {
         return TrashModal(
           data: trashData,
