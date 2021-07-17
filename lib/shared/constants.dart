@@ -73,6 +73,10 @@ ThemeData appTheme = ThemeData(
         ),
       ],
     ),
+    headline2: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w700,
+    ),
     headline3: TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.w900,
@@ -83,6 +87,14 @@ ThemeData appTheme = ThemeData(
           color: Color.fromRGBO(0, 0, 0, 0.25),
         ),
       ],
+    ),
+    headline4: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w700,
+    ),
+    headline5: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w700,
     ),
     headline6: TextStyle(
       color: Colors.white,
