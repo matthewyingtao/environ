@@ -28,50 +28,71 @@ class TrashModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isRecyclable = this.data[0]['label'] == "trash" ? false : true;
-    final String trashImage = _getTrashImage(this.data[0]['label']);
+    if (this.data != null) {
+      final bool isRecyclable = this.data[0]['label'] == "trash" ? false : true;
+      final String trashImage = _getTrashImage(this.data[0]['label']);
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(32.0),
-          topRight: Radius.circular(32.0),
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(32.0),
+            topRight: Radius.circular(32.0),
+          ),
+          color: isRecyclable ? themeBlue : themeRed,
         ),
-        color: isRecyclable ? themeBlue : themeRed,
-      ),
-      child: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
-        children: [
-          Text(
-            isRecyclable ? "Recyclable" : "Non-Recyclable",
-            style: Theme.of(context).textTheme.headline3,
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            this.data == null ? "you haven't got data" : this.data[0]['label'],
-            style: Theme.of(context).textTheme.headline5,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 16.0),
-          AspectRatio(
-            aspectRatio: 1,
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16.0),
-                border: Border.all(
-                  color: Colors.white,
-                  width: 2.0,
-                ),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(trashImage),
+        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+        child: Column(
+          children: [
+            Text(
+              isRecyclable ? "Recyclable" : "Non-Recyclable",
+              style: Theme.of(context).textTheme.headline3,
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              this.data[0]['label'],
+              style: Theme.of(context).textTheme.headline5,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 16.0),
+            Expanded(
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.0),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(trashImage),
+                    ),
+                  ),
                 ),
               ),
             ),
+          ],
+        ),
+      );
+    } else {
+      return Container(
+        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(32.0),
+            topRight: Radius.circular(32.0),
           ),
-        ],
-      ),
-    );
+          color: themeYellow,
+        ),
+        child: Center(
+          child: Text(
+            "Scan an item first",
+            style: Theme.of(context).textTheme.headline5,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
+    }
   }
 }
