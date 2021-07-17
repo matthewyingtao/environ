@@ -41,8 +41,10 @@ class _DashboardState extends State<Dashboard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Dashboard",
-                        style: Theme.of(context).textTheme.headline3),
+                    Text(
+                      "Dashboard",
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
                     SizedBox(height: 24.0),
                     Text(
                       "Achievement Progress",
