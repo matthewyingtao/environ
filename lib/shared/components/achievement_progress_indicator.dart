@@ -46,7 +46,7 @@ class AchievementProgressIndicator extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 8),
+        SizedBox(height: 8.0),
         Container(
           alignment: Alignment.topLeft,
           height: 24,
@@ -68,6 +68,7 @@ class AchievementProgressIndicator extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: 16.0),
       ],
     );
   }

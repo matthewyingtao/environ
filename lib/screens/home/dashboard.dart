@@ -57,19 +57,17 @@ class _DashboardState extends State<Dashboard> {
                       challengeMax: 5,
                       challengeTitle: "Scan 5 bottles",
                     ),
-                    SizedBox(height: 16.0),
                     AchievementProgressIndicator(
                       challengeProgress: 11,
                       challengeMax: 25,
                       challengeTitle: "Scan 25 items",
                     ),
-                    SizedBox(height: 16.0),
                     AchievementProgressIndicator(
                       challengeProgress: 10,
                       challengeMax: 10,
                       challengeTitle: "Scan 10 red recyclables",
                     ),
-                    SizedBox(height: 24),
+                    SizedBox(height: 8.0),
                     WideStadiumButton(
                       text: "Scan Item",
                       onPressed: () => widget.changePage(1),

@@ -47,13 +47,11 @@ class Stats extends StatelessWidget {
                       challengeMax: 5,
                       challengeTitle: "Scan 5 bottles",
                     ),
-                    SizedBox(height: 16.0),
                     AchievementProgressIndicator(
                       challengeProgress: 11,
                       challengeMax: 25,
                       challengeTitle: "Scan 25 items",
                     ),
-                    SizedBox(height: 16.0),
                     AchievementProgressIndicator(
                       challengeProgress: 10,
                       challengeMax: 10,
