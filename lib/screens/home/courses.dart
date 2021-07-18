@@ -17,20 +17,21 @@ class Courses extends StatelessWidget {
             body:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             icon: Icons.water,
+            imagePath: "assets/trash_category/cardboard.jpg",
           ),
-          SizedBox(height: 16.0),
           CourseCard(
             heading: "Saving Water",
             body:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             icon: Icons.water,
+            imagePath: "assets/trash_category/glass.jpg",
           ),
-          SizedBox(height: 16.0),
           CourseCard(
             heading: "Saving Water",
             body:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             icon: Icons.water,
+            imagePath: "assets/trash_category/metal.jpg",
           ),
           SizedBox(height: 24.0),
         ],
