@@ -80,12 +80,13 @@ class _HomeState extends State<Home> {
           // main body
           Expanded(
             child: PageView(
+              controller: _controller,
+              physics: BouncingScrollPhysics(),
               onPageChanged: (index) {
                 setState(() {
                   _currentPage = index;
                 });
               },
-              controller: _controller,
               children: <Widget>[
                 Dashboard(changePage: changePage),
                 TakePictureScreen(
