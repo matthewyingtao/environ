@@ -1,6 +1,5 @@
 import 'package:environ/screens/camera/camera.dart';
 import 'package:environ/screens/home/courses.dart';
-import 'package:environ/screens/home/dashboard.dart';
 import 'package:environ/screens/home/stats.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:environ/screens/home/trash_modal.dart';
