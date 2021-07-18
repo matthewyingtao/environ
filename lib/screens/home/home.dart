@@ -1,6 +1,7 @@
 import 'package:environ/screens/camera/camera.dart';
 import 'package:environ/screens/home/courses.dart';
 import 'package:environ/screens/home/dashboard.dart';
+import 'package:environ/screens/home/stats.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:environ/screens/home/trash_modal.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -77,7 +78,6 @@ class _HomeState extends State<Home> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // main body
           Expanded(
             child: PageView(
               controller: _controller,
@@ -87,12 +87,15 @@ class _HomeState extends State<Home> {
                   _currentPage = index;
                 });
               },
+
+              // main pages
               children: <Widget>[
                 Dashboard(changePage: changePage),
                 TakePictureScreen(
                   changeData: updateTrashdata,
                 ),
                 Courses(),
+                Stats(),
               ],
             ),
           ),
