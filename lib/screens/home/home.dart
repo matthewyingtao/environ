@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
 
-  Map<String, dynamic> trashData;
+  Map<String, dynamic>? trashData;
 
   // callback for camera, sets new state of trashData
   void updateTrashdata(Map<String, dynamic> data) {

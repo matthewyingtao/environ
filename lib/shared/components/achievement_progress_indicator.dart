@@ -4,15 +4,15 @@ import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class AchievementProgressIndicator extends StatelessWidget {
-  final int challengeProgress;
-  final int challengeMax;
-  final String challengeTitle;
+  final int? challengeProgress;
+  final int? challengeMax;
+  final String? challengeTitle;
 
   const AchievementProgressIndicator(
       {this.challengeProgress, this.challengeMax, this.challengeTitle});
 
   Color getProgressColor() {
-    double percentageDone = this.challengeProgress / this.challengeMax;
+    double percentageDone = this.challengeProgress! / this.challengeMax!;
     if (percentageDone < 0.3) {
       return themeRed;
     } else if (percentageDone < 0.7) {
@@ -23,7 +23,7 @@ class AchievementProgressIndicator extends StatelessWidget {
   }
 
   double getPercentageDone(progress, max) {
-    double percentageDone = this.challengeProgress / this.challengeMax;
+    double percentageDone = this.challengeProgress! / this.challengeMax!;
     if (percentageDone > 1) {
       return 1;
     } else if (percentageDone < 0) {
@@ -42,16 +42,16 @@ class AchievementProgressIndicator extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(this.challengeTitle),
+            Text(this.challengeTitle!),
             Spacer(),
             Text(
               this.challengeProgress.toString() +
                   " / " +
                   this.challengeMax.toString(),
               style: percentageDone == 1
-                  ? Theme.of(context).textTheme.bodyText2.copyWith(
+                  ? Theme.of(context).textTheme.bodyText2!.copyWith(
                       fontWeight: FontWeight.w900, fontStyle: FontStyle.italic)
-                  : Theme.of(context).textTheme.bodyText2.copyWith(
+                  : Theme.of(context).textTheme.bodyText2!.copyWith(
                         fontStyle: FontStyle.italic,
                       ),
             ),

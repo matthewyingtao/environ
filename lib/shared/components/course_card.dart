@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class CourseCard extends StatelessWidget {
   CourseCard({this.icon, this.body, this.heading, this.imagePath});
 
-  final IconData icon;
-  final String body;
-  final String heading;
-  final String imagePath;
+  final IconData? icon;
+  final String? body;
+  final String? heading;
+  final String? imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class CourseCard extends StatelessWidget {
                   ),
                 ],
                 image: DecorationImage(
-                  image: AssetImage(this.imagePath),
+                  image: AssetImage(this.imagePath!),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(0.3), BlendMode.dstATop),
@@ -43,12 +43,12 @@ class CourseCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          this.heading,
+                          this.heading!,
                           style: Theme.of(context).textTheme.headline6,
                         ),
                         SizedBox(height: 8),
                         Text(
-                          this.body,
+                          this.body!,
                           style: Theme.of(context).textTheme.bodyText2,
                         ),
                       ],

@@ -7,7 +7,7 @@ class MyClass extends StatefulWidget {
 
 class _MyClassState extends State<MyClass> with SingleTickerProviderStateMixin {
   TextEditingController nameTextEditingController = TextEditingController();
-  String _labelText;
+  String? _labelText;
 
   @override
   void initState() {

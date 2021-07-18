@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignIn extends StatefulWidget {
-  final Function toggleView;
+  final Function? toggleView;
 
   SignIn({this.toggleView});
 
@@ -30,7 +30,7 @@ class _SignInState extends State<SignIn> {
   String error = '';
 
   void signIn() async {
-    if (_formKey.currentState.validate()) {
+    if (_formKey.currentState!.validate()) {
       setState(() {
         loading = true;
       });
@@ -60,7 +60,7 @@ class _SignInState extends State<SignIn> {
                         "Sign In",
                         style: Theme.of(context)
                             .textTheme
-                            .headline3
+                            .headline3!
                             .copyWith(color: black),
                         textAlign: TextAlign.left,
                       ),
@@ -73,7 +73,7 @@ class _SignInState extends State<SignIn> {
                           labelText: 'Email',
                         ),
                         validator: (val) =>
-                            val.isEmpty ? "Enter an email" : null,
+                            val!.isEmpty ? "Enter an email" : null,
                         onChanged: (val) {
                           setState(() => email = val);
                         },
@@ -87,7 +87,7 @@ class _SignInState extends State<SignIn> {
                           labelText: 'Password',
                         ),
                         obscureText: true,
-                        validator: (val) => val.length < 6
+                        validator: (val) => val!.length < 6
                             ? "Enter a password 6+ chars long"
                             : null,
                         onChanged: (val) {
@@ -114,7 +114,7 @@ class _SignInState extends State<SignIn> {
                           style: linkButtonStyle,
                         ),
                         onPressed: () {
-                          widget.toggleView();
+                          widget.toggleView!();
                         },
                       ),
                       TextButton(

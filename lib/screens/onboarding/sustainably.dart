@@ -25,7 +25,7 @@ class Sustainably extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: Text(
                     "Live more",
-                    style: Theme.of(context).textTheme.headline3.copyWith(
+                    style: Theme.of(context).textTheme.headline3!.copyWith(
                           color: Colors.white,
                         ),
                   ),
@@ -37,7 +37,7 @@ class Sustainably extends StatelessWidget {
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2
+                      .bodyText2!
                       .copyWith(color: Colors.white),
                 ),
                 SizedBox(
@@ -64,7 +64,7 @@ class Sustainably extends StatelessWidget {
             fit: BoxFit.contain,
             child: Text(
               "SUSTAINABLY",
-              style: Theme.of(context).textTheme.headline1.copyWith(
+              style: Theme.of(context).textTheme.headline1!.copyWith(
                     color: Colors.white,
                   ),
             ),

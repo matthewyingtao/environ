@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TakePictureScreen extends StatefulWidget {
-  final Function changeData;
+  final Function? changeData;
 
   const TakePictureScreen({this.changeData});
 
@@ -17,8 +17,8 @@ class TakePictureScreen extends StatefulWidget {
 
 class TakePictureScreenState extends State<TakePictureScreen>
     with WidgetsBindingObserver {
-  List<CameraDescription> _cameras;
-  CameraController _controller;
+  late List<CameraDescription> _cameras;
+  CameraController? _controller;
 
   bool _isModelRunning = false;
 
@@ -26,24 +26,24 @@ class TakePictureScreenState extends State<TakePictureScreen>
   void initState() {
     super.initState();
     setupCamera();
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    _controller.dispose();
+    WidgetsBinding.instance!.removeObserver(this);
+    _controller!.dispose();
     super.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
-    if (_controller == null || !_controller.value.isInitialized) {
+    if (_controller == null || !_controller!.value.isInitialized) {
       return;
     }
 
     if (state == AppLifecycleState.inactive) {
-      _controller.dispose();
+      _controller!.dispose();
     } else if (state == AppLifecycleState.resumed) {
       setupCamera();
     }
@@ -75,16 +75,16 @@ class TakePictureScreenState extends State<TakePictureScreen>
     });
 
     // ensure that the photo taken won't use flash because flash freezes the camera
-    _controller.setFlashMode(FlashMode.off);
-    final image = await _controller.takePicture();
+    _controller!.setFlashMode(FlashMode.off);
+    final image = await _controller!.takePicture();
 
     Model _model = Model(path: image.path);
 
     try {
-      List results = await _model.useModel();
-      Map resultMap = Map<String, dynamic>.from(results[0]);
+      List? results = await (_model.useModel());
+      Map resultMap = Map<String, dynamic>.from(results![0]);
       resultMap["imagePath"] = image.path;
-      widget.changeData(resultMap);
+      widget.changeData!(resultMap);
     } catch (e) {
       print(e);
     }
@@ -106,7 +106,7 @@ class TakePictureScreenState extends State<TakePictureScreen>
           width: double.infinity,
           child: _controller == null || _isModelRunning
               ? Loading()
-              : CameraPreview(_controller),
+              : CameraPreview(_controller!),
         ),
         Container(
           width: double.infinity,

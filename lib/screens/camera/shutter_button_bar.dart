@@ -2,7 +2,7 @@ import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class ShutterButtonBar extends StatelessWidget {
-  final Function onPressed;
+  final Function? onPressed;
 
   ShutterButtonBar({this.onPressed});
 
@@ -29,7 +29,7 @@ class ShutterButtonBar extends StatelessWidget {
                 width: 4,
               ),
             ),
-            onPressed: this.onPressed,
+            onPressed: this.onPressed as void Function()?,
           ),
         ],
       ),

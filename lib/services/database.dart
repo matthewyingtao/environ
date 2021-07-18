@@ -3,7 +3,7 @@ import 'package:environ/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseService {
-  final String uid;
+  final String? uid;
   DatabaseService({this.uid});
 
   final CollectionReference brewCollection =

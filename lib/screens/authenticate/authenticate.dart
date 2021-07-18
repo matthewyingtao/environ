@@ -10,7 +10,7 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
-  Widget screenWidget;
+  Widget? screenWidget;
   double leafSize = 2;
 
   void toggleView() {
@@ -39,7 +39,7 @@ class _AuthenticateState extends State<Authenticate> {
             tween: Tween<double>(begin: 0, end: leafSize),
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,
-            builder: (BuildContext context, double size, Widget widget) {
+            builder: (BuildContext context, double size, Widget? widget) {
               return Transform(
                 transform: Matrix4.rotationZ(pi / 12.0)..scale(size),
                 alignment: Alignment.center,

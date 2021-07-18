@@ -103,7 +103,7 @@ class _OnboardingState extends State<Onboarding> {
                             count: 3,
                             effect: WormEffect(
                               dotColor: Colors.white70,
-                              activeDotColor: Colors.grey[800],
+                              activeDotColor: Colors.grey[800]!,
                             ),
                           ),
                         ),

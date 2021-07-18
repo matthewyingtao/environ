@@ -24,7 +24,7 @@ class Knowledge extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: Text(
                     "Grow your",
-                    style: Theme.of(context).textTheme.headline3.copyWith(
+                    style: Theme.of(context).textTheme.headline3!.copyWith(
                           color: Colors.white,
                         ),
                   ),
@@ -34,7 +34,7 @@ class Knowledge extends StatelessWidget {
                 ),
                 Text(
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
                         color: Colors.white,
                       ),
                 ),
@@ -61,7 +61,7 @@ class Knowledge extends StatelessWidget {
             fit: BoxFit.contain,
             child: Text(
               "KNOWLEDGE",
-              style: Theme.of(context).textTheme.headline1.copyWith(
+              style: Theme.of(context).textTheme.headline1!.copyWith(
                     color: Colors.white,
                   ),
             ),

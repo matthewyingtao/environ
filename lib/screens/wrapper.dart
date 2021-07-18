@@ -4,7 +4,7 @@ import 'package:environ/screens/onboarding/onboarding.dart';
 import 'package:environ/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/user_model.dart';
+import 'package:environ/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Wrapper extends StatefulWidget {
@@ -25,13 +25,13 @@ class _WrapperState extends State<Wrapper> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserModel>(context);
+    final UserModel? user = Provider.of<UserModel?>(context);
 
     return FutureBuilder<bool>(
       future: isFirstTime(),
       builder: (BuildContext context, isFirstTimeSnapshot) {
         if (isFirstTimeSnapshot.hasData && !isFirstTimeSnapshot.hasError) {
-          if (isFirstTimeSnapshot.data) {
+          if (isFirstTimeSnapshot.data!) {
             return Onboarding();
           } else {
             if (user == null) {

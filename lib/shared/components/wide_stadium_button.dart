@@ -7,8 +7,8 @@ class WideStadiumButton extends StatefulWidget {
 
   WideStadiumButton({this.text, this.onPressed});
 
-  final String text;
-  final Function onPressed;
+  final String? text;
+  final Function? onPressed;
 }
 
 class _WideStadiumButtonState extends State<WideStadiumButton> {
@@ -20,10 +20,10 @@ class _WideStadiumButtonState extends State<WideStadiumButton> {
           vertical: 8.0,
           horizontal: 24.0,
         ),
-        child: Text(widget.text),
+        child: Text(widget.text!),
       ),
       style: roundedButtonWhite,
-      onPressed: widget.onPressed,
+      onPressed: widget.onPressed as void Function()?,
     );
   }
 }

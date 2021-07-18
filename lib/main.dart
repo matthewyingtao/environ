@@ -26,7 +26,8 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<UserModel>.value(
+    return StreamProvider<UserModel?>.value(
+      initialData: null,
       value: AuthService().user,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../../services/auth.dart';
 
 class Register extends StatefulWidget {
-  final Function toggleView;
+  final Function? toggleView;
 
   Register({this.toggleView});
 
@@ -24,7 +24,7 @@ class _RegisterState extends State<Register> {
   String error = '';
 
   void register() async {
-    if (_formKey.currentState.validate()) {
+    if (_formKey.currentState!.validate()) {
       setState(() {
         loading = true;
       });
@@ -55,7 +55,7 @@ class _RegisterState extends State<Register> {
                         "Register",
                         style: Theme.of(context)
                             .textTheme
-                            .headline3
+                            .headline3!
                             .copyWith(color: black),
                         textAlign: TextAlign.left,
                       ),
@@ -68,7 +68,7 @@ class _RegisterState extends State<Register> {
                           labelText: 'Email',
                         ),
                         validator: (val) =>
-                            val.isEmpty ? "Enter an email" : null,
+                            val!.isEmpty ? "Enter an email" : null,
                         onChanged: (val) {
                           setState(() => email = val);
                         },
@@ -82,7 +82,7 @@ class _RegisterState extends State<Register> {
                           labelText: 'Password',
                         ),
                         obscureText: true,
-                        validator: (val) => val.length < 6
+                        validator: (val) => val!.length < 6
                             ? "Enter a password 6+ chars long"
                             : null,
                         onChanged: (val) {
@@ -111,7 +111,7 @@ class _RegisterState extends State<Register> {
                             style: linkButtonStyle,
                           ),
                           onPressed: () {
-                            widget.toggleView();
+                            widget.toggleView!();
                           },
                         ),
                       )
