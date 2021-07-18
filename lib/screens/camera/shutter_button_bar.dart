@@ -29,8 +29,6 @@ class ShutterButtonBar extends StatelessWidget {
                 width: 4,
               ),
             ),
-
-            // runs the model and sets the result as a variable
             onPressed: this.onPressed,
           ),
         ],
