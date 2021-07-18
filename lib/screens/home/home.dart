@@ -90,7 +90,6 @@ class _HomeState extends State<Home> {
 
               // main pages
               children: <Widget>[
-                Dashboard(changePage: changePage),
                 TakePictureScreen(
                   changeData: updateTrashdata,
                 ),
@@ -120,7 +119,7 @@ class _HomeState extends State<Home> {
               duration: Duration(milliseconds: 500),
               color: Colors.white60,
               activeColor: Colors.white,
-              iconSize: 24,
+              iconSize: 28,
               tabBackgroundColor: Colors.white24,
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               onTabChange: (tab) {
@@ -134,12 +133,8 @@ class _HomeState extends State<Home> {
               },
               tabs: [
                 GButton(
-                  icon: Icons.home_rounded,
-                  text: 'Home',
-                ),
-                GButton(
                   icon: Icons.camera_alt_rounded,
-                  text: 'Camera',
+                  text: 'Scan',
                 ),
                 GButton(
                   icon: Icons.school_rounded,
@@ -147,7 +142,7 @@ class _HomeState extends State<Home> {
                 ),
                 GButton(
                   icon: Icons.insights_rounded,
-                  text: 'Stats',
+                  text: 'Statistics',
                 ),
               ],
             ),
