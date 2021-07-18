@@ -48,6 +48,16 @@ class Stats extends StatelessWidget {
                       challengeTitle: "Scan 5 bottles",
                     ),
                     AchievementProgressIndicator(
+                      challengeProgress: 1,
+                      challengeMax: 15,
+                      challengeTitle: "Scan 15 bottles",
+                    ),
+                    AchievementProgressIndicator(
+                      challengeProgress: 25,
+                      challengeMax: 10,
+                      challengeTitle: "Scan 10 items",
+                    ),
+                    AchievementProgressIndicator(
                       challengeProgress: 11,
                       challengeMax: 25,
                       challengeTitle: "Scan 25 items",
@@ -56,6 +66,11 @@ class Stats extends StatelessWidget {
                       challengeProgress: 10,
                       challengeMax: 10,
                       challengeTitle: "Scan 10 red recyclables",
+                    ),
+                    AchievementProgressIndicator(
+                      challengeProgress: 2,
+                      challengeMax: 5,
+                      challengeTitle: "Open the app on 5 different days",
                     ),
                   ],
                 ),
