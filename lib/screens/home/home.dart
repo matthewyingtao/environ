@@ -17,6 +17,7 @@ class _HomeState extends State<Home> {
 
   List trashData;
 
+  // callback for camera, sets new state of trashData
   void updateTrashdata(List data) {
     setState(() {
       trashData = data;
@@ -27,6 +28,7 @@ class _HomeState extends State<Home> {
   final PageController _controller = PageController(initialPage: 0);
   int _currentPage = 0;
 
+  // flexible callback for children to navigate to another page
   void changePage(int index) {
     setState(() {
       _currentPage = index;
@@ -75,6 +77,7 @@ class _HomeState extends State<Home> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // main body
           Expanded(
             child: PageView(
               onPageChanged: (index) {
@@ -92,6 +95,8 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
+
+          // bottom app bar
           Container(
             decoration: BoxDecoration(
               border: Border(
