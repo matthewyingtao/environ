@@ -49,21 +49,17 @@ class TakePictureScreenState extends State<TakePictureScreen>
     }
   }
 
+  // picks the main camera and initialises the controller
   Future<void> setupCamera() async {
     _cameras = await availableCameras();
-    CameraController controller = await selectCamera();
-    setState(() => _controller = controller);
-  }
-
-  Future<CameraController> selectCamera() async {
-    var controller = CameraController(
+    CameraController controller = CameraController(
       // picks the main camera on the device
       _cameras.first,
       ResolutionPreset.medium,
       imageFormatGroup: ImageFormatGroup.jpeg,
     );
     await controller.initialize();
-    return controller;
+    setState(() => _controller = controller);
   }
 
   // callback for the shutter button
