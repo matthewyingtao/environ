@@ -22,9 +22,20 @@ class AchievementProgressIndicator extends StatelessWidget {
     }
   }
 
+  double getPercentageDone(progress, max) {
+    double percentageDone = this.challengeProgress / this.challengeMax;
+    if (percentageDone > 1) {
+      return 1;
+    } else if (percentageDone < 0) {
+      return 0;
+    }
+    return percentageDone;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final double percentageDone = this.challengeProgress / this.challengeMax;
+    final double percentageDone =
+        getPercentageDone(this.challengeProgress, this.challengeMax);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
