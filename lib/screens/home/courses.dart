@@ -13,25 +13,39 @@ class Courses extends StatelessWidget {
         children: [
           SizedBox(height: 24.0),
           CourseCard(
-            heading: "Saving Water",
+            heading: "Paper & Cardboard",
             body:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            icon: Icons.water,
+            icon: Icons.description_rounded,
             imagePath: "assets/trash_category/cardboard.jpg",
           ),
           CourseCard(
-            heading: "Saving Water",
+            heading: "Glass",
             body:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            icon: Icons.water,
+            icon: Icons.liquor_rounded,
             imagePath: "assets/trash_category/glass.jpg",
           ),
           CourseCard(
-            heading: "Saving Water",
+            heading: "Metal",
             body:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            icon: Icons.water,
+            icon: Icons.iron_rounded,
             imagePath: "assets/trash_category/metal.jpg",
+          ),
+          CourseCard(
+            heading: "Plastic",
+            body:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            icon: Icons.casino_rounded,
+            imagePath: "assets/trash_category/plastic.jpg",
+          ),
+          CourseCard(
+            heading: "Trash",
+            body:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            icon: Icons.delete,
+            imagePath: "assets/trash_category/trash.jpg",
           ),
           SizedBox(height: 24.0),
         ],
