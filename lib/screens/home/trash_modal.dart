@@ -1,6 +1,7 @@
 import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'dart:io';
 
 class TrashModal extends StatelessWidget {
   final Map<String, dynamic> data;
@@ -41,6 +42,12 @@ class TrashModal extends StatelessWidget {
             topRight: Radius.circular(32.0),
           ),
           color: isRecyclable ? themeBlue : themeRed,
+          image: DecorationImage(
+            image: AssetImage(trashImage),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5), BlendMode.dstATop),
+          ),
         ),
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
         child: Column(
@@ -68,7 +75,11 @@ class TrashModal extends StatelessWidget {
                     ),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage(trashImage),
+                      image: FileImage(
+                        File(
+                          this.data["imagePath"],
+                        ),
+                      ),
                     ),
                   ),
                 ),
