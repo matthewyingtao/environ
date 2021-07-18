@@ -65,25 +65,34 @@ class TakePictureScreenState extends State<TakePictureScreen>
   // callback for the shutter button
   // takes the photo, runs the model and updates the data
   void takePhoto() async {
+    // makes sure the user cannot take two photos at once
+    if (_isModelRunning) {
+      return;
+    }
+
+    setState(() {
+      _isModelRunning = true;
+    });
+
     // ensure that the photo taken won't use flash because flash freezes the camera
     _controller.setFlashMode(FlashMode.off);
     final image = await _controller.takePicture();
 
     Model _model = Model(path: image.path);
 
-    setState(() {
-      _isModelRunning = true;
-    });
-
     try {
-      List result = await _model.useModel();
-      widget.changeData(result);
+      List results = await _model.useModel();
+      Map resultMap = Map<String, dynamic>.from(results[0]);
+      resultMap["imagePath"] = image.path;
+      widget.changeData(resultMap);
     } catch (e) {
       print(e);
     }
     setState(() {
       _isModelRunning = false;
     });
+
+    // disposes of the model
     await _model.closeModel();
   }
 

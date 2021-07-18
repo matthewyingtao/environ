@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class TrashModal extends StatelessWidget {
-  final List data;
+  final Map<String, dynamic> data;
   const TrashModal({this.data});
 
   // returns the asset location, given the category of the trash
@@ -31,8 +31,8 @@ class TrashModal extends StatelessWidget {
   Widget build(BuildContext context) {
     // checks if user has scanned an item
     if (this.data != null) {
-      final bool isRecyclable = this.data[0]['label'] == "trash" ? false : true;
-      final String trashImage = _getTrashImage(this.data[0]['label']);
+      final bool isRecyclable = this.data['label'] == "trash" ? false : true;
+      final String trashImage = _getTrashImage(this.data['label']);
 
       return Container(
         decoration: BoxDecoration(
@@ -51,7 +51,7 @@ class TrashModal extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Text(
-              this.data[0]['label'],
+              this.data['label'],
               style: Theme.of(context).textTheme.headline5,
               textAlign: TextAlign.center,
             ),
