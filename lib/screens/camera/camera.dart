@@ -77,16 +77,13 @@ class TakePictureScreenState extends State<TakePictureScreen>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        //prevents the camera screen from overflowing
-        ClipRect(
-          child: OverflowBox(
-            maxWidth: double.infinity,
-            alignment: Alignment.center,
-            // conditionally displays the camera or the loading widget
-            child: _controller == null || _isModelRunning
-                ? Loading()
-                : CameraPreview(_controller),
-          ),
+        // forces the widget to be take up all available space
+        Container(
+          height: double.infinity,
+          width: double.infinity,
+          child: _controller == null || _isModelRunning
+              ? Loading()
+              : CameraPreview(_controller),
         ),
         Container(
           width: double.infinity,
