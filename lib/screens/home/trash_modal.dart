@@ -6,6 +6,7 @@ class TrashModal extends StatelessWidget {
   final List data;
   const TrashModal({this.data});
 
+  // returns the asset location, given the category of the trash
   String _getTrashImage(trashName) {
     switch (trashName) {
       case "trash":
@@ -28,6 +29,7 @@ class TrashModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // checks if user has scanned an item
     if (this.data != null) {
       final bool isRecyclable = this.data[0]['label'] == "trash" ? false : true;
       final String trashImage = _getTrashImage(this.data[0]['label']);
