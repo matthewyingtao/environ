@@ -1,5 +1,6 @@
 import 'package:environ/screens/camera/camera.dart';
 import 'package:environ/screens/home/courses.dart';
+import 'package:environ/screens/home/help_dialog.dart';
 import 'package:environ/screens/home/stats.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:environ/screens/home/trash_modal.dart';
@@ -52,6 +53,20 @@ class _HomeState extends State<Home> {
     );
   }
 
+  Future<void> _showHelpDialog() async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          insetPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+          child: HelpDialog(),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +78,11 @@ class _HomeState extends State<Home> {
         elevation: 8.0,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.info_outline_rounded),
+            icon: Icon(Icons.help),
+            onPressed: () => _showHelpDialog(),
+          ),
+          IconButton(
+            icon: Icon(Icons.fact_check_outlined),
             onPressed: () => _showTrashModal(),
           ),
           IconButton(
