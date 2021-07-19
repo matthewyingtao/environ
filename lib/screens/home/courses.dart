@@ -29,40 +29,39 @@ class Courses extends StatelessWidget {
             children: [
               SizedBox(height: 24.0),
               Text(
-                "Learn To Recycle",
+                "How to Recycle",
                 style: Theme.of(context).textTheme.headline4,
               ),
               SizedBox(height: 24.0),
               CourseCard(
                 heading: "Paper & Cardboard",
                 body:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    "This includes: \n• Newspapers and magazines \n• Corrugated cardboard \n• Office paper",
                 icon: Icons.description_rounded,
                 imagePath: "assets/trash_category/cardboard.jpg",
               ),
               CourseCard(
                 heading: "Glass",
                 body:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    "This includes: \n• Bottles, jars and containers \n• Clear and colored Glass",
                 icon: Icons.liquor_rounded,
                 imagePath: "assets/trash_category/glass.jpg",
               ),
               CourseCard(
                 heading: "Metal",
-                body:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                body: "This includes: \n• Aluminium and tin cans \n• Aerosols",
                 icon: Icons.iron_rounded,
                 imagePath: "assets/trash_category/metal.jpg",
               ),
               CourseCard(
                 heading: "Plastic",
                 body:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    "This includes: \n• Milk and drink bottles \n• Plastic shrink wrap",
                 icon: Icons.casino_rounded,
                 imagePath: "assets/trash_category/plastic.jpg",
               ),
               CourseCard(
-                heading: "Trash",
+                heading: "Reducing Waste",
                 body:
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 icon: Icons.delete,
