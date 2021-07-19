@@ -102,6 +102,7 @@ ThemeData appTheme = ThemeData(
     ),
     bodyText2: TextStyle(
       color: Colors.white,
+      height: 1.4,
     ),
   ),
 );
