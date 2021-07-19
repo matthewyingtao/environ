@@ -17,9 +17,9 @@ class HelpDialog extends StatelessWidget {
               alignment: Alignment.center,
               child: SvgPicture.asset(
                 "assets/leavesbg.svg",
-                color: Color.fromRGBO(0, 0, 0, 0.1),
-                height: 400,
-                width: 400,
+                color: Color.fromRGBO(0, 0, 0, 0.06),
+                height: 360,
+                width: 360,
               ),
             ),
           ),
