@@ -9,10 +9,10 @@ class Courses extends StatelessWidget {
     return Stack(
       children: [
         Positioned(
-          bottom: -40,
-          left: -80,
+          top: -40,
+          left: -40,
           child: Transform(
-            transform: Matrix4.rotationZ(pi / 12.0),
+            transform: Matrix4.rotationZ(10 * pi / 12),
             alignment: Alignment.center,
             child: SvgPicture.asset(
               "assets/leavesbg.svg",
