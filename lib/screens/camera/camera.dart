@@ -104,7 +104,9 @@ class TakePictureScreenState extends State<TakePictureScreen>
           // forces the widget to be take up all available space
           height: double.infinity,
           width: double.infinity,
-          child: _controller == null || _isModelRunning
+          child: _controller == null ||
+                  _controller!.value.isInitialized == false ||
+                  _isModelRunning
               ? Loading()
               : CameraPreview(_controller!),
         ),
