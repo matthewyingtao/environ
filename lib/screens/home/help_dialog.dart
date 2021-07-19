@@ -28,26 +28,33 @@ class HelpDialog extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
               child: Column(
                 children: [
-                  Text(
-                    'How to scan items',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6!
-                        .copyWith(color: black),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'How to scan items',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(color: black),
+                    ),
                   ),
-                  SizedBox(height: 12.0),
+                  SizedBox(height: 16.0),
                   Text(
                     'Place the item you want to scan on a surface with a quiet background. \n\nThe AI works best when the object is against a white background and place in the center.',
                     style: TextStyle(color: black),
                   ),
-                  TextButton(
-                    child: Text(
-                      'Close',
-                      style: linkButtonStyle,
+                  SizedBox(height: 16.0),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: TextButton(
+                      child: Text(
+                        'Close',
+                        style: linkButtonStyle,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                     ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
                   ),
                 ],
               ),
