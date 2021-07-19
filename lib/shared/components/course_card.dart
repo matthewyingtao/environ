@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
-  CourseCard({this.icon, this.body, this.heading, this.imagePath});
+  CourseCard({
+    required this.icon,
+    required this.body,
+    required this.heading,
+    required this.imagePath,
+  });
 
-  final IconData? icon;
-  final String? body;
-  final String? heading;
-  final String? imagePath;
+  final IconData icon;
+  final String body;
+  final String heading;
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,7 @@ class CourseCard extends StatelessWidget {
               ),
             ],
             image: DecorationImage(
-              image: AssetImage(this.imagePath!),
+              image: AssetImage(this.imagePath),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.3), BlendMode.dstATop),
@@ -38,7 +43,7 @@ class CourseCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                this.heading!,
+                this.heading,
                 style: Theme.of(context).textTheme.headline6,
               ),
               SizedBox(height: 8),
@@ -46,13 +51,12 @@ class CourseCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      this.body!,
+                      this.body,
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 16),
-                    padding: EdgeInsets.all(8),
                     child: Icon(
                       this.icon,
                       color: Colors.white,
