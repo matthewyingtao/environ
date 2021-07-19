@@ -17,6 +17,6 @@ class Model {
   }
 
   Future<void> closeModel() async {
-    Tflite.close();
+    await Tflite.close();
   }
 }
