@@ -23,7 +23,8 @@ class Stats extends StatelessWidget {
           ),
         ),
         Container(
-          child: Column(
+          child: ListView(
+            physics: BouncingScrollPhysics(),
             children: [
               SizedBox(height: 24.0),
               Container(
@@ -72,6 +73,37 @@ class Stats extends StatelessWidget {
                       challengeMax: 5,
                       challengeTitle: "Open the app on 5 different days",
                     ),
+                    AchievementProgressIndicator(
+                      challengeProgress: 1,
+                      challengeMax: 5,
+                      challengeTitle: "Scan 5 bottles",
+                    ),
+                    AchievementProgressIndicator(
+                      challengeProgress: 1,
+                      challengeMax: 15,
+                      challengeTitle: "Scan 15 bottles",
+                    ),
+                    AchievementProgressIndicator(
+                      challengeProgress: 25,
+                      challengeMax: 10,
+                      challengeTitle: "Scan 10 items",
+                    ),
+                    AchievementProgressIndicator(
+                      challengeProgress: 11,
+                      challengeMax: 25,
+                      challengeTitle: "Scan 25 items",
+                    ),
+                    AchievementProgressIndicator(
+                      challengeProgress: 10,
+                      challengeMax: 10,
+                      challengeTitle: "Scan 10 red recyclables",
+                    ),
+                    AchievementProgressIndicator(
+                      challengeProgress: 2,
+                      challengeMax: 5,
+                      challengeTitle: "Open the app on 5 different days",
+                    ),
+                    SizedBox(height: 16.0),
                   ],
                 ),
               ),
