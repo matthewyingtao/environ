@@ -6,7 +6,6 @@ const themeBlue = Color(0xff3f90ea);
 const themeRed = Color(0xffe46855);
 const themeYellow = Color(0xffE3BC57);
 const black = Color(0xff1e1e1e);
-const black50 = Color(0x80000000);
 
 const textInputDecoration = InputDecoration(
   fillColor: Colors.white,
