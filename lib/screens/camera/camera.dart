@@ -106,7 +106,7 @@ class TakePictureScreenState extends State<TakePictureScreen>
           width: double.infinity,
           child:
               _controller == null || _controller!.value.isInitialized == false
-                  ? Loading()
+                  ? Loading(transparent: true)
                   : CameraPreview(_controller!),
         ),
         _isModelRunning
@@ -115,19 +115,18 @@ class TakePictureScreenState extends State<TakePictureScreen>
                   transparent: true,
                 ),
               )
-            : Container(),
-        Container(
-          width: double.infinity,
-          child: Column(
-            children: [
-              // spacer makes sure that the shutter button bar is pushed to the bottom
-              Spacer(),
-              ShutterButtonBar(
-                onPressed: takePhoto,
-              )
-            ],
-          ),
-        ),
+            : Container(
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    // spacer makes sure that the shutter button bar is pushed to the bottom
+                    Spacer(),
+                    ShutterButtonBar(
+                      onPressed: takePhoto,
+                    )
+                  ],
+                ),
+              ),
       ],
     );
   }
