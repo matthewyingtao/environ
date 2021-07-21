@@ -99,7 +99,6 @@ class _HomeState extends State<Home> {
           Expanded(
             child: PageView(
               controller: _controller,
-              physics: BouncingScrollPhysics(),
               onPageChanged: (index) {
                 setState(() {
                   _currentPage = index;
