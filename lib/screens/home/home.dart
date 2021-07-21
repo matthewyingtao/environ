@@ -6,6 +6,8 @@ import 'package:environ/shared/constants.dart';
 import 'package:environ/screens/home/trash_modal.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:math';
 import '../../services/auth.dart';
 
 class Home extends StatefulWidget {
@@ -97,21 +99,39 @@ class _HomeState extends State<Home> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: PageView(
-              controller: _controller,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentPage = index;
-                });
-              },
-
-              // main pages
-              children: <Widget>[
-                TakePictureScreen(
-                  changeData: updateTrashdata,
+            child: Stack(
+              children: [
+                Positioned(
+                  bottom: 0,
+                  left: -40,
+                  child: Transform(
+                    transform: Matrix4.rotationZ(pi / 12.0),
+                    alignment: Alignment.center,
+                    child: SvgPicture.asset(
+                      "assets/leavesbg.svg",
+                      color: Color.fromRGBO(0, 0, 0, 0.1),
+                      height: 400,
+                      width: 400,
+                    ),
+                  ),
                 ),
-                Courses(),
-                Stats(),
+                PageView(
+                  controller: _controller,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentPage = index;
+                    });
+                  },
+
+                  // main pages
+                  children: <Widget>[
+                    TakePictureScreen(
+                      changeData: updateTrashdata,
+                    ),
+                    Courses(),
+                    Stats(),
+                  ],
+                ),
               ],
             ),
           ),
