@@ -101,18 +101,12 @@ class _HomeState extends State<Home> {
           Expanded(
             child: Stack(
               children: [
-                Positioned(
-                  bottom: 0,
-                  left: -40,
-                  child: Transform(
-                    transform: Matrix4.rotationZ(pi / 12.0),
-                    alignment: Alignment.center,
-                    child: SvgPicture.asset(
-                      "assets/leavesbg.svg",
-                      color: Color.fromRGBO(0, 0, 0, 0.1),
-                      height: 400,
-                      width: 400,
-                    ),
+                Transform(
+                  transform: Matrix4.rotationZ(pi / 12.0)..scale(2.0),
+                  alignment: Alignment.center,
+                  child: SvgPicture.asset(
+                    "assets/leavesbg.svg",
+                    color: Color.fromRGBO(0, 0, 0, 0.1),
                   ),
                 ),
                 PageView(
