@@ -25,7 +25,7 @@ class HelpDialog extends StatelessWidget {
           ),
           SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+              padding: EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
               child: Column(
                 children: [
                   Align(
