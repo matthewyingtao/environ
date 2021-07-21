@@ -9,7 +9,7 @@ class ShutterButtonBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black45,
+      color: Colors.black54,
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Column(
