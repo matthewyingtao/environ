@@ -10,7 +10,7 @@ const black = Color(0xff1e1e1e);
 const textInputDecoration = InputDecoration(
   fillColor: Colors.white,
   hintStyle: TextStyle(
-    color: Colors.black45,
+    color: black,
     fontSize: 24,
   ),
   enabledBorder: const UnderlineInputBorder(
@@ -70,6 +70,7 @@ ThemeData appTheme = ThemeData(
     headline1: TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.w900,
+      fontSize: 72.0,
       shadows: <Shadow>[
         Shadow(
           offset: Offset(12.0, 12.0),
