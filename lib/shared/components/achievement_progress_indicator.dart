@@ -71,6 +71,16 @@ class AchievementProgressIndicator extends StatelessWidget {
               color: Colors.white,
               width: 2.0,
             ),
+            boxShadow:
+                // makes the bar glow if the task is complete
+                percentageDone == 1
+                    ? [
+                        BoxShadow(
+                          color: Color.fromRGBO(255, 255, 255, 0.5),
+                          blurRadius: 6,
+                        ),
+                      ]
+                    : [],
           ),
           child: FractionallySizedBox(
             widthFactor: percentageDone,
