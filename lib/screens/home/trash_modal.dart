@@ -18,6 +18,8 @@ class TrashModal extends StatelessWidget {
         return "assets/trash_category/metal.jpg";
       case "paper-cardboard":
         return "assets/trash_category/cardboard.jpg";
+      case "clothing":
+        return "assets/trash_category/clothing.jpg";
       case "colored-glass":
         return "assets/trash_category/glass.jpg";
       case "clear-glass":
@@ -46,7 +48,9 @@ class TrashModal extends StatelessWidget {
             image: AssetImage(trashImage),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5), BlendMode.dstATop),
+              Colors.black.withOpacity(0.5),
+              BlendMode.dstATop,
+            ),
           ),
         ),
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
