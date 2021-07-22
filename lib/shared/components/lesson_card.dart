@@ -20,6 +20,7 @@ class LessonCard extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
+            color: Colors.black,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: Colors.white,
@@ -27,16 +28,16 @@ class LessonCard extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Color.fromRGBO(0, 0, 0, 0.75),
-                blurRadius: 4,
-                offset: Offset(0, 4),
+                color: Color.fromRGBO(0, 0, 0, 0.5),
+                blurRadius: 6,
+                offset: Offset(0, 6),
               ),
             ],
             image: DecorationImage(
               image: AssetImage(this.imagePath),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.3), BlendMode.dstATop),
+                  Colors.black.withOpacity(0.4), BlendMode.dstATop),
             ),
           ),
           child: Column(
