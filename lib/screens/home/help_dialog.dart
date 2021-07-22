@@ -53,7 +53,7 @@ class HelpDialog extends StatelessWidget {
                     "Keep in mind that the AI is not perfect. It's meant to be an indicator and to assist in identification, not to make the final judgement.",
                     style: TextStyle(color: black),
                   ),
-                  SizedBox(height: 16.0),
+                  SizedBox(height: 8.0),
                   Align(
                     alignment: Alignment.bottomRight,
                     child: TextButton(
