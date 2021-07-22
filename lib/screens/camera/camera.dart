@@ -6,17 +6,16 @@ import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TakePictureScreen extends StatefulWidget {
+class Camera extends StatefulWidget {
   final Function? changeData;
 
-  const TakePictureScreen({this.changeData});
+  const Camera({this.changeData});
 
   @override
-  TakePictureScreenState createState() => TakePictureScreenState();
+  CameraState createState() => CameraState();
 }
 
-class TakePictureScreenState extends State<TakePictureScreen>
-    with WidgetsBindingObserver {
+class CameraState extends State<Camera> with WidgetsBindingObserver {
   late List<CameraDescription> _cameras;
   CameraController? _controller;
 

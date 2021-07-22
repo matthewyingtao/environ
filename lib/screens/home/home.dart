@@ -119,7 +119,7 @@ class _HomeState extends State<Home> {
 
                   // main pages
                   children: <Widget>[
-                    TakePictureScreen(
+                    Camera(
                       changeData: updateTrashdata,
                     ),
                     Lessons(),
