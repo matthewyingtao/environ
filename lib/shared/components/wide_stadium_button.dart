@@ -5,10 +5,11 @@ class WideStadiumButton extends StatefulWidget {
   final String text;
   final VoidCallback onPressed;
 
-  WideStadiumButton({
+  const WideStadiumButton({
     required this.text,
     required this.onPressed,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   _WideStadiumButtonState createState() => _WideStadiumButtonState();
@@ -19,7 +20,7 @@ class _WideStadiumButtonState extends State<WideStadiumButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       child: Container(
-        margin: EdgeInsets.symmetric(
+        margin: const EdgeInsets.symmetric(
           vertical: 8.0,
           horizontal: 24.0,
         ),

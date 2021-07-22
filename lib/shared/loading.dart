@@ -4,13 +4,13 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatelessWidget {
   final bool transparent;
-  Loading({this.transparent = false});
+  const Loading({this.transparent = false, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: this.transparent ? Colors.black54 : themeGreen,
-      child: Center(
+      color: transparent ? Colors.black54 : themeGreen,
+      child: const Center(
         child: SpinKitFoldingCube(
           color: Colors.white,
           size: 64.0,

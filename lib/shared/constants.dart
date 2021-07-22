@@ -13,13 +13,13 @@ const textInputDecoration = InputDecoration(
     color: black,
     fontSize: 24,
   ),
-  enabledBorder: const UnderlineInputBorder(
+  enabledBorder: UnderlineInputBorder(
       borderSide: BorderSide(color: Colors.black45, width: 2.0)),
-  focusedBorder: const UnderlineInputBorder(
+  focusedBorder: UnderlineInputBorder(
       borderSide: BorderSide(color: themeBlue, width: 2.0)),
 );
 
-const linkButtonStyle = const TextStyle(
+const linkButtonStyle = TextStyle(
   color: themeDarkGreen,
   fontSize: 18,
   decoration: TextDecoration.underline,
@@ -40,7 +40,7 @@ double getElevation(Set<MaterialState> states) {
 ButtonStyle roundedButtonWhite = ButtonStyle(
   backgroundColor: MaterialStateProperty.all(Colors.black54),
   textStyle: MaterialStateProperty.all(
-    TextStyle(
+    const TextStyle(
       fontFamily: "Montserrat",
       color: Colors.white,
       fontSize: 20,
@@ -48,7 +48,7 @@ ButtonStyle roundedButtonWhite = ButtonStyle(
     ),
   ),
   shape: MaterialStateProperty.all(
-    StadiumBorder(
+    const StadiumBorder(
       side: BorderSide(
         color: Colors.white,
         width: 4.0,
@@ -65,7 +65,7 @@ ThemeData appTheme = ThemeData(
 
   // typography
   fontFamily: "Montserrat",
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     headline1: TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.w900,

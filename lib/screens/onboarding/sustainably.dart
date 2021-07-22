@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Sustainably extends StatelessWidget {
+  const Sustainably({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(
+            margin: const EdgeInsets.only(
               left: 24.0,
               top: 32.0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Placeholder(
+                const Placeholder(
                   fallbackHeight: 120,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32.0,
                 ),
                 Container(
@@ -30,7 +32,7 @@ class Sustainably extends StatelessWidget {
                         ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 Text(
@@ -40,12 +42,12 @@ class Sustainably extends StatelessWidget {
                       .bodyText2!
                       .copyWith(color: Colors.white),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.all(24.0),
+                    margin: const EdgeInsets.all(24.0),
                     height: 120,
                     width: 120,
                     child: SvgPicture.asset(

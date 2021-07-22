@@ -8,7 +8,10 @@ import '../../services/auth.dart';
 class Register extends StatefulWidget {
   final Function? toggleView;
 
-  Register({this.toggleView});
+  const Register({
+    this.toggleView,
+    Key? key,
+  }) : super(key: key);
 
   @override
   _RegisterState createState() => _RegisterState();
@@ -42,10 +45,11 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Loading()
+        ? const Loading()
         : SafeArea(
             child: Container(
-                padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 24.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 32.0, horizontal: 24.0),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -59,12 +63,12 @@ class _RegisterState extends State<Register> {
                             .copyWith(color: black),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 48.0,
                       ),
                       TextFormField(
                         decoration: textInputDecoration.copyWith(
-                          icon: Icon(Icons.email),
+                          icon: const Icon(Icons.email),
                           labelText: 'Email',
                         ),
                         validator: (val) =>
@@ -73,12 +77,12 @@ class _RegisterState extends State<Register> {
                           setState(() => email = val);
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 48.0,
                       ),
                       TextFormField(
                         decoration: textInputDecoration.copyWith(
-                          icon: Icon(Icons.vpn_key_rounded),
+                          icon: const Icon(Icons.vpn_key_rounded),
                           labelText: 'Password',
                         ),
                         obscureText: true,
@@ -89,24 +93,24 @@ class _RegisterState extends State<Register> {
                           setState(() => password = val);
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 48.0,
                       ),
                       WideStadiumButton(
                         text: "Register",
                         onPressed: register,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16.0,
                       ),
                       Text(
                         error,
-                        style: TextStyle(color: Colors.red, fontSize: 16),
+                        style: const TextStyle(color: Colors.red, fontSize: 16),
                       ),
                       FractionallySizedBox(
                         widthFactor: 0.8,
                         child: TextButton(
-                          child: Text(
+                          child: const Text(
                             "Already have an account? Sign in.",
                             style: linkButtonStyle,
                           ),

@@ -5,6 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math';
 
 class Authenticate extends StatefulWidget {
+  const Authenticate({Key? key}) : super(key: key);
+
   @override
   _AuthenticateState createState() => _AuthenticateState();
 }
@@ -27,9 +29,7 @@ class _AuthenticateState extends State<Authenticate> {
 
   @override
   Widget build(BuildContext context) {
-    if (screenWidget == null) {
-      screenWidget = SignIn(toggleView: toggleView);
-    }
+    screenWidget ??= screenWidget = SignIn(toggleView: toggleView);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -45,7 +45,7 @@ class _AuthenticateState extends State<Authenticate> {
                 alignment: Alignment.center,
                 child: SvgPicture.asset(
                   "assets/leavesbg.svg",
-                  color: Color.fromRGBO(0, 0, 0, 0.05),
+                  color: const Color.fromRGBO(0, 0, 0, 0.05),
                 ),
               );
             },

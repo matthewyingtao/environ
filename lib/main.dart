@@ -15,15 +15,16 @@ void clear() async {
 }
 
 void main() async {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.black26,
   ));
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return StreamProvider<UserModel?>.value(
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: appTheme,
-        home: Wrapper(),
+        home: const Wrapper(),
       ),
       catchError: (_, __) => null,
     );

@@ -4,32 +4,35 @@ import 'package:flutter/material.dart';
 class ShutterButtonBar extends StatelessWidget {
   final Function? onPressed;
 
-  ShutterButtonBar({this.onPressed});
+  const ShutterButtonBar({
+    this.onPressed,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black54,
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Column(
         children: [
           RawMaterialButton(
             elevation: 4.0,
-            child: Icon(
+            child: const Icon(
               Icons.camera_alt,
               color: themeGreen,
               size: 36.0,
             ),
             fillColor: Colors.white,
-            padding: EdgeInsets.all(12.0),
-            shape: CircleBorder(
+            padding: const EdgeInsets.all(12.0),
+            shape: const CircleBorder(
               side: BorderSide(
                 color: themeGreen,
                 width: 4,
               ),
             ),
-            onPressed: this.onPressed as void Function()?,
+            onPressed: onPressed as void Function()?,
           ),
         ],
       ),

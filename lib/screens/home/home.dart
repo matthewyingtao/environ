@@ -11,6 +11,8 @@ import 'dart:math';
 import '../../services/auth.dart';
 
 class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
   @override
   _HomeState createState() => _HomeState();
 }
@@ -37,7 +39,7 @@ class _HomeState extends State<Home> {
       _currentPage = index;
       _controller.animateToPage(
         index,
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         curve: Curves.easeOut,
       );
     });
@@ -62,8 +64,9 @@ class _HomeState extends State<Home> {
         return Dialog(
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          insetPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-          child: HelpDialog(),
+          insetPadding:
+              const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+          child: const HelpDialog(),
         );
       },
     );
@@ -80,15 +83,15 @@ class _HomeState extends State<Home> {
         elevation: 8.0,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.help),
+            icon: const Icon(Icons.help),
             onPressed: () => _showHelpDialog(),
           ),
           IconButton(
-            icon: Icon(Icons.fact_check_outlined),
+            icon: const Icon(Icons.fact_check_outlined),
             onPressed: () => _showTrashModal(),
           ),
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () async {
               await _auth.signOut();
             },
@@ -106,7 +109,7 @@ class _HomeState extends State<Home> {
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
                     "assets/leavesbg.svg",
-                    color: Color.fromRGBO(0, 0, 0, 0.1),
+                    color: const Color.fromRGBO(0, 0, 0, 0.1),
                   ),
                 ),
                 PageView(
@@ -122,8 +125,8 @@ class _HomeState extends State<Home> {
                     Camera(
                       changeData: updateTrashdata,
                     ),
-                    Lessons(),
-                    Stats(),
+                    const Lessons(),
+                    const Stats(),
                   ],
                 ),
               ],
@@ -132,13 +135,13 @@ class _HomeState extends State<Home> {
 
           // bottom app bar
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               border: Border(
                 top: BorderSide(width: 2.0, color: Colors.white),
               ),
               color: themeDarkGreen,
             ),
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 24,
               vertical: 8,
             ),
@@ -147,22 +150,22 @@ class _HomeState extends State<Home> {
               selectedIndex: _currentPage,
               tabBorderRadius: 50,
               gap: 4,
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               color: Colors.white60,
               activeColor: Colors.white,
               iconSize: 28,
               tabBackgroundColor: Colors.white24,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               onTabChange: (tab) {
                 setState(() {
                   _controller.animateToPage(
                     tab,
-                    duration: Duration(milliseconds: 200),
+                    duration: const Duration(milliseconds: 200),
                     curve: Curves.easeOut,
                   );
                 });
               },
-              tabs: [
+              tabs: const [
                 GButton(
                   icon: Icons.camera_alt_rounded,
                   text: 'Scan',

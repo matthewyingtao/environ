@@ -5,19 +5,20 @@ class ReportCard extends StatelessWidget {
   final String body;
   final bool main;
 
-  ReportCard({
+  const ReportCard({
     required this.icon,
     required this.body,
     required this.main,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8.0),
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
       constraints: main
-          ? BoxConstraints(minWidth: 100, maxWidth: 200)
-          : BoxConstraints(minWidth: 80, maxWidth: 120),
+          ? const BoxConstraints(minWidth: 100, maxWidth: 200)
+          : const BoxConstraints(minWidth: 80, maxWidth: 120),
       decoration: BoxDecoration(
         color: Colors.black26,
         borderRadius: BorderRadius.circular(8.0),
@@ -26,19 +27,19 @@ class ReportCard extends StatelessWidget {
           width: 2.0,
         ),
       ),
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            this.icon,
+            icon,
             size: main ? 48.0 : 32.0,
             color: Colors.white,
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           Text(
-            this.body,
+            body,
             textAlign: TextAlign.center,
           )
         ],

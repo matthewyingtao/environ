@@ -8,7 +8,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SignIn extends StatefulWidget {
   final Function? toggleView;
 
-  SignIn({this.toggleView});
+  const SignIn({
+    this.toggleView,
+    Key? key,
+  }) : super(key: key);
 
   @override
   _SignInState createState() => _SignInState();
@@ -47,10 +50,11 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Loading()
+        ? const Loading()
         : SafeArea(
             child: Container(
-                padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 24.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 32.0, horizontal: 24.0),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -64,12 +68,12 @@ class _SignInState extends State<SignIn> {
                             .copyWith(color: black),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 48.0,
                       ),
                       TextFormField(
                         decoration: textInputDecoration.copyWith(
-                          icon: Icon(Icons.email_rounded),
+                          icon: const Icon(Icons.email_rounded),
                           labelText: 'Email',
                         ),
                         validator: (val) =>
@@ -78,12 +82,12 @@ class _SignInState extends State<SignIn> {
                           setState(() => email = val);
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 48.0,
                       ),
                       TextFormField(
                         decoration: textInputDecoration.copyWith(
-                          icon: Icon(Icons.vpn_key_rounded),
+                          icon: const Icon(Icons.vpn_key_rounded),
                           labelText: 'Password',
                         ),
                         obscureText: true,
@@ -94,22 +98,22 @@ class _SignInState extends State<SignIn> {
                           setState(() => password = val);
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 48.0,
                       ),
                       WideStadiumButton(
                         text: "Sign In",
                         onPressed: signIn,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16.0,
                       ),
                       Text(
                         error,
-                        style: TextStyle(color: Colors.red, fontSize: 16),
+                        style: const TextStyle(color: Colors.red, fontSize: 16),
                       ),
                       TextButton(
-                        child: Text(
+                        child: const Text(
                           "New user? Register.",
                           style: linkButtonStyle,
                         ),
@@ -118,7 +122,7 @@ class _SignInState extends State<SignIn> {
                         },
                       ),
                       TextButton(
-                        child: Text(
+                        child: const Text(
                           "Onboarding",
                           style: linkButtonStyle,
                         ),

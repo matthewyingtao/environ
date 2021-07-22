@@ -9,7 +9,10 @@ import 'package:flutter/material.dart';
 class Camera extends StatefulWidget {
   final Function? changeData;
 
-  const Camera({this.changeData});
+  const Camera({
+    this.changeData,
+    Key? key,
+  }) : super(key: key);
 
   @override
   CameraState createState() => CameraState();
@@ -85,12 +88,12 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
       resultMap["imagePath"] = image.path;
       widget.changeData!(resultMap);
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
+
     setState(() {
       _isModelRunning = false;
     });
-
     // disposes of the model
     await _model.closeModel();
   }
@@ -99,32 +102,25 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
+        SizedBox.expand(
           // forces the widget to be take up all available space
-          height: double.infinity,
-          width: double.infinity,
           child:
               _controller == null || _controller!.value.isInitialized == false
-                  ? Loading(transparent: true)
+                  ? const Loading(transparent: true)
                   : CameraPreview(_controller!),
         ),
         _isModelRunning
-            ? Container(
-                child: Loading(
-                  transparent: true,
-                ),
+            ? const Loading(
+                transparent: true,
               )
-            : Container(
-                width: double.infinity,
-                child: Column(
-                  children: [
-                    // spacer makes sure that the shutter button bar is pushed to the bottom
-                    Spacer(),
-                    ShutterButtonBar(
-                      onPressed: takePhoto,
-                    )
-                  ],
-                ),
+            : Column(
+                children: [
+                  // spacer makes sure that the shutter button bar is pushed to the bottom
+                  const Spacer(),
+                  ShutterButtonBar(
+                    onPressed: takePhoto,
+                  )
+                ],
               ),
       ],
     );

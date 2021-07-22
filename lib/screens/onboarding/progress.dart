@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 
 class Progress extends StatelessWidget {
+  const Progress({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(
+            margin: const EdgeInsets.only(
               left: 24.0,
               top: 32.0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Placeholder(
+                const Placeholder(
                   fallbackHeight: 120,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32.0,
                 ),
                 Container(
@@ -29,7 +31,7 @@ class Progress extends StatelessWidget {
                         ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 Text(
@@ -38,13 +40,13 @@ class Progress extends StatelessWidget {
                         color: Colors.white,
                       ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.all(24.0),
-                    child: Icon(
+                    margin: const EdgeInsets.all(24.0),
+                    child: const Icon(
                       Icons.insights,
                       size: 140,
                       color: Colors.white,

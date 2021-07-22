@@ -5,7 +5,7 @@ import 'dart:io';
 
 class TrashModal extends StatelessWidget {
   final Map<String, dynamic>? data;
-  const TrashModal({this.data});
+  const TrashModal({Key? key, this.data}) : super(key: key);
 
   // returns the asset location, given the category of the trash
   String _getTrashImage(trashName) {
@@ -33,13 +33,13 @@ class TrashModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // checks if user has scanned an item
-    if (this.data != null) {
-      final bool isRecyclable = this.data!['label'] == "trash" ? false : true;
-      final String trashImage = _getTrashImage(this.data!['label']);
+    if (data != null) {
+      final bool isRecyclable = data!['label'] == "trash" ? false : true;
+      final String trashImage = _getTrashImage(data!['label']);
 
       return Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(32.0),
             topRight: Radius.circular(32.0),
           ),
@@ -53,7 +53,7 @@ class TrashModal extends StatelessWidget {
             ),
           ),
         ),
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             Text(
@@ -62,11 +62,11 @@ class TrashModal extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Text(
-              this.data!['label'],
+              data!['label'],
               style: Theme.of(context).textTheme.headline5,
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Expanded(
               child: AspectRatio(
                 aspectRatio: 1,
@@ -81,7 +81,7 @@ class TrashModal extends StatelessWidget {
                       fit: BoxFit.cover,
                       image: FileImage(
                         File(
-                          this.data!["imagePath"],
+                          data!["imagePath"],
                         ),
                       ),
                     ),
@@ -94,8 +94,8 @@ class TrashModal extends StatelessWidget {
       );
     } else {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(32.0),
             topRight: Radius.circular(32.0),

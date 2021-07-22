@@ -2,55 +2,57 @@ import 'package:environ/shared/components/lesson_card.dart';
 import 'package:flutter/material.dart';
 
 class Lessons extends StatelessWidget {
+  const Lessons({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ListView(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       children: [
-        SizedBox(height: 24.0),
+        const SizedBox(height: 24.0),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
             "Lessons",
             style: Theme.of(context).textTheme.headline3,
           ),
         ),
-        SizedBox(height: 12.0),
-        LessonCard(
+        const SizedBox(height: 12.0),
+        const LessonCard(
           heading: "Paper & Cardboard",
           body:
               "This includes: \n• Newspapers and magazines \n• Corrugated cardboard \n• Office paper",
           icon: Icons.description_rounded,
           imagePath: "assets/trash_category/cardboard.jpg",
         ),
-        LessonCard(
+        const LessonCard(
           heading: "Glass",
           body:
               "This includes: \n• Bottles, jars and containers \n• Clear and colored Glass",
           icon: Icons.liquor_rounded,
           imagePath: "assets/trash_category/glass.jpg",
         ),
-        LessonCard(
+        const LessonCard(
           heading: "Metal",
           body: "This includes: \n• Aluminium and tin cans \n• Aerosols",
           icon: Icons.iron_rounded,
           imagePath: "assets/trash_category/metal.jpg",
         ),
-        LessonCard(
+        const LessonCard(
           heading: "Plastic",
           body:
               "This includes: \n• Milk and drink bottles \n• Plastic shrink wrap",
           icon: Icons.casino_rounded,
           imagePath: "assets/trash_category/plastic.jpg",
         ),
-        LessonCard(
+        const LessonCard(
           heading: "Reducing Waste",
           body:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           icon: Icons.delete,
           imagePath: "assets/trash_category/trash.jpg",
         ),
-        SizedBox(height: 24.0),
+        const SizedBox(height: 24.0),
       ],
     );
   }

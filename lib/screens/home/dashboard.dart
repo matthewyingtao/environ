@@ -7,7 +7,10 @@ import 'package:flutter/material.dart';
 class Dashboard extends StatefulWidget {
   final Function? changePage;
 
-  Dashboard({this.changePage});
+  const Dashboard({
+    this.changePage,
+    Key? key,
+  }) : super(key: key);
 
   @override
   _DashboardState createState() => _DashboardState();
@@ -26,57 +29,55 @@ class _DashboardState extends State<Dashboard> {
             alignment: Alignment.center,
             child: SvgPicture.asset(
               "assets/leavesbg.svg",
-              color: Color.fromRGBO(0, 0, 0, 0.1),
+              color: const Color.fromRGBO(0, 0, 0, 0.1),
               height: 400,
               width: 400,
             ),
           ),
         ),
-        Container(
-          child: Column(
-            children: [
-              SizedBox(height: 24.0),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Dashboard",
-                      style: Theme.of(context).textTheme.headline3,
-                    ),
-                    SizedBox(height: 24.0),
-                    Text(
-                      "Achievement Progress",
-                      textAlign: TextAlign.left,
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                    SizedBox(height: 16.0),
-                    AchievementProgressIndicator(
-                      challengeProgress: 1,
-                      challengeMax: 5,
-                      challengeTitle: "Scan 5 bottles",
-                    ),
-                    AchievementProgressIndicator(
-                      challengeProgress: 11,
-                      challengeMax: 25,
-                      challengeTitle: "Scan 25 items",
-                    ),
-                    AchievementProgressIndicator(
-                      challengeProgress: 10,
-                      challengeMax: 10,
-                      challengeTitle: "Scan 10 red recyclables",
-                    ),
-                    SizedBox(height: 8.0),
-                    WideStadiumButton(
-                      text: "Scan Item",
-                      onPressed: () => widget.changePage!(1),
-                    ),
-                  ],
-                ),
+        Column(
+          children: [
+            const SizedBox(height: 24.0),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Dashboard",
+                    style: Theme.of(context).textTheme.headline3,
+                  ),
+                  const SizedBox(height: 24.0),
+                  Text(
+                    "Achievement Progress",
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  const SizedBox(height: 16.0),
+                  const AchievementProgressIndicator(
+                    challengeProgress: 1,
+                    challengeMax: 5,
+                    challengeTitle: "Scan 5 bottles",
+                  ),
+                  const AchievementProgressIndicator(
+                    challengeProgress: 11,
+                    challengeMax: 25,
+                    challengeTitle: "Scan 25 items",
+                  ),
+                  const AchievementProgressIndicator(
+                    challengeProgress: 10,
+                    challengeMax: 10,
+                    challengeTitle: "Scan 10 red recyclables",
+                  ),
+                  const SizedBox(height: 8.0),
+                  WideStadiumButton(
+                    text: "Scan Item",
+                    onPressed: () => widget.changePage!(1),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );

@@ -9,6 +9,7 @@ import 'package:environ/screens/onboarding/progress.dart';
 import 'package:environ/screens/onboarding/knowledge.dart';
 
 class Onboarding extends StatefulWidget {
+  const Onboarding({Key? key}) : super(key: key);
   @override
   _OnboardingState createState() => _OnboardingState();
 }
@@ -22,7 +23,7 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     if (_goSignIn) {
-      return Wrapper();
+      return const Wrapper();
     } else {
       return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -32,15 +33,15 @@ class _OnboardingState extends State<Onboarding> {
             Transform.scale(
               scale: 2,
               child: AnimatedContainer(
-                constraints: BoxConstraints.expand(),
-                duration: Duration(milliseconds: 500),
+                constraints: const BoxConstraints.expand(),
+                duration: const Duration(milliseconds: 500),
                 color: _bgColor,
                 transform: Matrix4.rotationZ(_leafRotation),
                 transformAlignment: Alignment.center,
                 curve: Curves.easeOut,
                 child: SvgPicture.asset(
                   "assets/leavesbg.svg",
-                  color: Color.fromRGBO(255, 255, 255, 0.10),
+                  color: const Color.fromRGBO(255, 255, 255, 0.10),
                 ),
               ),
             ),
@@ -74,7 +75,7 @@ class _OnboardingState extends State<Onboarding> {
                           _leafRotation = (index - 1) * (pi / 12);
                         });
                       },
-                      children: <Widget>[
+                      children: const [
                         Sustainably(),
                         Progress(),
                         Knowledge(),
@@ -82,7 +83,7 @@ class _OnboardingState extends State<Onboarding> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 8.0,
                       vertical: 24.0,
                     ),
@@ -93,8 +94,8 @@ class _OnboardingState extends State<Onboarding> {
                             borderRadius: BorderRadius.circular(50),
                             color: Colors.white30,
                           ),
-                          margin: EdgeInsets.only(left: 16.0),
-                          padding: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.only(left: 16.0),
+                          padding: const EdgeInsets.symmetric(
                             vertical: 6.0,
                             horizontal: 16.0,
                           ),
@@ -107,16 +108,16 @@ class _OnboardingState extends State<Onboarding> {
                             ),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Container(
-                          margin: EdgeInsets.only(right: 16.0),
+                          margin: const EdgeInsets.only(right: 16.0),
                           child: ElevatedButton(
                             child: Container(
-                              margin: EdgeInsets.symmetric(
+                              margin: const EdgeInsets.symmetric(
                                 vertical: 8.0,
                                 horizontal: 24.0,
                               ),
-                              child: Text("Continue"),
+                              child: const Text("Continue"),
                             ),
                             style: roundedButtonWhite,
                             onPressed: () async {
@@ -124,7 +125,7 @@ class _OnboardingState extends State<Onboarding> {
                                 setState(() => _goSignIn = true);
                               } else {
                                 _controller.nextPage(
-                                    duration: Duration(milliseconds: 500),
+                                    duration: const Duration(milliseconds: 500),
                                     curve: Curves.ease);
                               }
                             },

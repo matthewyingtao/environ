@@ -12,10 +12,10 @@ class AchievementProgressIndicator extends StatelessWidget {
     required this.challengeProgress,
     required this.challengeMax,
     required this.challengeTitle,
-  });
+    Key? key,
+  }) : super(key: key);
 
-  Color getProgressColor() {
-    double percentageDone = this.challengeProgress / this.challengeMax;
+  Color getProgressColor(double percentageDone) {
     if (percentageDone < 0.3) {
       return themeRed;
     } else if (percentageDone < 0.7) {
@@ -26,7 +26,7 @@ class AchievementProgressIndicator extends StatelessWidget {
   }
 
   double getPercentageDone(progress, max) {
-    double percentageDone = this.challengeProgress / this.challengeMax;
+    double percentageDone = challengeProgress / challengeMax;
     if (percentageDone > 1) {
       return 1;
     } else if (percentageDone < 0) {
@@ -38,19 +38,17 @@ class AchievementProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double percentageDone =
-        getPercentageDone(this.challengeProgress, this.challengeMax);
+        getPercentageDone(challengeProgress, challengeMax);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            Text(this.challengeTitle),
-            Spacer(),
+            Text(challengeTitle),
+            const Spacer(),
             Text(
-              this.challengeProgress.toString() +
-                  " / " +
-                  this.challengeMax.toString(),
+              challengeProgress.toString() + " / " + challengeMax.toString(),
               style: percentageDone == 1
                   ? Theme.of(context).textTheme.bodyText2!.copyWith(
                       fontWeight: FontWeight.w900, fontStyle: FontStyle.italic)
@@ -60,7 +58,7 @@ class AchievementProgressIndicator extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 8.0),
+        const SizedBox(height: 8.0),
         Container(
           alignment: Alignment.topLeft,
           height: 24,
@@ -74,7 +72,7 @@ class AchievementProgressIndicator extends StatelessWidget {
             boxShadow:
                 // makes the bar glow if the task is complete
                 percentageDone == 1
-                    ? [
+                    ? const [
                         BoxShadow(
                           color: Color.fromRGBO(255, 255, 255, 0.5),
                           blurRadius: 6,
@@ -86,13 +84,13 @@ class AchievementProgressIndicator extends StatelessWidget {
             widthFactor: percentageDone,
             child: Container(
               decoration: BoxDecoration(
-                color: getProgressColor(),
+                color: getProgressColor(percentageDone),
                 borderRadius: BorderRadius.circular(50.0),
               ),
             ),
           ),
         ),
-        SizedBox(height: 16.0),
+        const SizedBox(height: 16.0),
       ],
     );
   }

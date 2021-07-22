@@ -8,6 +8,8 @@ import 'package:environ/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Wrapper extends StatefulWidget {
+  const Wrapper({Key? key}) : super(key: key);
+
   @override
   _WrapperState createState() => _WrapperState();
 }
@@ -32,15 +34,16 @@ class _WrapperState extends State<Wrapper> {
       builder: (BuildContext context, isFirstTimeSnapshot) {
         if (isFirstTimeSnapshot.hasData && !isFirstTimeSnapshot.hasError) {
           if (isFirstTimeSnapshot.data!) {
-            return Onboarding();
+            return const Onboarding();
           } else {
             if (user == null) {
-              return Authenticate();
-            } else
-              return Home();
+              return const Authenticate();
+            } else {
+              return const Home();
+            }
           }
         } else {
-          return Loading();
+          return const Loading();
         }
       },
     );
