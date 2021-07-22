@@ -15,6 +15,7 @@ class Lessons extends StatelessWidget {
             style: Theme.of(context).textTheme.headline3,
           ),
         ),
+        SizedBox(height: 12.0),
         LessonCard(
           heading: "Paper & Cardboard",
           body:
