@@ -40,7 +40,17 @@ class HelpDialog extends StatelessWidget {
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Place the item you want to scan on a surface with a quiet background. \n\nThe AI works best when the object is against a white background and place in the center.',
+                    'Place the item you want to scan on a surface with a quiet background.',
+                    style: TextStyle(color: black),
+                  ),
+                  SizedBox(height: 12.0),
+                  Text(
+                    "The AI works best when the object is against a white background and place in the center.",
+                    style: TextStyle(color: black),
+                  ),
+                  SizedBox(height: 12.0),
+                  Text(
+                    "Keep in mind that the AI is not perfect. It's meant to be an indicator and to assist in identification, not to make the final judgement.",
                     style: TextStyle(color: black),
                   ),
                   SizedBox(height: 16.0),
