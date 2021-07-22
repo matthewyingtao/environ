@@ -4,15 +4,18 @@ import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class AchievementProgressIndicator extends StatelessWidget {
-  final int? challengeProgress;
-  final int? challengeMax;
-  final String? challengeTitle;
+  final int challengeProgress;
+  final int challengeMax;
+  final String challengeTitle;
 
-  const AchievementProgressIndicator(
-      {this.challengeProgress, this.challengeMax, this.challengeTitle});
+  const AchievementProgressIndicator({
+    required this.challengeProgress,
+    required this.challengeMax,
+    required this.challengeTitle,
+  });
 
   Color getProgressColor() {
-    double percentageDone = this.challengeProgress! / this.challengeMax!;
+    double percentageDone = this.challengeProgress / this.challengeMax;
     if (percentageDone < 0.3) {
       return themeRed;
     } else if (percentageDone < 0.7) {
@@ -23,7 +26,7 @@ class AchievementProgressIndicator extends StatelessWidget {
   }
 
   double getPercentageDone(progress, max) {
-    double percentageDone = this.challengeProgress! / this.challengeMax!;
+    double percentageDone = this.challengeProgress / this.challengeMax;
     if (percentageDone > 1) {
       return 1;
     } else if (percentageDone < 0) {
@@ -42,7 +45,7 @@ class AchievementProgressIndicator extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(this.challengeTitle!),
+            Text(this.challengeTitle),
             Spacer(),
             Text(
               this.challengeProgress.toString() +
