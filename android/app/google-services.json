@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:564763965260:android:11331de12657441d85c1e9",
+        "mobilesdk_app_id": "1:564763965260:android:1029d669c5a9254d85c1e9",
         "android_client_info": {
-          "package_name": "com.matthew.brewcrew"
+          "package_name": "com.matthewtao.environ"
         }
       },
       "oauth_client": [

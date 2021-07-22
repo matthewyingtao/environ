@@ -1,4 +1,4 @@
-package com.matthew.envirome
+package com.matthewtao.environ
 
 import io.flutter.embedding.android.FlutterActivity
 
