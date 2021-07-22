@@ -53,7 +53,7 @@ class TrashModal extends StatelessWidget {
             ),
           ),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
             Text(
