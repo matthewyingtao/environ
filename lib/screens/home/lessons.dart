@@ -1,7 +1,7 @@
 import 'package:environ/shared/components/course_card.dart';
 import 'package:flutter/material.dart';
 
-class Courses extends StatelessWidget {
+class Lessons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,8 +11,8 @@ class Courses extends StatelessWidget {
         children: [
           SizedBox(height: 24.0),
           Text(
-            "How to Recycle",
-            style: Theme.of(context).textTheme.headline4,
+            "Lessons",
+            style: Theme.of(context).textTheme.headline3,
           ),
           SizedBox(height: 24.0),
           CourseCard(

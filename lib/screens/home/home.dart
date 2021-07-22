@@ -1,5 +1,5 @@
 import 'package:environ/screens/camera/camera.dart';
-import 'package:environ/screens/home/courses.dart';
+import 'package:environ/screens/home/lessons.dart';
 import 'package:environ/screens/home/help_dialog.dart';
 import 'package:environ/screens/home/stats.dart';
 import 'package:environ/shared/constants.dart';
@@ -122,7 +122,7 @@ class _HomeState extends State<Home> {
                     TakePictureScreen(
                       changeData: updateTrashdata,
                     ),
-                    Courses(),
+                    Lessons(),
                     Stats(),
                   ],
                 ),
@@ -169,7 +169,7 @@ class _HomeState extends State<Home> {
                 ),
                 GButton(
                   icon: Icons.school_rounded,
-                  text: 'Learn',
+                  text: 'Lessons',
                 ),
                 GButton(
                   icon: Icons.insights_rounded,
