@@ -1,4 +1,4 @@
-import 'package:environ/shared/components/course_card.dart';
+import 'package:environ/shared/components/lesson_card.dart';
 import 'package:flutter/material.dart';
 
 class Lessons extends StatelessWidget {
@@ -15,34 +15,34 @@ class Lessons extends StatelessWidget {
             style: Theme.of(context).textTheme.headline3,
           ),
           SizedBox(height: 24.0),
-          CourseCard(
+          LessonCard(
             heading: "Paper & Cardboard",
             body:
                 "This includes: \n• Newspapers and magazines \n• Corrugated cardboard \n• Office paper",
             icon: Icons.description_rounded,
             imagePath: "assets/trash_category/cardboard.jpg",
           ),
-          CourseCard(
+          LessonCard(
             heading: "Glass",
             body:
                 "This includes: \n• Bottles, jars and containers \n• Clear and colored Glass",
             icon: Icons.liquor_rounded,
             imagePath: "assets/trash_category/glass.jpg",
           ),
-          CourseCard(
+          LessonCard(
             heading: "Metal",
             body: "This includes: \n• Aluminium and tin cans \n• Aerosols",
             icon: Icons.iron_rounded,
             imagePath: "assets/trash_category/metal.jpg",
           ),
-          CourseCard(
+          LessonCard(
             heading: "Plastic",
             body:
                 "This includes: \n• Milk and drink bottles \n• Plastic shrink wrap",
             icon: Icons.casino_rounded,
             imagePath: "assets/trash_category/plastic.jpg",
           ),
-          CourseCard(
+          LessonCard(
             heading: "Reducing Waste",
             body:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

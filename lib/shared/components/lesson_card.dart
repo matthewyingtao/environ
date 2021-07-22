@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CourseCard extends StatelessWidget {
-  CourseCard({
+class LessonCard extends StatelessWidget {
+  LessonCard({
     required this.icon,
     required this.body,
     required this.heading,
