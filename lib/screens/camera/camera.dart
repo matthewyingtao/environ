@@ -113,15 +113,11 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
 
     return Stack(
       children: [
-        Transform.scale(
-          scale: scale,
-          child: Center(
-            child:
-                // forces the widget to be take up all available space
-                _controller == null || !_controller!.value.isInitialized
-                    ? const Loading(transparent: true)
-                    : CameraPreview(_controller!),
-          ),
+        SizedBox.expand(
+          // forces the widget to be take up all available space
+          child: _controller == null || !_controller!.value.isInitialized
+              ? const Loading(transparent: true)
+              : CameraPreview(_controller!),
         ),
         _isModelRunning
             ? const Loading(
