@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignIn extends StatefulWidget {
-  final Function? toggleView;
+  final Function toggleView;
 
   const SignIn({
-    this.toggleView,
+    required this.toggleView,
     Key? key,
   }) : super(key: key);
 
@@ -118,7 +118,7 @@ class _SignInState extends State<SignIn> {
                           style: linkButtonStyle,
                         ),
                         onPressed: () {
-                          widget.toggleView!();
+                          widget.toggleView();
                         },
                       ),
                       TextButton(

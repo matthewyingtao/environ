@@ -7,10 +7,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Camera extends StatefulWidget {
-  final Function? changeData;
+  final Function changeData;
 
   const Camera({
-    this.changeData,
+    required this.changeData,
     Key? key,
   }) : super(key: key);
 
@@ -87,7 +87,7 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
       List? results = await (_model.useModel());
       Map resultMap = Map<String, dynamic>.from(results![0]);
       resultMap["imagePath"] = image.path;
-      widget.changeData!(resultMap);
+      widget.changeData(resultMap);
     } catch (e) {
       debugPrint(e.toString());
     }

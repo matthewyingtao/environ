@@ -1,9 +1,9 @@
 import 'package:tflite/tflite.dart';
 
 class Model {
-  final String? path;
+  final String path;
 
-  Model({this.path});
+  Model({required this.path});
 
   Future<List?> useModel() async {
     await Tflite.loadModel(
@@ -12,7 +12,7 @@ class Model {
     );
 
     return Tflite.runModelOnImage(
-      path: path!,
+      path: path,
     );
   }
 

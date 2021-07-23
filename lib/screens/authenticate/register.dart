@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import '../../services/auth.dart';
 
 class Register extends StatefulWidget {
-  final Function? toggleView;
+  final Function toggleView;
 
   const Register({
-    this.toggleView,
+    required this.toggleView,
     Key? key,
   }) : super(key: key);
 
@@ -115,7 +115,7 @@ class _RegisterState extends State<Register> {
                             style: linkButtonStyle,
                           ),
                           onPressed: () {
-                            widget.toggleView!();
+                            widget.toggleView();
                           },
                         ),
                       )

@@ -5,10 +5,10 @@ import 'package:environ/shared/components/achievement_progress_indicator.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
-  final Function? changePage;
+  final Function changePage;
 
   const Dashboard({
-    this.changePage,
+    required this.changePage,
     Key? key,
   }) : super(key: key);
 
@@ -72,7 +72,7 @@ class _DashboardState extends State<Dashboard> {
                   const SizedBox(height: 8.0),
                   WideStadiumButton(
                     text: "Scan Item",
-                    onPressed: () => widget.changePage!(1),
+                    onPressed: () => widget.changePage(1),
                   ),
                 ],
               ),

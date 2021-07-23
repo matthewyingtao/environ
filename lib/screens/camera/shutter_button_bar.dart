@@ -2,10 +2,10 @@ import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class ShutterButtonBar extends StatelessWidget {
-  final Function? onPressed;
+  final VoidCallback onPressed;
 
   const ShutterButtonBar({
-    this.onPressed,
+    required this.onPressed,
     Key? key,
   }) : super(key: key);
 
@@ -32,7 +32,7 @@ class ShutterButtonBar extends StatelessWidget {
                 width: 4,
               ),
             ),
-            onPressed: onPressed as void Function()?,
+            onPressed: onPressed,
           ),
         ],
       ),
