@@ -59,6 +59,7 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
       _cameras.first,
       ResolutionPreset.medium,
       imageFormatGroup: ImageFormatGroup.jpeg,
+      enableAudio: false,
     );
     await controller.initialize();
     setState(() => _controller = controller);
@@ -104,10 +105,9 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
       children: [
         SizedBox.expand(
           // forces the widget to be take up all available space
-          child:
-              _controller == null || _controller!.value.isInitialized == false
-                  ? const Loading(transparent: true)
-                  : CameraPreview(_controller!),
+          child: _controller == null || !_controller!.value.isInitialized
+              ? const Loading(transparent: true)
+              : CameraPreview(_controller!),
         ),
         _isModelRunning
             ? const Loading(
