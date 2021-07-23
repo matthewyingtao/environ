@@ -101,13 +101,27 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    CameraValue camera = _controller!.value;
+    // fetch screen size
+    final size = MediaQuery.of(context).size;
+
+    // calculate scale depending on screen and camera ratios
+    var scale = size.aspectRatio * camera.aspectRatio;
+
+    // to prevent scaling down, invert the value
+    if (scale < 1) scale = 1 / scale;
+
     return Stack(
       children: [
-        SizedBox.expand(
-          // forces the widget to be take up all available space
-          child: _controller == null || !_controller!.value.isInitialized
-              ? const Loading(transparent: true)
-              : CameraPreview(_controller!),
+        Transform.scale(
+          scale: scale,
+          child: Center(
+            child:
+                // forces the widget to be take up all available space
+                _controller == null || !_controller!.value.isInitialized
+                    ? const Loading(transparent: true)
+                    : CameraPreview(_controller!),
+          ),
         ),
         _isModelRunning
             ? const Loading(
