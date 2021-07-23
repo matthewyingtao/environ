@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:environ/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({Key? key}) : super(key: key);
@@ -17,8 +18,14 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
   Future<bool> isFirstTime() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     var isFirstTime = prefs.getBool('first_time');
+
     if (isFirstTime == null) {
+      PermissionStatus status = await Permission.camera.status;
+      if (status == PermissionStatus.denied) {
+        await Permission.camera.request();
+      }
       prefs.setBool('first_time', false);
       return true;
     }
