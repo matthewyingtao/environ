@@ -10,6 +10,7 @@ import 'package:environ/screens/onboarding/knowledge.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({Key? key}) : super(key: key);
+
   @override
   _OnboardingState createState() => _OnboardingState();
 }
