@@ -50,8 +50,11 @@ class AchievementProgressIndicator extends StatelessWidget {
             Text(
               challengeProgress.toString() + " / " + challengeMax.toString(),
               style: percentageDone == 1
+                  // text is bold when task is complete
                   ? Theme.of(context).textTheme.bodyText2!.copyWith(
-                      fontWeight: FontWeight.w900, fontStyle: FontStyle.italic)
+                        fontWeight: FontWeight.w900,
+                      )
+                  // text is italic when task is incomplete
                   : Theme.of(context).textTheme.bodyText2!.copyWith(
                         fontStyle: FontStyle.italic,
                       ),
