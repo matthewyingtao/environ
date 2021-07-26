@@ -56,21 +56,15 @@ class _OnboardingState extends State<Onboarding> {
                         setState(() {
                           switch (index) {
                             case 0:
-                              {
-                                _bgColor = themeGreen;
-                              }
+                              _bgColor = themeGreen;
                               break;
 
                             case 1:
-                              {
-                                _bgColor = themeBlue;
-                              }
+                              _bgColor = themeBlue;
                               break;
 
                             case 2:
-                              {
-                                _bgColor = themeRed;
-                              }
+                              _bgColor = themeRed;
                               break;
                           }
                           _leafRotation = (index - 1) * (pi / 12);
