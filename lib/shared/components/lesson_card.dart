@@ -30,19 +30,18 @@ class LessonCard extends StatelessWidget {
                 const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
             child: PopUpDialog(
               bodyWidget: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      this.heading,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6!
-                          .copyWith(color: black),
-                    ),
+                  Text(
+                    this.heading,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(color: black),
                   ),
-                  const Text(
-                    'Place the item you want to scan on a surface with a quiet background.',
+                  SizedBox(height: 8.0),
+                  Text(
+                    body,
                     style: TextStyle(color: black),
                   ),
                   Align(
@@ -68,7 +67,7 @@ class LessonCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => _showInfoScreen(),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
         margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         decoration: BoxDecoration(
           color: Colors.black,
@@ -91,32 +90,20 @@ class LessonCard extends StatelessWidget {
                 Colors.black.withOpacity(0.4), BlendMode.dstATop),
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
+            Container(
+              margin: const EdgeInsets.only(right: 16),
+              child: Icon(
+                icon,
+                color: Colors.white,
+                size: 48,
+              ),
+            ),
             Text(
               heading,
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.headline5,
             ),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    body,
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(left: 16),
-                  child: Icon(
-                    icon,
-                    color: Colors.white,
-                    size: 48,
-                  ),
-                ),
-              ],
-            )
           ],
         ),
       ),
