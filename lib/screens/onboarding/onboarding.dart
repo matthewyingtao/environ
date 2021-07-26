@@ -1,12 +1,10 @@
 import 'dart:math';
+import 'package:environ/screens/onboarding/onboarding_info_screen.dart';
 import 'package:environ/screens/wrapper.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:environ/screens/onboarding/sustainably.dart';
-import 'package:environ/screens/onboarding/progress.dart';
-import 'package:environ/screens/onboarding/knowledge.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({Key? key}) : super(key: key);
@@ -70,10 +68,41 @@ class _OnboardingState extends State<Onboarding> {
                           _leafRotation = (index - 1) * (pi / 12);
                         });
                       },
-                      children: const [
-                        Sustainably(),
-                        Progress(),
-                        Knowledge(),
+                      children: [
+                        const OnboardingInfoScreen(
+                          title: "KNOWLEDGE",
+                          subheading: "Grow your",
+                          body:
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                          icon: Icon(
+                            Icons.school,
+                            size: 140,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const OnboardingInfoScreen(
+                          title: "PROGRESS",
+                          subheading: "Track your",
+                          body:
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                          icon: Icon(
+                            Icons.insights,
+                            size: 140,
+                            color: Colors.white,
+                          ),
+                        ),
+                        OnboardingInfoScreen(
+                          title: "SUSTAINABLY",
+                          subheading: "Live more",
+                          body:
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                          icon: SvgPicture.asset(
+                            "assets/recyclingsymbol.svg",
+                            color: Colors.white,
+                            height: 120,
+                            width: 120,
+                          ),
+                        ),
                       ],
                     ),
                   ),
