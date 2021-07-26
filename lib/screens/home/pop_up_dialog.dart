@@ -28,6 +28,7 @@ class PopUpDialog extends StatelessWidget {
         ),
         SingleChildScrollView(
           child: Container(
+            alignment: Alignment.centerLeft,
             padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
             child: this.bodyWidget,
           ),
