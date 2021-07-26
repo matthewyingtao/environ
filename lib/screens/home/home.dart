@@ -1,6 +1,6 @@
 import 'package:environ/screens/camera/camera.dart';
 import 'package:environ/screens/home/lessons.dart';
-import 'package:environ/screens/home/help_dialog.dart';
+import 'package:environ/screens/home/pop_up_dialog.dart';
 import 'package:environ/screens/home/stats.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:environ/screens/home/trash_modal.dart';
@@ -66,7 +66,50 @@ class _HomeState extends State<Home> {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           insetPadding:
               const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-          child: const HelpDialog(),
+          child: PopUpDialog(
+            bodyWidget: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'How to scan items',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(color: black),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                const Text(
+                  'Place the item you want to scan on a surface with a quiet background.',
+                  style: TextStyle(color: black),
+                ),
+                const SizedBox(height: 12.0),
+                const Text(
+                  "The AI works best when the object is against a white background and place in the center.",
+                  style: TextStyle(color: black),
+                ),
+                const SizedBox(height: 12.0),
+                const Text(
+                  "Keep in mind that the AI is not perfect. It's meant to be an indicator and to assist in identification, not to make the final judgement.",
+                  style: TextStyle(color: black),
+                ),
+                const SizedBox(height: 8.0),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: TextButton(
+                    child: const Text(
+                      'Close',
+                      style: linkButtonStyle,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
         );
       },
     );
