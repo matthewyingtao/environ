@@ -40,61 +40,64 @@ class AchievementProgressIndicator extends StatelessWidget {
     final double percentageDone =
         getPercentageDone(challengeProgress, challengeMax);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Text(challengeTitle),
-            const Spacer(),
-            Text(
-              challengeProgress.toString() + " / " + challengeMax.toString(),
-              style: percentageDone == 1
-                  // text is bold when task is complete
-                  ? Theme.of(context).textTheme.bodyText2!.copyWith(
-                        fontWeight: FontWeight.w900,
-                      )
-                  // text is italic when task is incomplete
-                  : Theme.of(context).textTheme.bodyText2!.copyWith(
-                        fontStyle: FontStyle.italic,
-                      ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 8.0),
-        Container(
-          alignment: Alignment.topLeft,
-          height: 24,
-          decoration: BoxDecoration(
-            color: Colors.white54,
-            borderRadius: BorderRadius.circular(50.0),
-            border: Border.all(
-              color: Colors.white,
-              width: 2.0,
-            ),
-            boxShadow:
-                // makes the bar glow if the task is complete
-                percentageDone == 1
-                    ? const [
-                        BoxShadow(
-                          color: Color.fromRGBO(255, 255, 255, 0.5),
-                          blurRadius: 6,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Text(challengeTitle),
+              const Spacer(),
+              Text(
+                challengeProgress.toString() + " / " + challengeMax.toString(),
+                style: percentageDone == 1
+                    // text is bold when task is complete
+                    ? Theme.of(context).textTheme.bodyText2!.copyWith(
+                          fontWeight: FontWeight.w900,
+                        )
+                    // text is italic when task is incomplete
+                    : Theme.of(context).textTheme.bodyText2!.copyWith(
+                          fontStyle: FontStyle.italic,
                         ),
-                      ]
-                    : [],
+              ),
+            ],
           ),
-          child: FractionallySizedBox(
-            widthFactor: percentageDone,
-            child: Container(
-              decoration: BoxDecoration(
-                color: getProgressColor(percentageDone),
-                borderRadius: BorderRadius.circular(50.0),
+          const SizedBox(height: 8.0),
+          Container(
+            alignment: Alignment.topLeft,
+            height: 24,
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(50.0),
+              border: Border.all(
+                color: Colors.white,
+                width: 2.0,
+              ),
+              boxShadow:
+                  // makes the bar glow if the task is complete
+                  percentageDone == 1
+                      ? const [
+                          BoxShadow(
+                            color: Color.fromRGBO(255, 255, 255, 0.7),
+                            blurRadius: 6.0,
+                          ),
+                        ]
+                      : [],
+            ),
+            child: FractionallySizedBox(
+              widthFactor: percentageDone,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: getProgressColor(percentageDone),
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
               ),
             ),
           ),
-        ),
-        const SizedBox(height: 16.0),
-      ],
+          const SizedBox(height: 16.0),
+        ],
+      ),
     );
   }
 }
