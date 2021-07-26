@@ -51,7 +51,7 @@ class _AuthenticateState extends State<Authenticate> {
             },
           ),
           AnimatedSwitcher(
-            duration: const Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 350),
             child: screenWidget,
           ),
         ],
