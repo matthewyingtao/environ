@@ -1,6 +1,6 @@
 import 'package:environ/screens/camera/camera.dart';
 import 'package:environ/screens/home/lessons.dart';
-import 'package:environ/screens/home/pop_up_dialog.dart';
+import 'package:environ/shared/components/pop_up_dialog.dart';
 import 'package:environ/screens/home/stats.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:environ/screens/home/trash_modal.dart';
