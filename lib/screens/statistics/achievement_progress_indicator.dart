@@ -41,7 +41,7 @@ class AchievementProgressIndicator extends StatelessWidget {
         getPercentageDone(challengeProgress, challengeMax);
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -50,7 +50,7 @@ class AchievementProgressIndicator extends StatelessWidget {
               Text(challengeTitle),
               const Spacer(),
               Text(
-                challengeProgress.toString() + " / " + challengeMax.toString(),
+                "${challengeProgress.toString()} / ${challengeMax.toString()}",
                 style: percentageDone == 1
                     // text is bold when task is complete
                     ? Theme.of(context).textTheme.bodyText2!.copyWith(

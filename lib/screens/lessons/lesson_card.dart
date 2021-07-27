@@ -33,16 +33,16 @@ class LessonCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    this.heading,
+                    heading,
                     style: Theme.of(context)
                         .textTheme
                         .headline6!
                         .copyWith(color: black),
                   ),
-                  SizedBox(height: 8.0),
+                  const SizedBox(height: 8.0),
                   Text(
                     body,
-                    style: TextStyle(color: black),
+                    style: const TextStyle(color: black),
                   ),
                   Align(
                     alignment: Alignment.bottomRight,

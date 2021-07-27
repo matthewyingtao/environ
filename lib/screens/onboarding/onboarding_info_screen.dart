@@ -7,10 +7,10 @@ class OnboardingInfoScreen extends StatelessWidget {
   final Widget icon;
 
   const OnboardingInfoScreen({
-    required String this.title,
-    required String this.subheading,
-    required String this.body,
-    required Widget this.icon,
+    required this.title,
+    required this.subheading,
+    required this.body,
+    required this.icon,
     Key? key,
   }) : super(key: key);
 

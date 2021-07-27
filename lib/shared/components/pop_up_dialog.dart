@@ -5,8 +5,7 @@ import 'dart:math';
 class PopUpDialog extends StatelessWidget {
   final Widget bodyWidget;
 
-  const PopUpDialog({required Widget this.bodyWidget, Key? key})
-      : super(key: key);
+  const PopUpDialog({required this.bodyWidget, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class PopUpDialog extends StatelessWidget {
           child: Container(
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
-            child: this.bodyWidget,
+            child: bodyWidget,
           ),
         ),
       ],

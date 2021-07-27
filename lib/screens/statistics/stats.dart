@@ -14,7 +14,7 @@ class Stats extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
                 "Statistics",
                 style: Theme.of(context).textTheme.headline3,
@@ -22,7 +22,7 @@ class Stats extends StatelessWidget {
             ),
             const SizedBox(height: 24.0),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
                 "All Achievements",
                 textAlign: TextAlign.left,
