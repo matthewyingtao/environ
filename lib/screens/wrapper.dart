@@ -17,16 +17,16 @@ class Wrapper extends StatefulWidget {
 
 class _WrapperState extends State<Wrapper> {
   Future<bool> isFirstTime() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    var isFirstTime = prefs.getBool('first_time');
+    final bool? isFirstTime = prefs.getBool('first_time');
 
     if (isFirstTime == null) {
-      PermissionStatus status = await Permission.camera.status;
+      final PermissionStatus status = await Permission.camera.status;
       if (status == PermissionStatus.denied) {
         await Permission.camera.request();
       }
-      prefs.setBool('first_time', false);
+      await prefs.setBool('first_time', false);
       return true;
     }
     return false;
@@ -38,7 +38,7 @@ class _WrapperState extends State<Wrapper> {
 
     return FutureBuilder<bool>(
       future: isFirstTime(),
-      builder: (BuildContext context, isFirstTimeSnapshot) {
+      builder: (context, isFirstTimeSnapshot) {
         if (isFirstTimeSnapshot.hasData && !isFirstTimeSnapshot.hasError) {
           if (isFirstTimeSnapshot.data!) {
             return const Onboarding();

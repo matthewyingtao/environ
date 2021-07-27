@@ -1,8 +1,10 @@
+import 'dart:math';
+
 import 'package:environ/screens/authenticate/sign_in.dart';
 import 'package:environ/screens/authenticate/register.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:math';
 
 class Authenticate extends StatefulWidget {
   const Authenticate({Key? key}) : super(key: key);
@@ -39,16 +41,14 @@ class _AuthenticateState extends State<Authenticate> {
             tween: Tween<double>(begin: 0, end: leafSize),
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,
-            builder: (BuildContext context, double size, Widget? widget) {
-              return Transform(
-                transform: Matrix4.rotationZ(pi / 12.0)..scale(size),
-                alignment: Alignment.center,
-                child: SvgPicture.asset(
-                  "assets/leavesbg.svg",
-                  color: const Color.fromRGBO(0, 0, 0, 0.05),
-                ),
-              );
-            },
+            builder: (context, size, widget) => Transform(
+              transform: Matrix4.rotationZ(pi / 12.0)..scale(size),
+              alignment: Alignment.center,
+              child: SvgPicture.asset(
+                'assets/leavesbg.svg',
+                color: const Color.fromRGBO(0, 0, 0, 0.05),
+              ),
+            ),
           ),
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 350),

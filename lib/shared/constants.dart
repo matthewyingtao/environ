@@ -14,9 +14,9 @@ const textInputDecoration = InputDecoration(
     fontSize: 24,
   ),
   enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: Colors.black45, width: 2.0)),
-  focusedBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: themeBlue, width: 2.0)),
+      borderSide: BorderSide(color: Colors.black45, width: 2)),
+  focusedBorder:
+      UnderlineInputBorder(borderSide: BorderSide(color: themeBlue, width: 2)),
 );
 
 const linkButtonStyle = TextStyle(
@@ -41,7 +41,7 @@ ButtonStyle roundedButtonWhite = ButtonStyle(
   backgroundColor: MaterialStateProperty.all(Colors.black54),
   textStyle: MaterialStateProperty.all(
     const TextStyle(
-      fontFamily: "Montserrat",
+      fontFamily: 'Montserrat',
       color: Colors.white,
       fontSize: 20,
       fontWeight: FontWeight.w900,
@@ -51,7 +51,7 @@ ButtonStyle roundedButtonWhite = ButtonStyle(
     const StadiumBorder(
       side: BorderSide(
         color: Colors.white,
-        width: 4.0,
+        width: 4,
       ),
     ),
   ),
@@ -64,15 +64,15 @@ ThemeData appTheme = ThemeData(
   splashColor: themeBlue,
 
   // typography
-  fontFamily: "Montserrat",
+  fontFamily: 'Montserrat',
   textTheme: const TextTheme(
     headline1: TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.w900,
-      fontSize: 72.0,
+      fontSize: 72,
       shadows: <Shadow>[
         Shadow(
-          offset: Offset(12.0, 12.0),
+          offset: Offset(12, 12),
           color: Color.fromRGBO(0, 0, 0, 0.20),
         ),
       ],
@@ -86,8 +86,8 @@ ThemeData appTheme = ThemeData(
       fontWeight: FontWeight.w900,
       shadows: <Shadow>[
         Shadow(
-          offset: Offset(4, 4.0),
-          blurRadius: 4.0,
+          offset: Offset(4, 4),
+          blurRadius: 4,
           color: Color.fromRGBO(0, 0, 0, 0.25),
         ),
       ],
@@ -106,7 +106,7 @@ ThemeData appTheme = ThemeData(
     ),
     bodyText2: TextStyle(
       color: Colors.white,
-      fontSize: 16.0,
+      fontSize: 16,
       height: 1.4,
     ),
   ),

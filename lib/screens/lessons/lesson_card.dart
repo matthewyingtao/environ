@@ -18,16 +18,14 @@ class LessonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> _showInfoScreen() async {
-      return showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return Dialog(
+    Future<void> _showInfoScreen() async => showDialog<void>(
+          context: context,
+          builder: (context) => Dialog(
             backgroundColor: Colors.white,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             insetPadding:
-                const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             child: PopUpDialog(
               bodyWidget: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +37,7 @@ class LessonCard extends StatelessWidget {
                         .headline6!
                         .copyWith(color: black),
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 8),
                   Text(
                     body,
                     style: const TextStyle(color: black),
@@ -47,28 +45,26 @@ class LessonCard extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       child: const Text(
                         'Close',
                         style: linkButtonStyle,
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
                     ),
                   ),
                 ],
               ),
             ),
-          );
-        },
-      );
-    }
+          ),
+        );
 
     return GestureDetector(
-      onTap: () => _showInfoScreen(),
+      onTap: _showInfoScreen,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
-        margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.circular(10),

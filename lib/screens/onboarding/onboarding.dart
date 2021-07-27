@@ -15,7 +15,7 @@ class Onboarding extends StatefulWidget {
 
 class _OnboardingState extends State<Onboarding> {
   double _leafRotation = -(pi / 12);
-  final PageController _controller = PageController(initialPage: 0);
+  final PageController _controller = PageController();
   Color _bgColor = themeGreen;
   bool _goSignIn = false;
 
@@ -39,7 +39,7 @@ class _OnboardingState extends State<Onboarding> {
                 transformAlignment: Alignment.center,
                 curve: Curves.easeOut,
                 child: SvgPicture.asset(
-                  "assets/leavesbg.svg",
+                  'assets/leavesbg.svg',
                   color: const Color.fromRGBO(255, 255, 255, 0.10),
                 ),
               ),
@@ -70,10 +70,10 @@ class _OnboardingState extends State<Onboarding> {
                       },
                       children: [
                         const OnboardingInfoScreen(
-                          title: "KNOWLEDGE",
-                          subheading: "Grow your",
+                          title: 'KNOWLEDGE',
+                          subheading: 'Grow your',
                           body:
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
                           icon: Icon(
                             Icons.school,
                             size: 140,
@@ -81,10 +81,10 @@ class _OnboardingState extends State<Onboarding> {
                           ),
                         ),
                         const OnboardingInfoScreen(
-                          title: "PROGRESS",
-                          subheading: "Track your",
+                          title: 'PROGRESS',
+                          subheading: 'Track your',
                           body:
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
                           icon: Icon(
                             Icons.insights,
                             size: 140,
@@ -92,12 +92,12 @@ class _OnboardingState extends State<Onboarding> {
                           ),
                         ),
                         OnboardingInfoScreen(
-                          title: "SUSTAINABLY",
-                          subheading: "Live more",
+                          title: 'SUSTAINABLY',
+                          subheading: 'Live more',
                           body:
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
                           icon: SvgPicture.asset(
-                            "assets/recyclingsymbol.svg",
+                            'assets/recyclingsymbol.svg',
                             color: Colors.white,
                             height: 120,
                             width: 120,
@@ -108,8 +108,8 @@ class _OnboardingState extends State<Onboarding> {
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0,
-                      vertical: 24.0,
+                      horizontal: 8,
+                      vertical: 24,
                     ),
                     child: Row(
                       children: [
@@ -118,10 +118,10 @@ class _OnboardingState extends State<Onboarding> {
                             borderRadius: BorderRadius.circular(50),
                             color: Colors.white30,
                           ),
-                          margin: const EdgeInsets.only(left: 16.0),
+                          margin: const EdgeInsets.only(left: 16),
                           padding: const EdgeInsets.symmetric(
-                            vertical: 6.0,
-                            horizontal: 16.0,
+                            vertical: 6,
+                            horizontal: 16,
                           ),
                           child: SmoothPageIndicator(
                             controller: _controller,
@@ -134,25 +134,25 @@ class _OnboardingState extends State<Onboarding> {
                         ),
                         const Spacer(),
                         Container(
-                          margin: const EdgeInsets.only(right: 16.0),
+                          margin: const EdgeInsets.only(right: 16),
                           child: ElevatedButton(
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(
-                                vertical: 8.0,
-                                horizontal: 24.0,
-                              ),
-                              child: const Text("Continue"),
-                            ),
                             style: roundedButtonWhite,
                             onPressed: () async {
                               if (_controller.page == 2) {
                                 setState(() => _goSignIn = true);
                               } else {
-                                _controller.nextPage(
+                                await _controller.nextPage(
                                     duration: const Duration(milliseconds: 500),
                                     curve: Curves.ease);
                               }
                             },
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(
+                                vertical: 8,
+                                horizontal: 24,
+                              ),
+                              child: const Text('Continue'),
+                            ),
                           ),
                         ),
                       ],

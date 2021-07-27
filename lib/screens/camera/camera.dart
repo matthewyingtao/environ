@@ -7,12 +7,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Camera extends StatefulWidget {
-  final Function changeData;
-
   const Camera({
     required this.changeData,
     Key? key,
   }) : super(key: key);
+
+  final Function changeData;
 
   @override
   CameraState createState() => CameraState();
@@ -39,22 +39,22 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) async {
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     if (_controller == null || !_controller!.value.isInitialized) {
       return;
     }
 
     if (state == AppLifecycleState.inactive) {
-      _controller!.dispose();
+      await _controller!.dispose();
     } else if (state == AppLifecycleState.resumed) {
-      setupCamera();
+      await setupCamera();
     }
   }
 
   // picks the main camera and initialises the controller
   Future<void> setupCamera() async {
     _cameras = await availableCameras();
-    CameraController controller = CameraController(
+    final CameraController controller = CameraController(
       // picks the main camera on the device
       _cameras.first,
       ResolutionPreset.medium,
@@ -67,7 +67,7 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
 
   // callback for the shutter button
   // takes the photo, runs the model and updates the data
-  void takePhoto() async {
+  Future<void> takePhoto() async {
     // makes sure the user cannot take two photos at once
     if (_isModelRunning) {
       return;
@@ -77,18 +77,18 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
       _isModelRunning = true;
     });
 
-    // ensure that the photo taken won't use flash because flash freezes the camera
-    _controller!.setFlashMode(FlashMode.off);
+    // ensure the photo taken won't use flash because flash freezes the camera
+    await _controller!.setFlashMode(FlashMode.off);
     final image = await _controller!.takePicture();
 
-    Model _model = Model(path: image.path);
+    final Model _model = Model(path: image.path);
 
     try {
-      List? results = await (_model.useModel());
-      Map resultMap = Map<String, dynamic>.from(results![0]);
-      resultMap["imagePath"] = image.path;
+      final List? results = await _model.useModel();
+      final Map resultMap = Map<String, dynamic>.from(results![0]);
+      resultMap['imagePath'] = image.path;
       widget.changeData(resultMap);
-    } catch (e) {
+    } on Exception catch (e) {
       debugPrint(e.toString());
     }
 
@@ -100,29 +100,28 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SizedBox.expand(
+  Widget build(BuildContext context) => Stack(
+        children: [
           // forces the widget to be take up all available space
-          child: _controller == null || !_controller!.value.isInitialized
-              ? const Loading(transparent: true)
-              : CameraPreview(_controller!),
-        ),
-        _isModelRunning
-            ? const Loading(
-                transparent: true,
-              )
-            : Column(
-                children: [
-                  // spacer makes sure that the shutter button bar is pushed to the bottom
-                  const Spacer(),
-                  ShutterButtonBar(
-                    onPressed: takePhoto,
-                  )
-                ],
-              ),
-      ],
-    );
-  }
+          SizedBox.expand(
+            child: _controller == null || !_controller!.value.isInitialized
+                ? const Loading(transparent: true)
+                : CameraPreview(_controller!),
+          ),
+          // if model is running, show loading otherwise show shutter bar
+          _isModelRunning
+              ? const Loading(
+                  transparent: true,
+                )
+              : Column(
+                  children: [
+                    // shutter button bar is pushed to the bottom
+                    const Spacer(),
+                    ShutterButtonBar(
+                      onPressed: takePhoto,
+                    )
+                  ],
+                ),
+        ],
+      );
 }
