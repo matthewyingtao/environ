@@ -1,4 +1,4 @@
-import 'package:environ/shared/components/achievement_progress_indicator.dart';
+import 'package:environ/screens/statistics/achievement_progress_indicator.dart';
 import 'package:flutter/material.dart';
 
 class Stats extends StatelessWidget {

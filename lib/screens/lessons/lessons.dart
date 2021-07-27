@@ -1,4 +1,4 @@
-import 'package:environ/shared/components/lesson_card.dart';
+import 'package:environ/screens/lessons/lesson_card.dart';
 import 'package:flutter/material.dart';
 
 class Lessons extends StatelessWidget {
