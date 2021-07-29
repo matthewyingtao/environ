@@ -77,8 +77,14 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
       _isModelRunning = true;
     });
 
-    // ensure the photo taken won't use flash because flash freezes the camera
-    await _controller!.setFlashMode(FlashMode.off);
+    // try to turn off flash, error if camera has no support
+    try {
+      // ensure the photo taken won't use flash because flash freezes the camera
+      await _controller!.setFlashMode(FlashMode.off);
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+    }
+
     final image = await _controller!.takePicture();
 
     final Model _model = Model(path: image.path);
