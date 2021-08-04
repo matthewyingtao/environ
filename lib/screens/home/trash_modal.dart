@@ -46,7 +46,7 @@ class TrashModal extends StatelessWidget {
             topLeft: Radius.circular(32),
             topRight: Radius.circular(32),
           ),
-          color: isRecyclable ? themeBlue : themeRed,
+          color: isRecyclable ? themeRed : themeBlue,
           image: DecorationImage(
             image: AssetImage(trashImage),
             fit: BoxFit.cover,
@@ -60,7 +60,7 @@ class TrashModal extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              isRecyclable ? 'Recyclable' : 'Non-Recyclable',
+              isRecyclable ? 'Non-Recyclable' : 'Recyclable',
               style: Theme.of(context).textTheme.headline3,
               textAlign: TextAlign.center,
             ),
