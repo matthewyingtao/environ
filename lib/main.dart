@@ -5,9 +5,12 @@ import 'package:environ/shared/constants.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hive_flutter/adapters.dart';
+
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 
 Future<void> clear() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -20,6 +23,9 @@ Future<void> main() async {
   ));
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  final dir = await getApplicationDocumentsDirectory();
+  await Hive.initFlutter(dir.path);
+  await Hive.openBox<int>('achievements');
   runApp(const App());
 }
 
