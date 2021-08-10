@@ -164,7 +164,7 @@ class _HomeState extends State<Home> {
                         changeData: updateTrashdata,
                       ),
                       const Lessons(),
-                      const Stats(),
+                      Stats(data: trashData),
                     ],
                   ),
                 ],

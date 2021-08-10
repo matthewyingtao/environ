@@ -7,19 +7,22 @@ class Model {
   final String path;
 
   Future<List?> useModel() async {
-    final DatabaseService database = DatabaseService();
-
     await Tflite.loadModel(
       model: 'assets/model/saved_model.tflite',
       labels: 'assets/model/labels.txt',
     );
-    final int objects = await database.updateAchievement();
+
+    final result = await Tflite.runModelOnImage(
+      path: path,
+    );
+
+    final DatabaseService database =
+        DatabaseService(data: Map<String, dynamic>.from(result![0]));
+    final int objects = database.updateAchievement();
 
     debugPrint(objects.toString());
 
-    return Tflite.runModelOnImage(
-      path: path,
-    );
+    return result;
   }
 
   Future<void> closeModel() async {
