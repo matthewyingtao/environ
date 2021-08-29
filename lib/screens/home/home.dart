@@ -4,11 +4,11 @@ import 'package:environ/screens/home/help_dialog.dart';
 import 'package:environ/screens/home/stats.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:environ/screens/home/trash_modal.dart';
+import 'package:flutter/services.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math';
-import '../../services/auth.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -18,8 +18,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final AuthService _auth = AuthService();
-
   Map<String, dynamic>? trashData;
 
   // callback for camera, sets new state of trashData
@@ -79,7 +77,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Environ", style: Theme.of(context).textTheme.headline5),
         backgroundColor: themeDarkGreen,
-        brightness: Brightness.dark,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
         elevation: 8.0,
         actions: <Widget>[
           IconButton(
@@ -89,12 +87,6 @@ class _HomeState extends State<Home> {
           IconButton(
             icon: const Icon(Icons.fact_check_outlined),
             onPressed: () => _showTrashModal(),
-          ),
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await _auth.signOut();
-            },
           ),
         ],
       ),

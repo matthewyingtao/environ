@@ -1,10 +1,7 @@
-import 'package:environ/screens/authenticate/authenticate.dart';
 import 'package:environ/screens/home/home.dart';
 import 'package:environ/screens/onboarding/onboarding.dart';
 import 'package:environ/shared/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:environ/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -34,8 +31,6 @@ class _WrapperState extends State<Wrapper> {
 
   @override
   Widget build(BuildContext context) {
-    final UserModel? user = Provider.of<UserModel?>(context);
-
     return FutureBuilder<bool>(
       future: isFirstTime(),
       builder: (BuildContext context, isFirstTimeSnapshot) {
@@ -43,11 +38,7 @@ class _WrapperState extends State<Wrapper> {
           if (isFirstTimeSnapshot.data!) {
             return const Onboarding();
           } else {
-            if (user == null) {
-              return const Authenticate();
-            } else {
-              return const Home();
-            }
+            return const Home();
           }
         } else {
           return const Loading();

@@ -3,8 +3,6 @@ import 'package:environ/shared/constants.dart';
 import 'package:environ/shared/loading.dart';
 import 'package:flutter/material.dart';
 
-import '../../services/auth.dart';
-
 class Register extends StatefulWidget {
   final Function toggleView;
 
@@ -18,7 +16,6 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
 
@@ -26,21 +23,7 @@ class _RegisterState extends State<Register> {
   String password = '';
   String error = '';
 
-  void register() async {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        loading = true;
-      });
-      dynamic result =
-          await _auth.registerWithEmailAndPassword(email, password);
-      if (result is String) {
-        setState(() {
-          error = result;
-          loading = false;
-        });
-      }
-    }
-  }
+  void register() async {}
 
   @override
   Widget build(BuildContext context) {

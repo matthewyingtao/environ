@@ -1,5 +1,4 @@
 import 'package:environ/shared/components/wide_stadium_button.dart';
-import 'package:environ/services/auth.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:environ/shared/loading.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,6 @@ void clear() async {
 }
 
 class _SignInState extends State<SignIn> {
-  final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   bool loading = false;
@@ -32,20 +30,7 @@ class _SignInState extends State<SignIn> {
   String password = '';
   String error = '';
 
-  void signIn() async {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        loading = true;
-      });
-      dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-      if (result is String) {
-        setState(() {
-          error = result;
-          loading = false;
-        });
-      }
-    }
-  }
+  void signIn() async {}
 
   @override
   Widget build(BuildContext context) {
