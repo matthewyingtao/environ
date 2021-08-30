@@ -63,6 +63,7 @@ ThemeData appTheme = ThemeData(
   primaryColor: themeGreen,
   backgroundColor: themeGreen,
   splashColor: Colors.black45,
+  highlightColor: Colors.black45,
 
   // typography
   fontFamily: 'Montserrat',
