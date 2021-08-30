@@ -62,13 +62,12 @@ ThemeData appTheme = ThemeData(
   // color palette
   primaryColor: themeGreen,
   backgroundColor: themeGreen,
-  splashColor: themeBlue,
+  splashColor: Colors.black45,
 
   // typography
   fontFamily: 'Montserrat',
   textTheme: const TextTheme(
     headline1: TextStyle(
-      color: Colors.white,
       fontWeight: FontWeight.w900,
       fontSize: 72,
       shadows: <Shadow>[
@@ -79,11 +78,9 @@ ThemeData appTheme = ThemeData(
       ],
     ),
     headline2: TextStyle(
-      color: Colors.white,
       fontWeight: FontWeight.w700,
     ),
     headline3: TextStyle(
-      color: Colors.white,
       fontWeight: FontWeight.w900,
       shadows: <Shadow>[
         Shadow(
@@ -94,21 +91,20 @@ ThemeData appTheme = ThemeData(
       ],
     ),
     headline4: TextStyle(
-      color: Colors.white,
       fontWeight: FontWeight.w700,
     ),
     headline5: TextStyle(
-      color: Colors.white,
       fontWeight: FontWeight.w700,
     ),
     headline6: TextStyle(
-      color: Colors.white,
       fontWeight: FontWeight.w700,
     ),
     bodyText2: TextStyle(
-      color: Colors.white,
       fontSize: 16,
       height: 1.4,
     ),
+  ).apply(
+    bodyColor: Colors.white,
+    displayColor: Colors.white,
   ),
 );

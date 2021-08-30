@@ -81,16 +81,6 @@ class Stats extends StatelessWidget {
               challengeTitle: 'Scan 15 bottles',
             ),
             const AchievementProgressIndicator(
-              challengeProgress: 25,
-              challengeMax: 10,
-              challengeTitle: 'Scan 10 items',
-            ),
-            const AchievementProgressIndicator(
-              challengeProgress: 11,
-              challengeMax: 25,
-              challengeTitle: 'Scan 25 items',
-            ),
-            const AchievementProgressIndicator(
               challengeProgress: 10,
               challengeMax: 10,
               challengeTitle: 'Scan 10 red recyclables',

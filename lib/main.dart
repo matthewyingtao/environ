@@ -27,7 +27,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    clear();
+    // clear();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: appTheme,
