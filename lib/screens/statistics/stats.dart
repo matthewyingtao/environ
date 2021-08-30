@@ -8,7 +8,7 @@ class Stats extends StatelessWidget {
   final Map<String, dynamic>? data;
 
   Future<String> getName() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     return prefs.get('name').toString();
   }
@@ -37,14 +37,12 @@ class Stats extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: FutureBuilder(
                 future: getName(),
-                initialData: "loading",
-                builder: (context, snapshot) {
-                  return Text(
-                    "${snapshot.data.toString()}'s achievements",
-                    textAlign: TextAlign.left,
-                    style: Theme.of(context).textTheme.headline6,
-                  );
-                },
+                initialData: 'loading',
+                builder: (context, snapshot) => Text(
+                  "${snapshot.data.toString()}'s achievements",
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
               ),
             ),
             const SizedBox(height: 16),

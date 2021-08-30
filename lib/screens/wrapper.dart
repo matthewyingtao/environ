@@ -2,8 +2,8 @@ import 'package:environ/screens/home/home.dart';
 import 'package:environ/screens/onboarding/onboarding.dart';
 import 'package:environ/shared/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({Key? key}) : super(key: key);
@@ -16,10 +16,10 @@ class _WrapperState extends State<Wrapper> {
   Future<bool> isFirstTime() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    bool? isFirstTime = prefs.getBool('first_time');
+    final bool? isFirstTime = prefs.getBool('first_time');
 
     if (isFirstTime == null || isFirstTime == true) {
-      PermissionStatus status = await Permission.camera.status;
+      final PermissionStatus status = await Permission.camera.status;
       if (status == PermissionStatus.denied) {
         await Permission.camera.request();
       }
@@ -29,20 +29,18 @@ class _WrapperState extends State<Wrapper> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<bool>(
-      future: isFirstTime(),
-      builder: (context, isFirstTimeSnapshot) {
-        if (isFirstTimeSnapshot.hasData && !isFirstTimeSnapshot.hasError) {
-          if (isFirstTimeSnapshot.data!) {
-            return const Onboarding();
+  Widget build(BuildContext context) => FutureBuilder<bool>(
+        future: isFirstTime(),
+        builder: (context, isFirstTimeSnapshot) {
+          if (isFirstTimeSnapshot.hasData && !isFirstTimeSnapshot.hasError) {
+            if (isFirstTimeSnapshot.data!) {
+              return const Onboarding();
+            } else {
+              return const Home();
+            }
           } else {
-            return const Home();
+            return const Loading();
           }
-        } else {
-          return const Loading();
-        }
-      },
-    );
-  }
+        },
+      );
 }

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:environ/shared/constants.dart';
+import 'package:flutter/material.dart';
 
 class WideStadiumButton extends StatefulWidget {
   const WideStadiumButton({

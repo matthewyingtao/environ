@@ -1,8 +1,9 @@
 import 'dart:async';
+
+import 'package:camera/camera.dart';
 import 'package:environ/screens/camera/model.dart';
 import 'package:environ/screens/camera/shutter_button_bar.dart';
 import 'package:environ/shared/loading.dart';
-import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

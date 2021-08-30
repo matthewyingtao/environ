@@ -13,10 +13,10 @@ const textInputDecoration = InputDecoration(
     color: Colors.white38,
   ),
   enabledBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Colors.white54, width: 2.0),
+    borderSide: BorderSide(color: Colors.white54, width: 2),
   ),
   focusedBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Colors.white70, width: 2.0),
+    borderSide: BorderSide(color: Colors.white70, width: 2),
   ),
 );
 

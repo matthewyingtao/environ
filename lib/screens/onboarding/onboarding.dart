@@ -25,10 +25,10 @@ class _OnboardingState extends State<Onboarding> {
   final TextEditingController controller = TextEditingController();
 
   Future<void> setName(String name) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    prefs.setString('name', name);
-    prefs.setBool('first_time', false);
+    await prefs.setString('name', name);
+    await prefs.setBool('first_time', false);
   }
 
   @override
