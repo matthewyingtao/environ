@@ -1,11 +1,19 @@
 import 'package:environ/shared/components/achievement_progress_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Stats extends StatelessWidget {
   const Stats({Key? key}) : super(key: key);
 
+  Future<void> isFirstTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('first_time', true);
+  }
+
   @override
   Widget build(BuildContext context) {
+    isFirstTime();
+
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [

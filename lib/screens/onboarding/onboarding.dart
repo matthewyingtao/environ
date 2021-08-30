@@ -1,8 +1,10 @@
 import 'dart:math';
+import 'package:environ/screens/onboarding/authenticate.dart';
 import 'package:environ/screens/wrapper.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:environ/screens/onboarding/sustainably.dart';
 import 'package:environ/screens/onboarding/progress.dart';
@@ -20,6 +22,14 @@ class _OnboardingState extends State<Onboarding> {
   final PageController _controller = PageController(initialPage: 0);
   Color _bgColor = themeGreen;
   bool _goSignIn = false;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController controller = TextEditingController();
+
+  Future<void> setName(String name) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setString('name', name);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,14 +82,24 @@ class _OnboardingState extends State<Onboarding> {
                                 _bgColor = themeRed;
                               }
                               break;
+
+                            case 3:
+                              {
+                                _bgColor = themeGreen;
+                              }
+                              break;
                           }
                           _leafRotation = (index - 1) * (pi / 12);
                         });
                       },
-                      children: const [
-                        Sustainably(),
-                        Progress(),
-                        Knowledge(),
+                      children: [
+                        const Sustainably(),
+                        const Progress(),
+                        const Knowledge(),
+                        Authenticate(
+                          formKey: formKey,
+                          controller: controller,
+                        ),
                       ],
                     ),
                   ),
@@ -102,7 +122,7 @@ class _OnboardingState extends State<Onboarding> {
                           ),
                           child: SmoothPageIndicator(
                             controller: _controller,
-                            count: 3,
+                            count: 4,
                             effect: WormEffect(
                               dotColor: Colors.white70,
                               activeDotColor: Colors.grey[800]!,
@@ -122,12 +142,16 @@ class _OnboardingState extends State<Onboarding> {
                             ),
                             style: roundedButtonWhite,
                             onPressed: () async {
-                              if (_controller.page == 2) {
-                                setState(() => _goSignIn = true);
+                              if (_controller.page == 3) {
+                                if (formKey.currentState!.validate()) {
+                                  setName(controller.value.text);
+                                  setState(() => _goSignIn = true);
+                                }
                               } else {
                                 _controller.nextPage(
-                                    duration: const Duration(milliseconds: 500),
-                                    curve: Curves.ease);
+                                  duration: const Duration(milliseconds: 500),
+                                  curve: Curves.ease,
+                                );
                               }
                             },
                           ),

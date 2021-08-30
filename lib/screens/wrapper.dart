@@ -16,9 +16,9 @@ class _WrapperState extends State<Wrapper> {
   Future<bool> isFirstTime() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    var isFirstTime = prefs.getBool('first_time');
+    bool? isFirstTime = prefs.getBool('first_time');
 
-    if (isFirstTime == null) {
+    if (isFirstTime == null || isFirstTime == true) {
       PermissionStatus status = await Permission.camera.status;
       if (status == PermissionStatus.denied) {
         await Permission.camera.request();

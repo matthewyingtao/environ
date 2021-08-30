@@ -10,13 +10,14 @@ const black = Color(0xff1e1e1e);
 const textInputDecoration = InputDecoration(
   fillColor: Colors.white,
   hintStyle: TextStyle(
-    color: black,
-    fontSize: 24,
+    color: Colors.white38,
   ),
   enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: Colors.black45, width: 2.0)),
+    borderSide: BorderSide(color: Colors.white54, width: 2.0),
+  ),
   focusedBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: themeBlue, width: 2.0)),
+    borderSide: BorderSide(color: Colors.white70, width: 2.0),
+  ),
 );
 
 const linkButtonStyle = TextStyle(
