@@ -14,7 +14,7 @@ class Wrapper extends StatefulWidget {
 
 class _WrapperState extends State<Wrapper> {
   Future<bool> isFirstTime() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     bool? isFirstTime = prefs.getBool('first_time');
 
@@ -32,7 +32,7 @@ class _WrapperState extends State<Wrapper> {
   Widget build(BuildContext context) {
     return FutureBuilder<bool>(
       future: isFirstTime(),
-      builder: (BuildContext context, isFirstTimeSnapshot) {
+      builder: (context, isFirstTimeSnapshot) {
         if (isFirstTimeSnapshot.hasData && !isFirstTimeSnapshot.hasError) {
           if (isFirstTimeSnapshot.data!) {
             return const Onboarding();

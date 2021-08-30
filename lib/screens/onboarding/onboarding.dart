@@ -1,14 +1,13 @@
 import 'dart:math';
+
 import 'package:environ/screens/onboarding/authenticate.dart';
+import 'package:environ/screens/onboarding/onboarding_info_screen.dart';
 import 'package:environ/screens/wrapper.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:environ/screens/onboarding/sustainably.dart';
-import 'package:environ/screens/onboarding/progress.dart';
-import 'package:environ/screens/onboarding/knowledge.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({Key? key}) : super(key: key);
@@ -19,7 +18,7 @@ class Onboarding extends StatefulWidget {
 
 class _OnboardingState extends State<Onboarding> {
   double _leafRotation = -(pi / 12);
-  final PageController _controller = PageController(initialPage: 0);
+  final PageController _controller = PageController();
   Color _bgColor = themeGreen;
   bool _goSignIn = false;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -52,7 +51,7 @@ class _OnboardingState extends State<Onboarding> {
                 transformAlignment: Alignment.center,
                 curve: Curves.easeOut,
                 child: SvgPicture.asset(
-                  "assets/leavesbg.svg",
+                  'assets/leavesbg.svg',
                   color: const Color.fromRGBO(255, 255, 255, 0.10),
                 ),
               ),
@@ -67,21 +66,15 @@ class _OnboardingState extends State<Onboarding> {
                         setState(() {
                           switch (index) {
                             case 0:
-                              {
-                                _bgColor = themeGreen;
-                              }
+                              _bgColor = themeGreen;
                               break;
 
                             case 1:
-                              {
-                                _bgColor = themeBlue;
-                              }
+                              _bgColor = themeBlue;
                               break;
 
                             case 2:
-                              {
-                                _bgColor = themeRed;
-                              }
+                              _bgColor = themeRed;
                               break;
 
                             case 3:
@@ -94,9 +87,40 @@ class _OnboardingState extends State<Onboarding> {
                         });
                       },
                       children: [
-                        const Sustainably(),
-                        const Progress(),
-                        const Knowledge(),
+                        const OnboardingInfoScreen(
+                          title: 'KNOWLEDGE',
+                          subheading: 'Grow your',
+                          body:
+                              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
+                          icon: Icon(
+                            Icons.school,
+                            size: 140,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const OnboardingInfoScreen(
+                          title: 'PROGRESS',
+                          subheading: 'Track your',
+                          body:
+                              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
+                          icon: Icon(
+                            Icons.insights,
+                            size: 140,
+                            color: Colors.white,
+                          ),
+                        ),
+                        OnboardingInfoScreen(
+                          title: 'SUSTAINABLY',
+                          subheading: 'Live more',
+                          body:
+                              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
+                          icon: SvgPicture.asset(
+                            'assets/recyclingsymbol.svg',
+                            color: Colors.white,
+                            height: 120,
+                            width: 120,
+                          ),
+                        ),
                         Authenticate(
                           formKey: formKey,
                           controller: controller,
@@ -106,8 +130,8 @@ class _OnboardingState extends State<Onboarding> {
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0,
-                      vertical: 24.0,
+                      horizontal: 8,
+                      vertical: 24,
                     ),
                     child: Row(
                       children: [
@@ -116,10 +140,10 @@ class _OnboardingState extends State<Onboarding> {
                             borderRadius: BorderRadius.circular(50),
                             color: Colors.white30,
                           ),
-                          margin: const EdgeInsets.only(left: 16.0),
+                          margin: const EdgeInsets.only(left: 16),
                           padding: const EdgeInsets.symmetric(
-                            vertical: 6.0,
-                            horizontal: 16.0,
+                            vertical: 6,
+                            horizontal: 16,
                           ),
                           child: SmoothPageIndicator(
                             controller: _controller,
@@ -132,29 +156,29 @@ class _OnboardingState extends State<Onboarding> {
                         ),
                         const Spacer(),
                         Container(
-                          margin: const EdgeInsets.only(right: 16.0),
+                          margin: const EdgeInsets.only(right: 16),
                           child: ElevatedButton(
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(
-                                vertical: 8.0,
-                                horizontal: 24.0,
-                              ),
-                              child: const Text("Continue"),
-                            ),
                             style: roundedButtonWhite,
                             onPressed: () async {
                               if (_controller.page == 3) {
                                 if (formKey.currentState!.validate()) {
-                                  setName(controller.value.text);
+                                  await setName(controller.value.text);
                                   setState(() => _goSignIn = true);
                                 }
                               } else {
-                                _controller.nextPage(
+                                await _controller.nextPage(
                                   duration: const Duration(milliseconds: 500),
                                   curve: Curves.ease,
                                 );
                               }
                             },
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(
+                                vertical: 8,
+                                horizontal: 24,
+                              ),
+                              child: const Text('Continue'),
+                            ),
                           ),
                         ),
                       ],

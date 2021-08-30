@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:environ/shared/constants.dart';
 
 class WideStadiumButton extends StatefulWidget {
-  final String text;
-  final VoidCallback onPressed;
-
   const WideStadiumButton({
     required this.text,
     required this.onPressed,
     Key? key,
   }) : super(key: key);
+
+  final String text;
+  final VoidCallback onPressed;
 
   @override
   _WideStadiumButtonState createState() => _WideStadiumButtonState();
@@ -17,17 +17,15 @@ class WideStadiumButton extends StatefulWidget {
 
 class _WideStadiumButtonState extends State<WideStadiumButton> {
   @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      child: Container(
-        margin: const EdgeInsets.symmetric(
-          vertical: 8.0,
-          horizontal: 24.0,
+  Widget build(BuildContext context) => ElevatedButton(
+        style: roundedButtonWhite,
+        onPressed: widget.onPressed,
+        child: Container(
+          margin: const EdgeInsets.symmetric(
+            vertical: 8,
+            horizontal: 24,
+          ),
+          child: Text(widget.text),
         ),
-        child: Text(widget.text),
-      ),
-      style: roundedButtonWhite,
-      onPressed: widget.onPressed,
-    );
-  }
+      );
 }
