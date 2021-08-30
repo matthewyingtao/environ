@@ -4,16 +4,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Stats extends StatelessWidget {
   const Stats({Key? key}) : super(key: key);
-
-  Future<void> isFirstTime() async {
+  Future<String> getName() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('first_time', true);
+
+    return prefs.get('name').toString();
   }
 
   @override
   Widget build(BuildContext context) {
-    isFirstTime();
-
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
@@ -28,11 +26,16 @@ class Stats extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               const SizedBox(height: 24.0),
-              Text(
-                "All Achievements",
-                textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.headline6,
-              ),
+              FutureBuilder(
+                  future: getName(),
+                  initialData: "loading",
+                  builder: (context, snapshot) {
+                    return Text(
+                      "${snapshot.data.toString()}'s achievements",
+                      textAlign: TextAlign.left,
+                      style: Theme.of(context).textTheme.headline6,
+                    );
+                  }),
               const SizedBox(height: 16.0),
               const AchievementProgressIndicator(
                 challengeProgress: 1,
