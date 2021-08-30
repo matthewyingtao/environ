@@ -23,7 +23,6 @@ class _WrapperState extends State<Wrapper> {
       if (status == PermissionStatus.denied) {
         await Permission.camera.request();
       }
-      prefs.setBool('first_time', false);
       return true;
     }
     return false;

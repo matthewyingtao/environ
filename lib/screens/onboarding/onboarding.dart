@@ -29,6 +29,7 @@ class _OnboardingState extends State<Onboarding> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setString('name', name);
+    prefs.setBool('first_time', false);
   }
 
   @override
