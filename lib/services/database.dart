@@ -1,14 +1,16 @@
 import 'package:hive/hive.dart';
 
-class DatabaseService {
-  DatabaseService({required this.data});
-  final Map<String, dynamic>? data;
+class Database {
   final box = Hive.box<int>('achievements');
 
-  int updateAchievement() {
+  void initializeAchievements() {
+    box.put('objects', 0);
+  }
+
+  int updateAchievement(Map<String, dynamic>? data) {
     int objects;
 
-    objects = box.get('objects', defaultValue: 0) ?? 0;
+    objects = box.get('objects') ?? 0;
 
     box.put('objects', objects + 1);
     return objects;

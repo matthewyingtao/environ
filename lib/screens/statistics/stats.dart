@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Stats extends StatelessWidget {
-  const Stats({required this.data, Key? key}) : super(key: key);
-  final Map<String, dynamic>? data;
+  const Stats({Key? key}) : super(key: key);
 
   Future<String> getName() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -15,7 +14,7 @@ class Stats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DatabaseService database = DatabaseService(data: data);
+    final Database database = Database();
     final List<int> achievements = database.getAchievementData();
 
     return ListView(

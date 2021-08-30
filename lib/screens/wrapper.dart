@@ -1,5 +1,6 @@
 import 'package:environ/screens/home/home.dart';
 import 'package:environ/screens/onboarding/onboarding.dart';
+import 'package:environ/services/database.dart';
 import 'package:environ/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -19,6 +20,8 @@ class _WrapperState extends State<Wrapper> {
     final bool? isFirstTime = prefs.getBool('first_time');
 
     if (isFirstTime == null || isFirstTime == true) {
+      Database().initializeAchievements();
+      // makes sure that camera permissions are granted
       final PermissionStatus status = await Permission.camera.status;
       if (status == PermissionStatus.denied) {
         await Permission.camera.request();

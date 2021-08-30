@@ -16,9 +16,9 @@ class Model {
       path: path,
     );
 
-    final DatabaseService database =
-        DatabaseService(data: Map<String, dynamic>.from(result![0]));
-    final int objects = database.updateAchievement();
+    final Database database = Database();
+    final int objects =
+        database.updateAchievement(Map<String, dynamic>.from(result![0]));
 
     debugPrint(objects.toString());
 
