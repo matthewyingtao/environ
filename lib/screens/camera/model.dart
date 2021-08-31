@@ -1,5 +1,4 @@
 import 'package:environ/services/database.dart';
-import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
 
 class Model {
@@ -16,11 +15,7 @@ class Model {
       path: path,
     );
 
-    final Database database = Database();
-    final int objects =
-        database.updateAchievement(Map<String, dynamic>.from(result![0]));
-
-    debugPrint(objects.toString());
+    Database().updateObjectAchievements(Map<String, dynamic>.from(result![0]));
 
     return result;
   }

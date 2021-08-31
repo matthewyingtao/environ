@@ -1,4 +1,5 @@
 import 'package:environ/screens/wrapper.dart';
+import 'package:environ/services/database.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> clear() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.clear();
+  Database().initializeAchievements();
 }
 
 Future<void> main() async {

@@ -32,18 +32,22 @@ class _WrapperState extends State<Wrapper> {
   }
 
   @override
-  Widget build(BuildContext context) => FutureBuilder<bool>(
-        future: isFirstTime(),
-        builder: (context, isFirstTimeSnapshot) {
-          if (isFirstTimeSnapshot.hasData && !isFirstTimeSnapshot.hasError) {
-            if (isFirstTimeSnapshot.data!) {
-              return const Onboarding();
-            } else {
-              return const Home();
-            }
+  Widget build(BuildContext context) {
+    Database().updateAppOpenAchievement();
+
+    return FutureBuilder<bool>(
+      future: isFirstTime(),
+      builder: (context, isFirstTimeSnapshot) {
+        if (isFirstTimeSnapshot.hasData && !isFirstTimeSnapshot.hasError) {
+          if (isFirstTimeSnapshot.data!) {
+            return const Onboarding();
           } else {
-            return const Loading();
+            return const Home();
           }
-        },
-      );
+        } else {
+          return const Loading();
+        }
+      },
+    );
+  }
 }

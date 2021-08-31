@@ -15,7 +15,19 @@ class Stats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Database database = Database();
-    final List<int> achievements = database.getAchievementData();
+    final Map<dynamic, int> achievements = database.getAchievementData();
+
+    final int objects = achievements['objects'] ?? 0;
+    final int openAppOnSeparateDays =
+        achievements['open_app_separate_days'] ?? 0;
+
+    final int clearGlass = achievements['clear-glass'] ?? 0;
+    final int coloredGlass = achievements['colored-glass'] ?? 0;
+    final int clothing = achievements['clothing'] ?? 0;
+    final int metal = achievements['metal'] ?? 0;
+    final int paperCardboard = achievements['paper-cardboard'] ?? 0;
+    final int plastic = achievements['plastic'] ?? 0;
+    final int trash = achievements['trash'] ?? 0;
 
     return ListView(
       physics: const BouncingScrollPhysics(),
@@ -46,49 +58,94 @@ class Stats extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             AchievementProgressIndicator(
-              challengeProgress: achievements[0],
+              challengeProgress: objects,
               challengeMax: 10,
               challengeTitle: 'Scan 10 items',
             ),
             AchievementProgressIndicator(
-              challengeProgress: achievements[0],
+              challengeProgress: objects,
               challengeMax: 25,
               challengeTitle: 'Scan 25 items',
             ),
             AchievementProgressIndicator(
-              challengeProgress: achievements[0],
+              challengeProgress: objects,
               challengeMax: 50,
               challengeTitle: 'Scan 50 items',
             ),
-            const AchievementProgressIndicator(
-              challengeProgress: 5,
-              challengeMax: 10,
-              challengeTitle: 'Scan 10 red recyclables',
-            ),
-            const AchievementProgressIndicator(
-              challengeProgress: 2,
+            AchievementProgressIndicator(
+              challengeProgress: openAppOnSeparateDays,
               challengeMax: 5,
               challengeTitle: 'Open the app on 5 different days',
             ),
-            const AchievementProgressIndicator(
-              challengeProgress: 1,
-              challengeMax: 5,
-              challengeTitle: 'Scan 5 bottles',
-            ),
-            const AchievementProgressIndicator(
-              challengeProgress: 1,
+            AchievementProgressIndicator(
+              challengeProgress: openAppOnSeparateDays,
               challengeMax: 15,
-              challengeTitle: 'Scan 15 bottles',
+              challengeTitle: 'Open the app on 15 different days',
             ),
-            const AchievementProgressIndicator(
-              challengeProgress: 10,
-              challengeMax: 10,
-              challengeTitle: 'Scan 10 red recyclables',
-            ),
-            const AchievementProgressIndicator(
-              challengeProgress: 2,
+            AchievementProgressIndicator(
+              challengeProgress: metal,
               challengeMax: 5,
-              challengeTitle: 'Open the app on 5 different days',
+              challengeTitle: 'Scan 5 metal items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: metal,
+              challengeMax: 15,
+              challengeTitle: 'Scan 15 metal items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: clearGlass,
+              challengeMax: 5,
+              challengeTitle: 'Scan 5 clear glass items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: clearGlass,
+              challengeMax: 15,
+              challengeTitle: 'Scan 15 clear glass items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: coloredGlass,
+              challengeMax: 5,
+              challengeTitle: 'Scan 5 colored glass items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: coloredGlass,
+              challengeMax: 15,
+              challengeTitle: 'Scan 15 colored glass items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: clothing,
+              challengeMax: 5,
+              challengeTitle: 'Scan 5 clothing items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: clothing,
+              challengeMax: 15,
+              challengeTitle: 'Scan 15 clothing items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: paperCardboard,
+              challengeMax: 5,
+              challengeTitle: 'Scan 5 paper or cardboard items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: paperCardboard,
+              challengeMax: 15,
+              challengeTitle: 'Scan 15 paper or cardboard items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: plastic,
+              challengeMax: 5,
+              challengeTitle: 'Scan 5 plastic items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: plastic,
+              challengeMax: 15,
+              challengeTitle: 'Scan 15 plastic items',
+            ),
+            AchievementProgressIndicator(
+              challengeProgress: trash,
+              challengeMax: 100,
+              challengeTitle: 'Scan 5 clothing items',
             ),
             const SizedBox(height: 16),
           ],

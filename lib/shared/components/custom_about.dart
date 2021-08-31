@@ -20,20 +20,16 @@ void showCustomAboutDialog({
   bool useRootNavigator = true,
   RouteSettings? routeSettings,
 }) {
-  assert(context != null);
-  assert(useRootNavigator != null);
   showDialog<void>(
     context: context,
     useRootNavigator: useRootNavigator,
-    builder: (BuildContext context) {
-      return CustomAboutDialog(
-        applicationName: applicationName,
-        applicationVersion: applicationVersion,
-        applicationIcon: applicationIcon,
-        applicationLegalese: applicationLegalese,
-        children: children,
-      );
-    },
+    builder: (context) => CustomAboutDialog(
+      applicationName: applicationName,
+      applicationVersion: applicationVersion,
+      applicationIcon: applicationIcon,
+      applicationLegalese: applicationLegalese,
+      children: children,
+    ),
     routeSettings: routeSettings,
   );
 }
@@ -46,11 +42,9 @@ void showCustomLicensePage({
   String? applicationLegalese,
   bool useRootNavigator = false,
 }) {
-  assert(context != null);
-  assert(useRootNavigator != null);
   Navigator.of(context, rootNavigator: useRootNavigator)
       .push(MaterialPageRoute<void>(
-    builder: (BuildContext context) => CustomLicensePage(
+    builder: (context) => CustomLicensePage(
       applicationName: applicationName,
       applicationVersion: applicationVersion,
       applicationIcon: applicationIcon,
@@ -59,31 +53,9 @@ void showCustomLicensePage({
   ));
 }
 
-/// The amount of vertical space to separate chunks of text.
-const double _textVerticalSeparation = 18.0;
+const double _textVerticalSeparation = 18;
 
-/// An about box. This is a dialog box with the application's icon, name,
-/// version number, and copyright, plus a button to show licenses for software
-/// used by the application.
-///
-/// To show an [CustomAboutDialog], use [showCustomAboutDialog].
-///
-/// {@youtube 560 315 https://www.youtube.com/watch?v=YFCSODyFxbE}
-///
-/// If the application has a [Drawer], the [CustomAboutListTile] widget can make the
-/// process of showing an about dialog simpler.
-///
-/// The [CustomAboutDialog] shown by [showCustomAboutDialog] includes a button that calls
-/// [showLicensePage].
-///
-/// The licenses shown on the [CustomLicensePage] are those returned by the
-/// [LicenseRegistry] API, which can be used to add more licenses to the list.
 class CustomAboutDialog extends StatelessWidget {
-  /// Creates an about box.
-  ///
-  /// The arguments are all optional. The application name, if omitted, will be
-  /// derived from the nearest [Title] widget. The version, icon, and legalese
-  /// values default to the empty string.
   const CustomAboutDialog({
     Key? key,
     this.applicationName,
@@ -92,46 +64,14 @@ class CustomAboutDialog extends StatelessWidget {
     this.applicationLegalese,
     this.children,
   }) : super(key: key);
-
-  /// The name of the application.
-  ///
-  /// Defaults to the value of [Title.title], if a [Title] widget can be found.
-  /// Otherwise, defaults to [Platform.resolvedExecutable].
   final String? applicationName;
-
-  /// The version of this build of the application.
-  ///
-  /// This string is shown under the application name.
-  ///
-  /// Defaults to the empty string.
   final String? applicationVersion;
-
-  /// The icon to show next to the application name.
-  ///
-  /// By default no icon is shown.
-  ///
-  /// Typically this will be an [ImageIcon] widget. It should honor the
-  /// [IconTheme]'s [IconThemeData.size].
   final Widget? applicationIcon;
-
-  /// A string to show in small print.
-  ///
-  /// Typically this is a copyright notice.
-  ///
-  /// Defaults to the empty string.
   final String? applicationLegalese;
-
-  /// Widgets to add to the dialog box after the name, version, and legalese.
-  ///
-  /// This could include a link to a Web site, some descriptive text, credits,
-  /// or other information to show in the about box.
-  ///
-  /// Defaults to nothing.
   final List<Widget>? children;
 
   @override
   Widget build(BuildContext context) {
-    assert(debugCheckHasMaterialLocalizations(context));
     final String name = applicationName ?? _defaultApplicationName(context);
     final String version =
         applicationVersion ?? _defaultApplicationVersion(context);
@@ -146,7 +86,7 @@ class CustomAboutDialog extends StatelessWidget {
                 IconTheme(data: Theme.of(context).iconTheme, child: icon),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: ListBody(
                     children: <Widget>[
                       Text(name, style: Theme.of(context).textTheme.headline5),
@@ -190,24 +130,7 @@ class CustomAboutDialog extends StatelessWidget {
   }
 }
 
-/// A page that shows licenses for software used by the application.
-///
-/// To show a [CustomLicensePage], use [showLicensePage].
-///
-/// The [CustomAboutDialog] shown by [showCustomAboutDialog] and [CustomAboutListTile] includes
-/// a button that calls [showLicensePage].
-///
-/// The licenses shown on the [CustomLicensePage] are those returned by the
-/// [LicenseRegistry] API, which can be used to add more licenses to the list.
 class CustomLicensePage extends StatefulWidget {
-  /// Creates a page that shows licenses for software used by the application.
-  ///
-  /// The arguments are all optional. The application name, if omitted, will be
-  /// derived from the nearest [Title] widget. The version and legalese values
-  /// default to the empty string.
-  ///
-  /// The licenses shown on the [CustomLicensePage] are those returned by the
-  /// [LicenseRegistry] API, which can be used to add more licenses to the list.
   const CustomLicensePage({
     Key? key,
     this.applicationName,
@@ -252,18 +175,15 @@ class _CustomLicensePageState extends State<CustomLicensePage> {
   final ValueNotifier<int?> selectedId = ValueNotifier<int?>(null);
 
   @override
-  Widget build(BuildContext context) {
-    return _CustomMasterDetailFlow(
-      detailPageFABlessGutterWidth: _getGutterSize(context),
-      title: Text(MaterialLocalizations.of(context).licensesPageTitle),
-      detailPageBuilder: _packageLicensePage,
-      masterViewBuilder: _packagesView,
-    );
-  }
+  Widget build(BuildContext context) => _CustomMasterDetailFlow(
+        detailPageFABlessGutterWidth: _getGutterSize(context),
+        title: Text(MaterialLocalizations.of(context).licensesPageTitle),
+        detailPageBuilder: _packageLicensePage,
+        masterViewBuilder: _packagesView,
+      );
 
   Widget _packageLicensePage(
       BuildContext _, Object? args, ScrollController? scrollController) {
-    assert(args is _CustomDetailArguments);
     final _CustomDetailArguments detailArguments =
         args! as _CustomDetailArguments;
     return _CustomPackageLicensePage(
@@ -290,14 +210,12 @@ class _CustomLicensePageState extends State<CustomLicensePage> {
 
 class _CustomAboutProgram extends StatelessWidget {
   const _CustomAboutProgram({
-    Key? key,
     required this.name,
     required this.version,
     this.icon,
     this.legalese,
-  })  : assert(name != null),
-        assert(version != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final String name;
   final String version;
