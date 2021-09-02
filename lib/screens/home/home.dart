@@ -137,7 +137,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: Text('Environ', style: Theme.of(context).textTheme.headline5),
           backgroundColor: themeDarkGreen,
-          systemOverlayStyle: SystemUiOverlayStyle.dark,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
           elevation: 8,
           actions: <Widget>[
             IconButton(

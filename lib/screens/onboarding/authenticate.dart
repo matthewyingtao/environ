@@ -51,7 +51,7 @@ class _AuthenticateState extends State<Authenticate> {
                 ),
                 validator: (text) {
                   if (text == null || text.isEmpty) {
-                    return "can't be empty";
+                    return 'Enter your name!';
                   }
                   return null;
                 },
