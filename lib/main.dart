@@ -28,12 +28,9 @@ class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    // clear();
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: appTheme,
-      home: const Wrapper(),
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: appTheme,
+        home: const Wrapper(),
+      );
 }

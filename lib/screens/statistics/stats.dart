@@ -144,8 +144,8 @@ class Stats extends StatelessWidget {
             ),
             AchievementProgressIndicator(
               challengeProgress: trash,
-              challengeMax: 100,
-              challengeTitle: 'Scan 5 clothing items',
+              challengeMax: 50,
+              challengeTitle: 'Scan 50 items of trash',
             ),
             const SizedBox(height: 16),
           ],

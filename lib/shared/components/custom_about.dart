@@ -267,9 +267,7 @@ class _CustomPackagesView extends StatefulWidget {
     required this.about,
     required this.isLateral,
     required this.selectedId,
-  })  : assert(about != null),
-        assert(isLateral != null),
-        super(key: key);
+  }) : super(key: key);
 
   final Widget about;
   final bool isLateral;
@@ -314,7 +312,7 @@ class _CustomPackagesViewState extends State<_CustomPackagesView> {
                   },
                 );
               default:
-                return SizedBox(
+                return const SizedBox(
                   height: double.infinity,
                   child: Loading(),
                 );
@@ -499,7 +497,6 @@ class _CustomPackageLicensePageState extends State<_CustomPackageLicensePage> {
   bool _loaded = false;
 
   Future<void> _initLicenses() async {
-    final int debugFlowId = -1;
     assert(() {
       return true;
     }());
@@ -585,7 +582,7 @@ class _CustomPackageLicensePageState extends State<_CustomPackageLicensePage> {
           title: _CustomPackageLicensePageTitle(
             title,
             subtitle,
-            theme.appBarTheme.textTheme ?? theme.primaryTextTheme,
+            theme.primaryTextTheme,
           ),
         ),
         body: Center(
@@ -685,12 +682,10 @@ String _defaultApplicationName(BuildContext context) {
 }
 
 String _defaultApplicationVersion(BuildContext context) {
-  // TODO(ianh): Get this from the embedder somehow.
   return '';
 }
 
 Widget? _defaultApplicationIcon(BuildContext context) {
-  // TODO(ianh): Get this from the embedder somehow.
   return null;
 }
 
@@ -780,11 +775,7 @@ class _CustomMasterDetailFlow extends StatefulWidget {
     this.masterPageBuilder,
     this.masterViewWidth,
     this.title,
-  })  : assert(masterViewBuilder != null),
-        assert(automaticallyImplyLeading != null),
-        assert(detailPageBuilder != null),
-        assert(displayMode != null),
-        super(key: key);
+  }) : super(key: key);
 
   /// Builder for the master view for lateral navigation.
   ///
@@ -1155,9 +1146,7 @@ class _CustomMasterDetailScaffold extends StatefulWidget {
     this.detailPageFABlessGutterWidth,
     this.detailPageFABGutterWidth,
     this.masterViewWidth,
-  })  : assert(detailPageBuilder != null),
-        assert(masterViewBuilder != null),
-        super(key: key);
+  }) : super(key: key);
 
   final _MasterViewBuilder masterViewBuilder;
 
@@ -1328,8 +1317,7 @@ class _CustomDetailView extends StatelessWidget {
     Key? key,
     required _DetailPageBuilder builder,
     Object? arguments,
-  })  : assert(builder != null),
-        _builder = builder,
+  })  : _builder = builder,
         _arguments = arguments,
         super(key: key);
 
@@ -1350,7 +1338,6 @@ class _CustomDetailView extends StatelessWidget {
       expand: false,
       builder: (context, controller) {
         return MouseRegion(
-          // TODO(TonicArtos): Remove MouseRegion workaround for pointer hover events passing through DraggableScrollableSheet once https://github.com/flutter/flutter/issues/59741 is resolved.
           child: Card(
             color: Theme.of(context).cardColor,
             elevation: _kCardElevation,
