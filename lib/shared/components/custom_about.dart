@@ -227,7 +227,7 @@ class _CustomAboutProgram extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: _getGutterSize(context),
-        vertical: 24.0,
+        vertical: 24,
       ),
       child: Column(
         children: <Widget>[
@@ -283,32 +283,29 @@ class _CustomPackagesViewState extends State<_CustomPackagesView> {
   final Future<_CustomLicenseData> licenses = LicenseRegistry.licenses
       .fold<_CustomLicenseData>(
         _CustomLicenseData(),
-        (_CustomLicenseData prev, LicenseEntry license) =>
-            prev..addLicense(license),
+        (prev, license) => prev..addLicense(license),
       )
-      .then((_CustomLicenseData licenseData) => licenseData..sortPackages());
+      .then((licenseData) => licenseData..sortPackages());
 
   @override
   Widget build(BuildContext context) => FutureBuilder<_CustomLicenseData>(
         future: licenses,
-        builder: (BuildContext context,
-                AsyncSnapshot<_CustomLicenseData> snapshot) =>
-            LayoutBuilder(
+        builder: (context, snapshot) => LayoutBuilder(
           key: ValueKey<ConnectionState>(snapshot.connectionState),
-          builder: (BuildContext context, BoxConstraints constraints) {
+          builder: (context, constraints) {
             switch (snapshot.connectionState) {
               case ConnectionState.done:
                 _initDefaultDetailPage(snapshot.data!, context);
                 return ValueListenableBuilder<int?>(
                   valueListenable: widget.selectedId,
-                  builder: (BuildContext context, int? selectedId, Widget? _) {
+                  builder: (context, selectedId, _) {
                     return Center(
                       child: Material(
-                        elevation: 4.0,
+                        elevation: 4,
                         child: Container(
                           color: themeGreen,
                           constraints:
-                              BoxConstraints.loose(const Size.fromWidth(600.0)),
+                              BoxConstraints.loose(const Size.fromWidth(600)),
                           child: _packagesList(context, selectedId,
                               snapshot.data!, widget.isLateral),
                         ),
@@ -317,7 +314,7 @@ class _CustomPackagesViewState extends State<_CustomPackagesView> {
                   },
                 );
               default:
-                return Container(
+                return SizedBox(
                   height: double.infinity,
                   child: Loading(),
                 );
@@ -335,7 +332,7 @@ class _CustomPackagesViewState extends State<_CustomPackagesView> {
     _CustomMasterDetailFlow.of(context)!.setInitialDetailPage(
       _CustomDetailArguments(
         packageName,
-        bindings.map((int i) => data.licenses[i]).toList(growable: false),
+        bindings.map((i) => data.licenses[i]).toList(growable: false),
       ),
     );
   }
@@ -349,10 +346,7 @@ class _CustomPackagesViewState extends State<_CustomPackagesView> {
     return ListView(
       children: <Widget>[
         widget.about,
-        ...data.packages
-            .asMap()
-            .entries
-            .map<Widget>((MapEntry<int, String> entry) {
+        ...data.packages.asMap().entries.map<Widget>((entry) {
           final String packageName = entry.value;
           final int index = entry.key;
           final List<int> bindings = data.packageLicenseBindings[packageName]!;
@@ -366,9 +360,7 @@ class _CustomPackagesViewState extends State<_CustomPackagesView> {
               _CustomMasterDetailFlow.of(context)!
                   .openDetailPage(_CustomDetailArguments(
                 packageName,
-                bindings
-                    .map((int i) => data.licenses[i])
-                    .toList(growable: false),
+                bindings.map((i) => data.licenses[i]).toList(growable: false),
               ));
             },
           );
@@ -444,7 +436,7 @@ class _CustomLicenseData {
   /// package in case-insensitive alphabetical order.
   void sortPackages([int Function(String a, String b)? compare]) {
     packages.sort(compare ??
-        (String a, String b) {
+        (a, b) {
           // Based on how LicenseRegistry currently behaves, the first package
           // returned is the end user application license. This should be
           // presented first in the list. So here we make sure that first package
@@ -468,7 +460,7 @@ class _CustomDetailArguments {
   final List<LicenseEntry> licenseEntries;
 
   @override
-  bool operator ==(final dynamic other) {
+  bool operator ==(final other) {
     if (other is _CustomDetailArguments) {
       return other.packageName == packageName;
     }
@@ -507,7 +499,7 @@ class _CustomPackageLicensePageState extends State<_CustomPackageLicensePage> {
   bool _loaded = false;
 
   Future<void> _initLicenses() async {
-    int debugFlowId = -1;
+    final int debugFlowId = -1;
     assert(() {
       return true;
     }());
@@ -529,13 +521,13 @@ class _CustomPackageLicensePageState extends State<_CustomPackageLicensePage> {
       }
       setState(() {
         _licenses.add(const Padding(
-          padding: EdgeInsets.all(18.0),
+          padding: EdgeInsets.all(18),
           child: Divider(),
         ));
         for (final LicenseParagraph paragraph in paragraphs) {
           if (paragraph.indent == LicenseParagraph.centeredIndent) {
             _licenses.add(Padding(
-              padding: const EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.only(top: 16),
               child: Text(
                 paragraph.text,
                 style: const TextStyle(fontWeight: FontWeight.bold),
@@ -546,7 +538,7 @@ class _CustomPackageLicensePageState extends State<_CustomPackageLicensePage> {
             assert(paragraph.indent >= 0);
             _licenses.add(Padding(
               padding: EdgeInsetsDirectional.only(
-                  top: 8.0, start: 16.0 * paragraph.indent),
+                  top: 8, start: 16.0 * paragraph.indent),
               child: Text(paragraph.text),
             ));
           }
@@ -577,7 +569,7 @@ class _CustomPackageLicensePageState extends State<_CustomPackageLicensePage> {
       ..._licenses,
       if (!_loaded)
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 24.0),
+          padding: EdgeInsets.symmetric(vertical: 24),
           child: Center(
             child: CircularProgressIndicator(),
           ),
@@ -599,9 +591,9 @@ class _CustomPackageLicensePageState extends State<_CustomPackageLicensePage> {
         body: Center(
           child: Material(
             color: themeGreen,
-            elevation: 4.0,
+            elevation: 4,
             child: Container(
-              constraints: BoxConstraints.loose(const Size.fromWidth(600.0)),
+              constraints: BoxConstraints.loose(const Size.fromWidth(600)),
               child: Localizations.override(
                 locale: const Locale('en', 'US'),
                 context: context,
@@ -635,7 +627,7 @@ class _CustomPackageLicensePageState extends State<_CustomPackageLicensePage> {
               padding: padding,
               sliver: SliverList(
                 delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) => Localizations.override(
+                  (context, index) => Localizations.override(
                     locale: const Locale('en', 'US'),
                     context: context,
                     child: listWidgets[index],
@@ -703,8 +695,8 @@ Widget? _defaultApplicationIcon(BuildContext context) {
 }
 
 const int _materialGutterThreshold = 720;
-const double _wideGutterSize = 24.0;
-const double _narrowGutterSize = 12.0;
+const double _wideGutterSize = 24;
+const double _narrowGutterSize = 12;
 
 double _getGutterSize(BuildContext context) =>
     MediaQuery.of(context).size.width >= _materialGutterThreshold
@@ -979,8 +971,7 @@ class _CustomMasterDetailFlowState extends State<_CustomMasterDetailFlow>
       case _CustomLayoutMode.lateral:
         return _lateralUI(context);
       case _CustomLayoutMode.auto:
-        return LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
+        return LayoutBuilder(builder: (context, constraints) {
           final double availableWidth = constraints.maxWidth;
           if (availableWidth >=
               (widget.breakpoint ?? _materialWideDisplayThreshold)) {
@@ -1002,8 +993,7 @@ class _CustomMasterDetailFlowState extends State<_CustomMasterDetailFlow>
       child: Navigator(
         key: _navigatorKey,
         initialRoute: 'initial',
-        onGenerateInitialRoutes:
-            (NavigatorState navigator, String initialRoute) {
+        onGenerateInitialRoutes: (navigator, initialRoute) {
           switch (focus) {
             case _Focus.master:
               return <Route<void>>[masterPageRoute];
@@ -1014,7 +1004,7 @@ class _CustomMasterDetailFlowState extends State<_CustomMasterDetailFlow>
               ];
           }
         },
-        onGenerateRoute: (RouteSettings settings) {
+        onGenerateRoute: (settings) {
           switch (settings.name) {
             case _navMaster:
               // Matching state to navigation event.
@@ -1036,7 +1026,7 @@ class _CustomMasterDetailFlowState extends State<_CustomMasterDetailFlow>
 
   MaterialPageRoute<void> _masterPageRoute(BuildContext context) {
     return MaterialPageRoute<dynamic>(
-      builder: (BuildContext c) => BlockSemantics(
+      builder: (c) => BlockSemantics(
         child: widget.masterPageBuilder != null
             ? widget.masterPageBuilder!(c, false)
             : _CustomMasterPage(
@@ -1061,7 +1051,7 @@ class _CustomMasterDetailFlowState extends State<_CustomMasterDetailFlow>
   }
 
   MaterialPageRoute<void> _detailPageRoute(Object? arguments) {
-    return MaterialPageRoute<dynamic>(builder: (BuildContext context) {
+    return MaterialPageRoute<dynamic>(builder: (context) {
       return WillPopScope(
         onWillPop: () async {
           // No need for setState() as rebuild happens on navigation pop.
@@ -1081,8 +1071,7 @@ class _CustomMasterDetailFlowState extends State<_CustomMasterDetailFlow>
       actionBuilder: widget.actionBuilder ?? (_, __) => const <Widget>[],
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
       centerTitle: widget.centerTitle,
-      detailPageBuilder: (BuildContext context, Object? args,
-              ScrollController? scrollController) =>
+      detailPageBuilder: (context, args, scrollController) =>
           widget.detailPageBuilder(
               context, args ?? _cachedDetailArguments, scrollController),
       floatingActionButton: widget.floatingActionButton,
@@ -1091,7 +1080,7 @@ class _CustomMasterDetailFlowState extends State<_CustomMasterDetailFlow>
       floatingActionButtonLocation: widget.floatingActionButtonLocation,
       initialArguments: _cachedDetailArguments,
       leading: widget.leading,
-      masterViewBuilder: (BuildContext context, bool isLateral) =>
+      masterViewBuilder: (context, isLateral) =>
           widget.masterViewBuilder(context, isLateral),
       masterViewWidth: widget.masterViewWidth,
       title: widget.title,
@@ -1145,10 +1134,10 @@ class _CustomMasterPage extends StatelessWidget {
   }
 }
 
-const double _kCardElevation = 4.0;
-const double _kMasterViewWidth = 320.0;
-const double _kDetailPageFABlessGutterWidth = 40.0;
-const double _kDetailPageFABGutterWidth = 84.0;
+const double _kCardElevation = 4;
+const double _kMasterViewWidth = 320;
+const double _kDetailPageFABlessGutterWidth = 40;
+const double _kDetailPageFABGutterWidth = 84;
 
 class _CustomMasterDetailScaffold extends StatefulWidget {
   const _CustomMasterDetailScaffold({
@@ -1247,7 +1236,6 @@ class _CustomMasterDetailScaffoldState
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(kToolbarHeight),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   ConstrainedBox(
                     constraints:
@@ -1284,12 +1272,11 @@ class _CustomMasterDetailScaffoldState
             ),
             child: ValueListenableBuilder<Object?>(
               valueListenable: _detailArguments,
-              builder: (BuildContext context, Object? value, Widget? child) {
+              builder: (context, value, child) {
                 return AnimatedSwitcher(
-                  transitionBuilder:
-                      (Widget child, Animation<double> animation) =>
-                          const FadeUpwardsPageTransitionsBuilder()
-                              .buildTransitions<void>(
+                  transitionBuilder: (child, animation) =>
+                      const FadeUpwardsPageTransitionsBuilder()
+                          .buildTransitions<void>(
                     null,
                     null,
                     animation,
@@ -1360,9 +1347,8 @@ class _CustomDetailView extends StatelessWidget {
     return DraggableScrollableSheet(
       initialChildSize: minHeight,
       minChildSize: minHeight,
-      maxChildSize: 1,
       expand: false,
-      builder: (BuildContext context, ScrollController controller) {
+      builder: (context, controller) {
         return MouseRegion(
           // TODO(TonicArtos): Remove MouseRegion workaround for pointer hover events passing through DraggableScrollableSheet once https://github.com/flutter/flutter/issues/59741 is resolved.
           child: Card(
@@ -1370,10 +1356,9 @@ class _CustomDetailView extends StatelessWidget {
             elevation: _kCardElevation,
             clipBehavior: Clip.antiAlias,
             margin: const EdgeInsets.fromLTRB(
-                _kCardElevation, 0.0, _kCardElevation, 0.0),
+                _kCardElevation, 0, _kCardElevation, 0),
             shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(3.0), bottom: Radius.zero),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(3)),
             ),
             child: _builder(
               context,
