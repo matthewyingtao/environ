@@ -1,20 +1,25 @@
 import 'package:hive/hive.dart';
 
+const achievements = [
+  'objects',
+  'clear-glass',
+  'colored-glass',
+  'clothing',
+  'metal',
+  'paper-cardboard',
+  'plastic',
+  'trash',
+  'open_app_separate_days',
+  'last_open_update',
+];
+
 class Database {
   final box = Hive.box<int>('achievements');
 
   void initializeAchievements() {
-    box
-      ..put('objects', 0)
-      ..put('clear-glass', 0)
-      ..put('colored-glass', 0)
-      ..put('clothing', 0)
-      ..put('metal', 0)
-      ..put('paper-cardboard', 0)
-      ..put('plastic', 0)
-      ..put('trash', 0)
-      ..put('open_app_separate_days', 0)
-      ..put('last_open_update', 0);
+    for (final achievement in achievements) {
+      box.put(achievement, 0);
+    }
   }
 
   void updateObjectAchievements(Map<String, dynamic>? data) {
