@@ -27,7 +27,7 @@ class HelpDialog extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           const Text(
-            '''The AI works best when the object is against a white background and place in the center.''',
+            '''The AI works best when the object is against a white background and placed in the center.''',
             style: TextStyle(color: black),
           ),
           const SizedBox(height: 12),
