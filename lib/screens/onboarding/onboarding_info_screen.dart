@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class OnboardingInfoScreen extends StatelessWidget {
   const OnboardingInfoScreen({
@@ -25,11 +26,16 @@ class OnboardingInfoScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const Placeholder(
-                    fallbackHeight: 120,
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: SvgPicture.asset(
+                      'assets/leavesbg.svg',
+                      color: Colors.white,
+                      height: 120,
+                    ),
                   ),
                   const SizedBox(
-                    height: 32,
+                    height: 8,
                   ),
                   Container(
                     alignment: Alignment.topLeft,
