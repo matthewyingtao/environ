@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:environ/screens/camera/camera.dart';
 import 'package:environ/screens/home/help_dialog.dart';
 import 'package:environ/screens/home/trash_modal.dart';
-import 'package:environ/screens/lessons/lessons.dart';
+import 'package:environ/screens/lessons/info.dart';
 import 'package:environ/screens/statistics/stats.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:flutter/foundation.dart';
@@ -111,7 +111,7 @@ class _HomeState extends State<Home> {
                       Camera(
                         changeData: updateTrashdata,
                       ),
-                      const Lessons(),
+                      const Info(),
                       const Stats(),
                     ],
                   ),
@@ -158,7 +158,7 @@ class _HomeState extends State<Home> {
                   ),
                   GButton(
                     icon: Icons.school_rounded,
-                    text: 'Lessons',
+                    text: 'Info',
                   ),
                   GButton(
                     icon: Icons.insights_rounded,

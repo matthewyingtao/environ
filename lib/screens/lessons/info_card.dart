@@ -2,8 +2,8 @@ import 'package:environ/shared/components/pop_up_dialog.dart';
 import 'package:environ/shared/constants.dart';
 import 'package:flutter/material.dart';
 
-class LessonCard extends StatelessWidget {
-  const LessonCard({
+class InfoCard extends StatelessWidget {
+  const InfoCard({
     required this.icon,
     required this.body,
     required this.heading,
