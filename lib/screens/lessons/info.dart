@@ -12,8 +12,8 @@ class Info extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              'Lessons',
-              style: Theme.of(context).textTheme.headline3,
+              'Learn more about...',
+              style: Theme.of(context).textTheme.headline5,
             ),
           ),
           const SizedBox(height: 12),
