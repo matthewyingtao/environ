@@ -70,7 +70,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: themeGreen,
         appBar: AppBar(
-          title: Text('Environ', style: Theme.of(context).textTheme.headline5),
+          title: SvgPicture.asset(
+            'assets/leavesbg.svg',
+            color: Colors.white,
+            height: 36,
+          ),
           backgroundColor: themeDarkGreen,
           systemOverlayStyle: SystemUiOverlayStyle.light,
           elevation: 8,
