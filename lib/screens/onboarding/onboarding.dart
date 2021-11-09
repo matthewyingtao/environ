@@ -91,7 +91,7 @@ class _OnboardingState extends State<Onboarding> {
                           title: 'KNOWLEDGE',
                           subheading: 'Grow your',
                           body:
-                              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
+                              '''Environ provides helpful information on how to recycle. We help you better understand what's recyclable and ways to reduce pollution.''',
                           icon: Icon(
                             Icons.school,
                             size: 140,
@@ -102,7 +102,7 @@ class _OnboardingState extends State<Onboarding> {
                           title: 'PROGRESS',
                           subheading: 'Track your',
                           body:
-                              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
+                              '''With an achievement system, Environ tracks how many items you've recycled, a statistic that you can show off to your friends!''',
                           icon: Icon(
                             Icons.insights,
                             size: 140,
@@ -113,7 +113,7 @@ class _OnboardingState extends State<Onboarding> {
                           title: 'SUSTAINABLY',
                           subheading: 'Live more',
                           body:
-                              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
+                              '''Using cutting edge machine learning technology, we help you to recycle with confidence.''',
                           icon: SvgPicture.asset(
                             'assets/recyclingsymbol.svg',
                             color: Colors.white,
