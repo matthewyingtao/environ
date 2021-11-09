@@ -79,14 +79,26 @@ class _HomeState extends State<Home> {
           systemOverlayStyle: SystemUiOverlayStyle.light,
           elevation: 8,
           actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.help),
-              onPressed: _showHelpDialog,
+            Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.help),
+                  onPressed: _showHelpDialog,
+                ),
+                const Text("Info"),
+              ],
             ),
-            IconButton(
-              icon: const Icon(Icons.fact_check_outlined),
-              onPressed: _showTrashModal,
+            const SizedBox(width: 16),
+            Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.fact_check_outlined),
+                  onPressed: _showTrashModal,
+                ),
+                const Text("Recent"),
+              ],
             ),
+            const SizedBox(width: 8),
           ],
         ),
         body: Column(
