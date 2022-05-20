@@ -29,12 +29,12 @@ class CameraState extends State<Camera> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     setupCamera();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     _controller!.dispose();
     super.dispose();
   }

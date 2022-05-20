@@ -8,7 +8,6 @@ import 'package:environ/shared/loading.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
 
 void showCustomAboutDialog({
   required BuildContext context,
@@ -508,7 +507,7 @@ class _CustomPackageLicensePageState extends State<_CustomPackageLicensePage> {
         return true;
       }());
       final List<LicenseParagraph> paragraphs =
-          await SchedulerBinding.instance!.scheduleTask<List<LicenseParagraph>>(
+          await SchedulerBinding.instance.scheduleTask<List<LicenseParagraph>>(
         license.paragraphs.toList,
         Priority.animation,
         debugLabel: 'License',
@@ -743,6 +742,7 @@ enum _CustomLayoutMode {
 
 const String _navMaster = 'master';
 const String _navDetail = 'detail';
+
 enum _Focus { master, detail }
 
 /// A Master Detail Flow widget. Depending on screen width it builds either a
@@ -1196,14 +1196,14 @@ class _CustomMasterDetailScaffoldState
 
   @override
   void openDetailPage(Object arguments) {
-    SchedulerBinding.instance!
+    SchedulerBinding.instance
         .addPostFrameCallback((_) => _detailArguments.value = arguments);
     _CustomMasterDetailFlow.of(context)!.openDetailPage(arguments);
   }
 
   @override
   void setInitialDetailPage(Object arguments) {
-    SchedulerBinding.instance!
+    SchedulerBinding.instance
         .addPostFrameCallback((_) => _detailArguments.value = arguments);
     _CustomMasterDetailFlow.of(context)!.setInitialDetailPage(arguments);
   }
